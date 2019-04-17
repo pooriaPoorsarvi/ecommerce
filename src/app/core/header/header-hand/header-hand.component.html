@@ -1,0 +1,35 @@
+<mat-toolbar style="padding : 0px; display: flex; flex-direction: column">
+  <div class="row my-2" style="width: 100%; margin: 0px;padding: 0px;" >
+    <div class="col-2 centerify" >
+      <mat-icon [inline]="true" style="font-size: 5vh">menu</mat-icon>
+    </div>
+    <div class="col-8 centerify" >
+      <a routerLink = "/" >
+        <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" 
+        alt="Logo"
+        class="img-fluid" style="max-height: 6vh">
+      </a>
+    </div>
+    <div class="col-2 centerify"  >
+      <mat-icon [inline]="true" style="font-size: 5vh">contact_support</mat-icon>
+    </div>
+  </div>
+  <div style="width : 95%">
+    <hr>
+  </div>
+
+  <div class="row my-1" style="width: 100%; margin: 0px;padding: 0px;;" >
+    <div class="col-1  centerify" >
+      <mat-icon [inline]="true" style="font-size: 5vh">shopping_cart</mat-icon>
+    </div>
+    <div class="col-1  centerify"  >
+      <mat-icon [inline]="true" style="font-size: 5vh">contact_support</mat-icon>
+    </div>
+    <div class="col-10 centerify"  >
+      <mat-form-field appearance="outline" style="transform: translateY(10%);width : 100%;">
+        <mat-label>Search</mat-label>
+        <input matInput placeholder="Search Here">
+      </mat-form-field>
+    </div>
+  </div>
+</mat-toolbar>

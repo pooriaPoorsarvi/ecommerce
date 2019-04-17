@@ -1,0 +1,56 @@
+<div style="display: flex; flex-direction: column; width: 100%;">
+<mat-toolbar  style="width:100%;height: auto;padding: 0px; margin: 0px;">
+
+
+  <div class="row"  style = "width: 100%;margin: 0px; padding: 0px;">
+
+    <a routerLink = "/" class="col-2" style="display: flex; flex-direction: column; justify-content: center; align-items: center">
+      <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
+      alt="Logo" class="img-fluid"
+      >
+    </a>
+    <div class = "col-5 col-sm-6" style="padding-left: 0px; padding-right: 0;">
+      <mat-form-field   color="warn" style=  "width: 100%;" >
+          <input  type = "search"  matInput placeholder="Search" >
+      </mat-form-field>
+    </div>
+    <div class = "col-1" style="padding-right: 0px; padding-left: 0.5%; display: flex; flex-direction: column; justify-content: center;">
+      <div style="display: flex; align-items: center; font-size: 1.25vw">
+          Questions  <mat-icon>contact_support</mat-icon>
+      </div>
+    </div>
+
+
+    <div class = "col-1" style="padding-right: 0px; padding-left: 2%; display: flex; flex-direction: column; justify-content: center;">
+      <div style="display: flex; align-items: center; font-size: 1.25vw">
+          Login  <mat-icon>account_circle</mat-icon>
+      </div>
+    </div>
+
+    <div class = "col-2 col-sm1" style="margin-left: auto;padding-right: 0px; display: flex; flex-direction: column; align-items: center;justify-content: center;">
+      <div style="display: flex; align-items: center; font-size: 1.25vw;" id = "shopping">
+          Shopping Cart <mat-icon>shopping_cart</mat-icon>
+      </div>
+    </div>
+
+  </div>
+</mat-toolbar>
+
+
+
+<mat-toolbar color = "warn" style="width:100%;max-width: 100%;;height: auto;padding: 0px; margin: 0px;">
+  <div   style="display: flex; justify-content: space-around; width: 100%; max-width: 100%;">
+
+
+
+    <div style="" *ngFor="let menu of menus;let i = index"  >
+      
+      <app-menu-option style="flex-shrink: 1;width: auto" [menu]="menu"></app-menu-option>
+    </div>
+  </div>
+</mat-toolbar>
+
+
+</div>
+
+

@@ -1,0 +1,38 @@
+
+@import "../../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
+
+.row{
+  overflow: hidden;
+}
+
+@keyframes example {
+  from {color: blue;border: 0.1vw solid blue;}
+  to {color: red;border: 0.1vw solid red;}
+}
+
+#shopping{
+  border-radius: 10px;
+  border: 0.1vw solid blue;
+  padding: 5%;
+  color: blue;
+}
+#shopping:hover{
+  border-radius: 10px;
+  border: 0.1vw solid red;
+  padding: 5%;
+  color: red;
+  animation-name: example;
+  animation-duration: 0.25s;
+}
+
+/* ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: black!important;
+  overflow: hidden;
+}
+
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  color: red!important;
+
+} */
+

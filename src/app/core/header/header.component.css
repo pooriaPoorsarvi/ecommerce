@@ -1,0 +1,11 @@
+app-header-lap{
+  height: auto;
+  min-height: auto;
+  display: flex;
+}
+
+app-header-hand{
+  height: auto;
+  min-height: auto;
+  display: flex;
+}

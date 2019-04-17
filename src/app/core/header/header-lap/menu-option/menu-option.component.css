@@ -1,0 +1,7 @@
+
+::ng-deep .mat-menu-panel{
+  max-width: none !important;
+  /* width: 1vw !important; */
+  max-height: none !important;
+  /* overflow: hidden !important; */
+}

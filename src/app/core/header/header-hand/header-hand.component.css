@@ -1,0 +1,13 @@
+@import "../../../../../node_modules/bootstrap/dist/css/bootstrap.css";
+
+
+mat-toolbar{
+  height: auto !important;  
+}
+
+.centerify{
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
