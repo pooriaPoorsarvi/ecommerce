@@ -6,6 +6,10 @@
   overflow: hidden;
 }
 
+.cursorP{
+  cursor: pointer !important;
+}
+
 @keyframes example {
   from {color: blue;border: 0.1vw solid blue;}
   to {color: red;border: 0.1vw solid red;}
@@ -26,13 +30,6 @@
   animation-duration: 0.25s;
 }
 
-/* ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
-  color: black!important;
-  overflow: hidden;
+a{
+  cursor: pointer;
 }
-
-::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
-  color: red!important;
-
-} */
-
