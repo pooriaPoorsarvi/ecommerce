@@ -20,6 +20,10 @@ export class DataServerService{
     this.menus.push(new MenuOptionModel('Toys', list1, true));
     this.menus.push(new MenuOptionModel('Gym', list1, true));
     this.menus.push(new MenuOptionModel('edibels', list1, true));
+
+
+
+
   }
 
 

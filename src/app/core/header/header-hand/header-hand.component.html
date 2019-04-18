@@ -1,11 +1,11 @@
-<mat-toolbar style="padding : 0px; display: flex; flex-direction: column">
+<mat-toolbar  style="padding : 0px; display: flex; flex-direction: column">
   <div class="row my-2" style="width: 100%; margin: 0px;padding: 0px;" >
     <div class="col-2 centerify" >
-      <mat-icon [inline]="true" style="font-size: 5vh">menu</mat-icon>
+      <mat-icon matRipple (click) = "side_nav.toggle()" [inline]="true" style="font-size: 5vh">menu</mat-icon>
     </div>
     <div class="col-8 centerify" >
       <a routerLink = "/" >
-        <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" 
+        <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
         alt="Logo"
         class="img-fluid" style="max-height: 6vh">
       </a>

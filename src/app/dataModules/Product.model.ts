@@ -14,7 +14,7 @@ export class ProductModel{
               public maker : MakerModel,
               public category : CategoryModel,
               public remainingCount : number,
-              public image_address : string,
+              public image_address : string[],
               public retailer? : RetailerMoel,
               public promo_code? : PromoModel,
               public reviews? : ReviewModel){}

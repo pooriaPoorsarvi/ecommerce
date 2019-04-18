@@ -1,33 +1,62 @@
-import { MakerModel } from './Maker.model';
-import { ProductModel } from './Product.model';
 import { PromoModel } from './Promo.model';
+import { MainPageDataServerModel } from './MainPageData.model';
+import { CategoryModel } from './Category.model';
+import { Observable } from 'rxjs';
 
 
 export class MainPageDataServerService{
 
-  constructor(public main_promos : PromoModel[],
-              public side_promo1 : PromoModel,
-              public side_promo2 : PromoModel,
-              public products_popular : ProductModel[],
-              public products_latest : ProductModel[],
-              public products_recommanded : ProductModel[],
-              public alternating_promo : PromoModel[],
-              public products_cat_1  : ProductModel[],
-              public small_important_recommendation : ProductModel[],
-              public products_cat_2 ? : ProductModel[],
-              public products_cat_3 ? : ProductModel[],
-              public products_cat_4 ? : ProductModel[],
-              public products_cat_5 ? : ProductModel[],
-              public products_cat_6 ? : ProductModel[],
-              public speacial_brands ? : MakerModel,
-              public promos_main_quartile1? : PromoModel[],
-              public promos_main_quartile2? : PromoModel[],
-              public promos_binary ? : PromoModel[],
-              public promos_lone ? : PromoModel[],
-              ){}
+  private data : MainPageDataServerModel ;
+
+  constructor(){
+
+    var main_promos = [
+      new PromoModel("promo1",
+                     "/",
+                     0,
+                     new Date(),
+                     new CategoryModel("first cat"),
+                    "https://cdn-assets.alltrails.com/uploads/photo/image/20143242/extra_large_7390529a85d0da704b630d3fe371b1e4.jpg"
+      ),
+      new PromoModel("promo2",
+                     "/",
+                     0,
+                     new Date(),
+                     new CategoryModel("second cat"),
+                    "https://jpdirollphotography.files.wordpress.com/2019/01/dsc_6292-edited-final-lum-mask-100518-c-web-srgb.jpg"
+      ),
+      new PromoModel("promo3",
+                     "/",
+                     0,
+                     new Date(),
+                     new CategoryModel("third cat"),
+                    "https://cdn-assets.alltrails.com/uploads/photo/image/21732959/extra_large_e9ff46febfc0f6e85fab546c8808945b.jpg"
+      ),
+    ];
+
+    var side_promo1 = new PromoModel("side1", "/", 0, new Date(), new CategoryModel("side1"), "https://i.pinimg.com/originals/07/82/78/0782787fa5d97e543f4e564579364de2.jpg");
+    var side_promo2 = new PromoModel("side2", "/", 0, new Date(), new CategoryModel("side2"), "https://farm8.static.flickr.com/7853/33545849808_e462fe4d05_b.jpg");
+
+    this.data = new MainPageDataServerModel(main_promos, side_promo1, side_promo2);
+
+  }
+
+
+  getMainPageContent() : Observable <MainPageDataServerModel> {
+    return Observable.create(
+      (observer) => {
+        observer.next(this.data);
+      }
+    );
+  }
 
 
 }
+
+
+
+
+
 
 
 

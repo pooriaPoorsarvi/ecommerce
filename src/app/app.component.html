@@ -1,5 +1,12 @@
-<!-- <router-outlet></router-outlet> -->
-<app-header></app-header>
 
-
+<mat-sidenav-container>
+  <mat-sidenav style="width:50vw" [mode] = "'push'" #side_nav>
+    <app-navbar></app-navbar>
+  </mat-sidenav>
+  <!-- TODO Decide To Add a size limit like digi kala site and make it more dynamice for smaller sizes  -->
+  <mat-sidenav-content>
+    <app-header [sidenav] = "side_nav" ></app-header>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
 

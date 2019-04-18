@@ -2,12 +2,16 @@
 
 
 mat-toolbar{
-  height: auto !important;  
+  height: auto !important;
 }
 
 .centerify{
-  display: flex; 
+  display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+
+mat-icon{
+  cursor: pointer;
 }

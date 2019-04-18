@@ -1,3 +1,4 @@
+import { SizeService, SizeState } from './../../shared-services/size-compat.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainPageComponent implements OnInit {
 
-  constructor() { }
+  xsOrSmall : boolean = false;
+
+  constructor(public sizeService : SizeService){}
+
 
   ngOnInit() {
+    this.sizeService.stateBuffer.subscribe(
+      (event : SizeState) => {this.xsOrSmall = event.xs ;}
+    )
   }
-
 }

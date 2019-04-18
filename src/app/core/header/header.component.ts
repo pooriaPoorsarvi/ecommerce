@@ -1,5 +1,6 @@
 import { SizeService, SizeState } from './../../shared-services/size-compat.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ElementRef } from '@angular/core';
+import { MatSidenav } from '@angular/material';
 
 @Component({
   selector: 'app-header',
@@ -10,6 +11,8 @@ export class HeaderComponent implements OnInit {
 
 
   xsOrSmall : boolean = false;
+
+  @Input() sidenav : MatSidenav;
 
   constructor(public sizeService : SizeService){}
 

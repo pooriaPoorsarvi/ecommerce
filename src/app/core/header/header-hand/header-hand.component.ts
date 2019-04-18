@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ElementRef } from '@angular/core';
+import { MatSidenav } from '@angular/material';
 
 @Component({
   selector: 'app-header-hand',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderHandComponent implements OnInit {
 
+  @Input() side_nav : MatSidenav;
+
   constructor() { }
 
   ngOnInit() {
+  }
+  findType(){
+    console.log(this.side_nav.constructor.name)
   }
 
 }

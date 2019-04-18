@@ -7,3 +7,9 @@ app-header{
   height: 100%;
   display: flex;
 }
+
+/* TODO check if the css below here is ok */
+mat-sidenav-content, mat-sidenav-container{
+  height: 100%;
+  max-height: auto;
+}

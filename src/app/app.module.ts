@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainModule } from './main/main.module';
 import { CoreModule } from './core/core.module';
+import { SharedMaterialsModule } from './shared-materials/shared-materials.module';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { CoreModule } from './core/core.module';
   ],
   imports: [
     BrowserModule,
+    SharedMaterialsModule,
     MainModule,
     CoreModule,
     AppRoutingModule,
