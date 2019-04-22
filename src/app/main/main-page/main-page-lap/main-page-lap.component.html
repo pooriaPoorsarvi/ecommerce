@@ -1,19 +1,21 @@
 <div class="container-fluid my-3 row" style="width: 100%; height:auto">
-  <div class="col-10" >
+  <div class="col-9" >
     <!-- TODO check if setting the height to an static value is ok -->
     <mat-card class="mb-4" style="overflow: hidden;height : 350px; padding: 0px;" >
-      <img src="https://cdn-assets.alltrails.com/uploads/photo/image/21732959/extra_large_e9ff46febfc0f6e85fab546c8808945b.jpg"
+
+      <app-carousel-promo [promos]="getImagesPromo('main_promos')"></app-carousel-promo>
+      <!-- <img src="https://cdn-assets.alltrails.com/uploads/photo/image/21732959/extra_large_e9ff46febfc0f6e85fab546c8808945b.jpg"
       class="img-fluid" style="position: absolute; left: 0px; top: 0px;height: 100%; width: 100%">
 
       <img src="https://jpdirollphotography.files.wordpress.com/2019/01/dsc_6292-edited-final-lum-mask-100518-c-web-srgb.jpg"
-      class="img-fluid" style="position: absolute; left: 0px; top: 0px;height: 100%; width: 100%; transform: translateX(-100%);">
+      class="img-fluid" style="position: absolute; left: 0px; top: 0px;height: 100%; width: 100%; transform: translateX(-100%);"> -->
 
     </mat-card>
     <mat-card style="height : 450px;">
       a
     </mat-card>
   </div>
-  <div class="col-2" style="display: flex; flex-direction: column;" >
+  <div class="col-3" style="display: flex; flex-direction: column;" >
     <mat-card class="mb-3" style="flex-grow: 1">
       a
     </mat-card>

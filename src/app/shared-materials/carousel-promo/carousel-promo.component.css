@@ -1,0 +1,98 @@
+
+@keyframes right_to_middle{
+  from{
+    transform: translateX(100%) ;
+  }
+  to{
+    transform: translateX(0%);
+  }
+}
+
+.right_to_middle_c{
+  animation-duration: 1s;
+  animation-name: right_to_middle;
+
+  transform: translateX(0%) !important;
+}
+
+@keyframes middle_to_right{
+  from{
+    transform: translateX(0%) ;
+  }
+  to{
+    transform: translateX(100%);
+  }
+}
+
+.middle_to_right_c{
+  animation-duration: 1s;
+  animation-name: middle_to_right;
+
+  transform: translateX(100%) !important;
+}
+
+
+@keyframes left_to_middle{
+  from{
+    transform: translateX(-100%);
+  }
+  to{
+    transform: translateX(0%) ;
+  }
+}
+
+.left_to_middle_c{
+  animation-duration: 1s;
+  animation-name: left_to_middle;
+
+  transform: translateX(0%) !important;
+}
+
+
+
+@keyframes middle_to_left{
+  from{
+    transform: translateX(0%) ;
+  }
+  to{
+    transform: translateX(-100%) ;
+  }
+}
+
+.middle_to_left_c{
+  animation-duration: 1s;
+  animation-name: middle_to_left;
+
+  transform: translateX(-100%) !important;
+}
+
+
+
+
+
+
+/*FROM HERE ON OUT THIS IS ABOUT ARROWS*/
+
+
+
+.arrow_back{
+  position: absolute;
+  left: 3%;
+  top: 46%;
+  z-index: 9999 !important;
+  font-size: 2.5rem;
+  opacity: 1;
+}
+
+
+
+.arrow_forward{
+  position: absolute;
+  right: 3%;
+  top: 46%;
+  z-index: 9999 !important;
+  font-size: 2.5rem;
+  opacity: 1;
+}
+
+

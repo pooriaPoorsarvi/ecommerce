@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
+const paths : Routes = [
+];
+
 import {
   MatAutocompleteModule,
   MatBadgeModule,
@@ -39,9 +42,12 @@ import {
   MatTooltipModule,
   MatTreeModule,
 } from '@angular/material';
+import { CarouselPromoComponent } from './carousel-promo/carousel-promo.component';
+import { Routes, RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [],
+  declarations: [CarouselPromoComponent],
+  imports : [CommonModule, RouterModule.forChild(paths), MatIconModule],
   exports: [
     CommonModule,
     MatAutocompleteModule,
@@ -79,7 +85,9 @@ import {
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
-    BrowserAnimationsModule
+    CarouselPromoComponent,
+    RouterModule,
+    BrowserAnimationsModule,
   ]
 })
 export class SharedMaterialsModule { }

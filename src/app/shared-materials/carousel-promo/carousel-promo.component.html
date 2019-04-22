@@ -1,0 +1,19 @@
+<div>
+
+
+<mat-icon (click)="goRight()"   class="arrow_back">arrow_back_ios</mat-icon>
+
+<a    *ngFor="let promo of promos; let i = index" style="z-index: 1">
+<img [src] = "promo.image_address"  class="img-fluid" style="position: absolute; left: 0px; top: 0px;height: 100%; width: 100%"
+[ngClass]="{'right_to_middle_c': this.logics[i].r2m, 'middle_to_right_c': this.logics[i].m2r, 'left_to_middle_c': this.logics[i].l2m, 'middle_to_left_c': this.logics[i].m2l}" *ngIf="i == 0">
+</a>
+<a    *ngFor="let promo of promos; let i = index" style="z-index: 1">
+<img [src] = "promo.image_address"  class="img-fluid" style="transform: translateX(100%);position: absolute; left: 0px; top: 0px;height: 100%; width: 100%"
+[ngClass]="{'right_to_middle_c': this.logics[i].r2m, 'middle_to_right_c': this.logics[i].m2r, 'left_to_middle_c': this.logics[i].l2m, 'middle_to_left_c': this.logics[i].m2l}" *ngIf="i != 0">
+</a>
+
+<mat-icon (click)="goLeft()" class="arrow_forward">arrow_forward_ios</mat-icon>
+
+
+
+</div>

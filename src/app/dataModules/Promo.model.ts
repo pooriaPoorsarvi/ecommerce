@@ -13,7 +13,7 @@ export class PromoModel{
               public image_address  : string,
               public product? : ProductModel,
               // The following is for the promos which has dedicated pictures for promoting them
-              public imageAddress? : string,
+              public imageAddress_alt? : string,
               ){}
 }
 
