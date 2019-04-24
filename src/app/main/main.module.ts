@@ -1,3 +1,4 @@
+import { PromosWithTimer } from './main-page/main-page-lap/promos-with-timer/promos-with-timer.component';
 import { MainPageLapComponent } from './main-page/main-page-lap/main-page-lap.component';
 import { MainPageDataServerService } from './../dataModules/MainPageDataServer.service';
 import { MainRouterModule } from './main-router.module';
@@ -11,7 +12,8 @@ import { SharedMaterialsModule } from '../shared-materials/shared-materials.modu
   declarations: [
     MainPageComponent,
     MainPageLapComponent,
-    MainComponent
+    MainComponent,
+    PromosWithTimer
   ],
   imports: [
     CommonModule,

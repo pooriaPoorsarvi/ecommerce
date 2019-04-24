@@ -13,9 +13,14 @@ export class MainPageLapComponent implements OnInit {
   data : MainPageDataServerModel;
   constructor(public data_serever : MainPageDataServerService) { }
 
+
+
   ngOnInit() {
     this.data_serever.getMainPageContent().subscribe(
-      result => this.data = result
+      result => {
+        this.data = result;
+        console.log(this.data.side_promo1.landing_page);
+      }
     );
 
   }

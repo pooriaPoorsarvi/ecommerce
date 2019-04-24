@@ -1,0 +1,19 @@
+
+<div style = "display: flex; width : 100%; height: 100%;">
+    <div style="width: 15%; height: 100%;display: flex; flex-direction: column; justify-content: space-around">
+      <div (click)="cnt = i" *ngFor="let promo of promos; let i = index;" style="cursor: pointer;;width: 100%; text-align: center">
+        <button mat-raised-button color = "warn" *ngIf="cnt == i" style="width: 100%;">
+          {{promo.name}}
+        </button>
+        <button mat-button *ngIf="cnt != i" style="width: 100%;">
+          {{promo.name}}
+        </button>
+      </div>
+    </div>
+    <div style="width: 85%;height: 100%;">
+        <mat-card style="width: 100%; height: 100%; padding: 0px;">
+        </mat-card>
+    </div>
+</div>
+
+

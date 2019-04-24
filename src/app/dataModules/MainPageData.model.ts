@@ -12,6 +12,7 @@ export class MainPageDataServerModel{
   constructor(public main_promos : PromoModel[],
               public side_promo1 : PromoModel,
               public side_promo2 : PromoModel,
+              public promo_with_time : PromoModel[],
               public products_popular ? : ProductModel[],
               public products_latest ? : ProductModel[],
               public products_recommanded ? : ProductModel[],
