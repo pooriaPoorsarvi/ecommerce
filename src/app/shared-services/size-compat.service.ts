@@ -5,55 +5,53 @@ import { Observable, Subject } from 'rxjs';
 
 
 export class SizeState{
-  xs  = false;
   small = false;
   medium = false;
   large = false;
-  xl = false;
 }
 
+// tslint:disable-next-line: max-classes-per-file
 @Injectable()
 export class SizeService{
-
-
-  private state = new SizeState();
+  public stateSnapshot = new SizeState();
   public stateBuffer = new Subject<SizeState>() ;
 
   private setMode(mode : string, res : boolean){
-    this.state[mode] = res;
-    this.stateBuffer.next(this.state);
+    this.stateSnapshot[mode] = res;
+    this.stateBuffer.next(this.stateSnapshot);
   }
 
+// tslint:disable-next-line: member-ordering
   constructor(breakpointObserver: BreakpointObserver) {
-    breakpointObserver.observe([
-      "(max-width : 575.999px)"
-    ]).subscribe(
-      event => this.setMode("xs", event.matches)
-    );
 
     breakpointObserver.observe([
-      "(min-width : 576px) and (max-width : 767.999px)"
+      "(max-width : 767.999px)"
     ]).subscribe(
       event => this.setMode("small", event.matches)
     );
 
     breakpointObserver.observe([
-      "(min-width : 768px) and (max-width : 991.999px)"
+      "(min-width : 768px) and (max-width : 1023.999px)"
     ]).subscribe(
       event => this.setMode("medium", event.matches)
     );
 
     breakpointObserver.observe([
-      "(min-width : 992px) and (max-width : 1199.999px)"
+      "(min-width : 1024px)"
     ]).subscribe(
       event => this.setMode("large", event.matches)
     );
 
-    breakpointObserver.observe([
-      "(min-width : 1200px)"
-    ]).subscribe(
-      event => this.setMode("xl", event.matches)
-    );
+    if(breakpointObserver.isMatched("(min-width : 1024px)")){
+      this.setMode("large", true);
+      console.log("large");
+    }else if (breakpointObserver.isMatched("(max-width : 767.999px)")){
+      this.setMode("small", true);
+      console.log("small");
+    }else{
+      this.setMode("medium", true);
+      console.log("medium");
+    }
 
   }
 }

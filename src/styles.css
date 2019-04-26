@@ -19,9 +19,9 @@ body{
   /* background: blue; */
 }
 
-body{
+/* body{
   min-width: 1024px;
-}
+} */
 
 
 @media(max-width : 576px){

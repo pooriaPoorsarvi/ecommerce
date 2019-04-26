@@ -1,0 +1,43 @@
+
+
+
+<!-- TODO right now we have a constrained on the number of promos fix this constrainet-->
+<div style="width: 100%; height: 100%; display: flex; justify-content: center">
+
+
+<!-- The first div is our container -->
+<div style="position : relative;display: flex;
+ width: 100%; height: 100%;flex-wrap: nowrap; overflow: hidden;">
+<!-- The second div is what each option has to work with in order to align the button -->
+
+  <!-- <mat-icon>
+    arrow_back_ios
+  </mat-icon> -->
+  <div style = "width: 100%; height : 100%"
+  [@slider100] = "state_anime">
+  <div style="position: absolute;left : 0px; top : 0px; height: 100%; display: flex;
+  justify-content: center;
+  align-items: center;"
+  *ngFor = "let promo of promos; let i = index"
+  [ngStyle] = "{'transform' : computeTransform(i), 'width': (100/nums_per_slide)-3+'%'}"
+
+  >
+  <!-- The Third div is to set how we want our button to put it self in the first div -->
+    <button color = "warn" mat-raised-button style="height: 100%; width : 90%;display: flex; justify-content: center; align-items: center" *ngIf = "i == cnt">
+      {{promo.product.name}}
+    </button>
+    <button (click) = "changeSelected(i)"  mat-button style="height: 100%; width : 80%;display: flex; justify-content: center; align-items: center" *ngIf = "i != cnt">
+      {{promo.product.name}}
+    </button>
+  </div>
+  </div>
+
+  <!-- <mat-icon>
+    arrow_forward_ios
+  </mat-icon> -->
+</div>
+
+
+</div>
+
+
