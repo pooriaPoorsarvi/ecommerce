@@ -1,0 +1,16 @@
+
+@import "../../../../../node_modules/bootstrap/dist/css/bootstrap.css";
+
+.first-row{
+  height : 30vh !important;
+  max-height: 30vh !important;
+  padding: 0px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items : center;
+}
+
+
+
+

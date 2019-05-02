@@ -14,6 +14,7 @@ export class MainPageComponent implements OnInit {
 
 
   ngOnInit() {
+    this.xsOrSmall  = this.sizeService.stateSnapshot.small;
     this.sizeService.stateBuffer.subscribe(
       (event : SizeState) => {this.xsOrSmall = event.small ;}
     )

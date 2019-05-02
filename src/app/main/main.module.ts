@@ -1,3 +1,4 @@
+import { MainPageSmallComponent } from './main-page/main-page-small/main-page-small.component';
 import { PromoWithTimerDetail } from './main-page/main-page-lap/promos-with-timer/promo-with-timer-detail/promo-with-timer-detail.component';
 import { CarouselPromoNames } from './main-page/main-page-lap/promos-with-timer/carousel-promo-names/carousel-promo-names.component';
 import { PromosWithTimer } from './main-page/main-page-lap/promos-with-timer/promos-with-timer.component';
@@ -18,6 +19,7 @@ import { SharedMaterialsModule } from '../shared-materials/shared-materials.modu
     PromosWithTimer,
     PromoWithTimerDetail,
     CarouselPromoNames,
+    MainPageSmallComponent,
   ],
   imports: [
     CommonModule,
