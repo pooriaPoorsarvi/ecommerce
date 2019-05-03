@@ -1,0 +1,40 @@
+
+<div style="width : 100%;">
+
+  <div style="">
+    <div *ngIf="data.promos_main_quartile1"
+    class="mt-3 rowm" style="padding: 0px; margin: 0px; justify-content: space-between">
+      <div class="colm" *ngFor="let pr of data.promos_main_quartile1" >
+        <div class="ratio">
+          <mat-card style="position: absolute; top: 0px; left: 0px; padding: 0px; width: 100%; height: 100%;">
+            <img [src]="pr.image_address" class="img-fluid" style="height: 100%; width: 100%">
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="mt-3 rowm" style="width: 100%; height: 400px;"
+  *ngIf="data.products_popular != undefined" >
+    <div style="width: 70%; height: 100%;">
+      <mat-card style="width: 100%; height: 100%;padding: 0px">
+        <app-carousel-products [products]="data.products_popular" [nums]="4"
+        [name_carousel] = "'Popular Products'"></app-carousel-products>
+      </mat-card>
+    </div>
+
+    <div style="width: 25%; height: 100%;">
+      <mat-card style="width: 100%; height: 100%;padding: 0px">
+        <!-- <app-carousel-products></app-carousel-products> -->
+      </mat-card>
+    </div>
+  </div>
+
+
+
+</div>
+
+
+

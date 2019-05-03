@@ -20,7 +20,6 @@
   align-items: center;"
   *ngFor = "let promo of promos; let i = index"
   [ngStyle] = "{'transform' : computeTransform(i), 'width': (100/nums_per_slide)-3+'%'}"
-
   >
   <!-- The Third div is to set how we want our button to put it self in the first div -->
     <button color = "warn" mat-raised-button style="height: 100%; width : 90%;display: flex; justify-content: center; align-items: center" *ngIf = "i == cnt">

@@ -142,6 +142,47 @@ export class MainPageDataServerService{
 
     this.data = new MainPageDataServerModel(main_promos, side_promo1, side_promo2, promos_with_timer);
 
+
+
+    this.data.promos_main_quartile1 = [
+      new PromoModel("promo3",
+                   "/",
+                   0,
+                   new Date(),
+                   new CategoryModel("third cat"),
+                  "https://static.wixstatic.com/media/b8faca_6f555564e0f844248871cf3f5d065989~mv2_d_2048_2048_s_2.jpg/v1/fill/w_2048,h_2048,al_c,q_90/file.jpg"
+    ),
+    new PromoModel("promo3",
+                   "/",
+                   0,
+                   new Date(),
+                   new CategoryModel("third cat"),
+                  "http://papers.co/wallpaper/papers.co-ob69-lake-mountain-river-nature-40-wallpaper.jpg"
+    ),
+    new PromoModel("promo3",
+                   "/",
+                   0,
+                   new Date(),
+                   new CategoryModel("third cat"),
+                  "http://papers.co/wallpaper/papers.co-my27-nature-river-lake-mountain-tree-vacation-flare-40-wallpaper.jpg"
+    ),
+    new PromoModel("promo3",
+                   "/",
+                   0,
+                   new Date(),
+                   new CategoryModel("third cat"),
+                  "http://papers.co/wallpaper/papers.co-ak72-alien-blue-earth-space-planet-dark-40-wallpaper.jpg"
+    ),
+    ] ;
+
+    this.data.products_popular = [
+      prod1,
+      prod1,
+      prod1,
+      prod1,
+      prod1,
+      prod1,
+    ];
   }
 
 

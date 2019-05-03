@@ -26,9 +26,9 @@ export class CarouselPromoNames{
   changeSelected(ind : number){
     this.cnt = ind;
     this.num_selected.emit(ind);
-    console.log(this.cnt-1, 0);
+    // console.log(this.cnt-1, 0);
     var sel = Math.max(this.cnt-1, 1);
-    console.log(sel);
+    // console.log(sel);
     this.state_anime = "_sr_" + (sel-1)*(100/this.nums_per_slide);
   }
 

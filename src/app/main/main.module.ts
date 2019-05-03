@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 import { MainPageComponent } from './main-page/main-page.component';
 import { MainComponent } from './main.component';
 import { SharedMaterialsModule } from '../shared-materials/shared-materials.module';
+import { ProductLineMainLapComponent } from './main-page/main-page-lap/product-line-main-lap/product-line-main-lap.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { SharedMaterialsModule } from '../shared-materials/shared-materials.modu
     PromosWithTimer,
     PromoWithTimerDetail,
     CarouselPromoNames,
+    ProductLineMainLapComponent,
     MainPageSmallComponent,
   ],
   imports: [

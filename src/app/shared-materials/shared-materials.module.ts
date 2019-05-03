@@ -44,12 +44,15 @@ import {
 } from '@angular/material';
 import { CarouselPromoComponent } from './carousel-promo/carousel-promo.component';
 import { Routes, RouterModule } from '@angular/router';
+import { CarouselProductsComponent } from './carousel-products/carousel-products.component';
+import { ShowProductComponent } from './carousel-products/show-product/show-product.component';
 
 @NgModule({
-  declarations: [CarouselPromoComponent],
-  imports : [CommonModule, RouterModule.forChild(paths), MatIconModule],
+  declarations: [CarouselPromoComponent, CarouselProductsComponent, ShowProductComponent],
+  imports : [CommonModule, RouterModule.forChild(paths), MatIconModule, MatDividerModule],
   exports: [
     CommonModule,
+    CarouselProductsComponent,
     MatAutocompleteModule,
     MatBadgeModule,
     MatBottomSheetModule,
