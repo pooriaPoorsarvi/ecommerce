@@ -10,6 +10,8 @@ export class ShowProductComponent implements OnInit {
 
   @Input() product : ProductModel;
 
+  elavated = false;
+
   constructor() { }
 
   ngOnInit() {

@@ -19,7 +19,9 @@ export class ProductModel{
               public main_features? : string [],
               public retailer? : RetailerMoel,
               public promo_code? : PromoModel,
-              public reviews? : ReviewModel){}
+              public reviews? : ReviewModel,
+              // Check if you can ommit the last part because right now you use it in carousels
+              public reduced_price? : number,){}
 
 }
 
