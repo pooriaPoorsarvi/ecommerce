@@ -2,17 +2,45 @@
 <div style="width: 100%; height: 100%; position: relative;
             display: flex; flex-direction: column;">
 
-<div style="flex-grow: 1; width: 100%;display: flex;justify-content: space-between; align-items: center">
+<!-- The first div below acts as the header and is made with this in mind :
+      if we are showing less than two products the our parent must be small so we have one divider
+    which shows the progress of the slid and if it is more we show to hr s -->
+<div style="flex-grow: 1; width: 10%;;width: 100%;display: flex;justify-content: space-between; align-items: center">
 
-  <div style="width: 22%; text-align: center">
+  <div style="width: 22%;text-align: center;" *ngIf="nums > 2"
+  [ngStyle]="{'width': nums > 2 ? '22%' : '100%' }">
     {{name_carousel}}
-    <hr style="border: 1px solid red;">
+    <hr style="border: 1px solid red;" >
+
   </div>
 
-  <div style="width: 77%">
+
+
+  <div style= "width : 77%" *ngIf="nums > 2" >
     &nbsp;
     <hr>
   </div>
+
+
+  <div style="width: 100%;height: 100%;display: flex;text-align: center;flex-direction: column;
+   justify-content : space-between;"  *ngIf="!(nums > 2)">
+
+    <div style="height : 80%; display: flex;text-align: center;flex-direction: column;
+    justify-content : center;align-items: center;">
+      <div>
+        {{name_carousel}}
+      </div>
+    </div>
+
+    <mat-progress-bar
+
+        [color]="'warn'"
+        [mode]="'determinate'"
+        [value]="perc">
+    </mat-progress-bar>
+
+  </div>
+
 
 
 </div>
@@ -20,7 +48,7 @@
 
 <div  style="flex-grow: 1;width: 100%; height: 80%; position: relative">
 
-  <div  (click) = "showLeft()" style="cursor: pointer;position: absolute; z-index: 9999;
+  <div  (click) = "showLeft();touched()" style="cursor: pointer;position: absolute; z-index: 9999;
   left: 0px; height: 100%; display: flex; justify-content: center; align-items: center"
   [ngStyle]="{'opacity': canShowLeft() ? '1' : '0.5' }">
     <i class="material-icons" style="color: black;font-size: 3rem">keyboard_arrow_left</i>
@@ -52,7 +80,7 @@
     </div>
   </div>
 
-  <div (click) = "showRight()" style="cursor: pointer;;position: absolute; z-index: 9999;
+  <div (click) = "showRight();touched()" style="cursor: pointer;;position: absolute; z-index: 9999;
   right: 0px; height: 100%; display: flex; justify-content: center; align-items: center"
   [ngStyle]="{'opacity': canShowRight() ? '1' : '0.5' }">
     <i class="material-icons" style="color: black;font-size: 3rem">keyboard_arrow_right</i>

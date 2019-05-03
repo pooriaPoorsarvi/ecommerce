@@ -49,7 +49,7 @@ import { ShowProductComponent } from './carousel-products/show-product/show-prod
 
 @NgModule({
   declarations: [CarouselPromoComponent, CarouselProductsComponent, ShowProductComponent],
-  imports : [CommonModule, RouterModule.forChild(paths), MatIconModule, MatDividerModule],
+  imports : [CommonModule, RouterModule.forChild(paths), MatIconModule, MatDividerModule, MatProgressBarModule],
   exports: [
     CommonModule,
     CarouselProductsComponent,

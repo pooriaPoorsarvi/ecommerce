@@ -21,13 +21,14 @@
     <div style="width: 70%; height: 100%;">
       <mat-card style="width: 100%; height: 100%;padding: 0px">
         <app-carousel-products [products]="data.products_popular" [nums]="4"
-        [name_carousel] = "'Popular Products'"></app-carousel-products>
+        [name_carousel] = "'Popular Products'" [interval_time] = "800" [percent]="10"></app-carousel-products>
       </mat-card>
     </div>
 
     <div style="width: 25%; height: 100%;">
       <mat-card style="width: 100%; height: 100%;padding: 0px">
-        <!-- <app-carousel-products></app-carousel-products> -->
+          <app-carousel-products [products]="data.products_popular" [nums]="1"
+          [name_carousel] = "'Recommended for you'" [interval_time] = "500" [percent]="10"></app-carousel-products>
       </mat-card>
     </div>
   </div>

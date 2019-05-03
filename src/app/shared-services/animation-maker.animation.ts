@@ -14,7 +14,8 @@ import {
 
 
 var list1 = []
-for(let i  = 0; i <= 100 ; i ++){
+// TODO right now we can have at most 10000% translation, keep in check so that you wont need more
+for(let i  = 0; i <= 10000 ; i ++){
   var style_show_r = style({
     transform : 'translateX(' + -1*i + "%)",
   });
