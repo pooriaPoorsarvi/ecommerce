@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 const paths : Routes = [
 ];
@@ -51,7 +50,6 @@ import { ShowProductComponent } from './carousel-products/show-product/show-prod
   declarations: [CarouselPromoComponent, CarouselProductsComponent, ShowProductComponent],
   imports : [CommonModule, RouterModule.forChild(paths), MatIconModule, MatDividerModule, MatProgressBarModule],
   exports: [
-    CommonModule,
     CarouselProductsComponent,
     MatAutocompleteModule,
     MatBadgeModule,
@@ -90,7 +88,6 @@ import { ShowProductComponent } from './carousel-products/show-product/show-prod
     MatTreeModule,
     CarouselPromoComponent,
     RouterModule,
-    BrowserAnimationsModule,
   ]
 })
 export class SharedMaterialsModule { }

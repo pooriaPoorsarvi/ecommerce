@@ -7,8 +7,7 @@
     which shows the progress of the slid and if it is more we show to hr s -->
 <div style="flex-grow: 1; width: 10%;;width: 100%;display: flex;justify-content: space-between; align-items: center">
 
-  <div style="width: 22%;text-align: center;" *ngIf="nums > 2"
-  [ngStyle]="{'width': nums > 2 ? '22%' : '100%' }">
+  <div style="width: 33%;text-align: center;" *ngIf="nums > 2">
     {{name_carousel}}
     <hr style="border: 1px solid red;" >
 
@@ -16,7 +15,7 @@
 
 
 
-  <div style= "width : 77%" *ngIf="nums > 2" >
+  <div style= "width : 65%" *ngIf="nums > 2" >
     &nbsp;
     <hr>
   </div>
