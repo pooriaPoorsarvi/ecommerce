@@ -8,9 +8,11 @@ import { DetailPageLapComponent } from './detial-page/detail-page-lap/detail-pag
 import { SharedMaterialsModule } from '../shared-materials/shared-materials.module';
 import { ProductMainCardComponent } from './detial-page/detail-page-lap/product-main-card/product-main-card.component';
 import { AddToCartComponent } from './detial-page/add-to-cart/add-to-cart.component';
+import {DetailHandComponent} from './detial-page/detail-hand/detail-hand.component';
+import { DetailHandCardComponent } from './detial-page/detail-hand/detail-hand-card/detail-hand-card.component';
 
 @NgModule({
-  declarations: [DetailPageComponent, DetailComponent, DetailPageLapComponent, ProductMainCardComponent, AddToCartComponent],
+  declarations: [DetailPageComponent, DetailComponent, DetailPageLapComponent, ProductMainCardComponent, AddToCartComponent, DetailHandComponent, DetailHandCardComponent],
   imports: [
     CommonModule,
     SharedMaterialsModule,

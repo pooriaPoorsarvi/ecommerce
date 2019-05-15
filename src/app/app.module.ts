@@ -1,3 +1,4 @@
+import { BrandService } from './shared-services/brand.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DataServerService } from './dataModules/DataServer.service';
 import { SizeService } from './shared-services/size-compat.service';
@@ -20,7 +21,7 @@ import { SharedMaterialsModule } from './shared-materials/shared-materials.modul
     CoreModule,
     AppRoutingModule,
   ],
-  providers: [SizeService,DataServerService],
+  providers: [SizeService,DataServerService, BrandService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

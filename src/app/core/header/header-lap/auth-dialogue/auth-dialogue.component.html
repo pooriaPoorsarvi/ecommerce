@@ -1,0 +1,39 @@
+
+
+<div style="width: 100%">
+  <div class="row">
+
+    <div id="brand_and_option" class="col-12" style="text-align: center">
+
+      <div class="row">
+        <div class="col-12">
+          {{brand_service.BRAND_NAME}}
+        </div>
+
+        <div   matRipple (click)="login = true;"  class="col-6 cp" [ngStyle]="{'background' :  login ?  'whitesmoke' : '','font-weight': login ? 'bold' : ''}">
+          <div  class="mt-3">
+            Login
+            <hr>
+          </div>
+        </div>
+
+        <div matRipple (click)="login = false;"  class="col-6 cp" [ngStyle]="{'background' : ! login ?  'whitesmoke' : '','font-weight': ! login ? 'bold' : ''}">
+          <div  class="mt-3">
+            Sign Up
+            <hr>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <app-login *ngIf="login"></app-login>
+      <app-sign-up *ngIf="! login"></app-sign-up>
+    </div>
+  </div>
+</div>
+

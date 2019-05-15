@@ -21,7 +21,7 @@
     </div>
 
 
-    <div class = "col-1 cursorP" style="padding-right: 0px; padding-left: 2%; display: flex; flex-direction: column; justify-content: center;">
+    <div (click) = "openDialouge()" class = "col-1 cursorP" style="padding-right: 0px; padding-left: 2%; display: flex; flex-direction: column; justify-content: center;">
       <div style="display: flex; align-items: center; font-size: 1.25vw">
           Login  <mat-icon>account_circle</mat-icon>
       </div>
@@ -37,14 +37,12 @@
 </mat-toolbar>
 
 
-
-<mat-toolbar color = "warn" style="width:100%;max-width: 100%;;height: auto;padding: 0px; margin: 0px;">
+<!-- background : #616161; -->
+<mat-toolbar  color = "warn" style="color: white;width:100%;max-width: 100%;;height: auto;padding: 0px; margin: 0px;">
   <div   style="display: flex; justify-content: space-around; width: 100%; max-width: 100%;">
 
-
-
     <div style="" *ngFor="let menu of menus;let i = index"  >
-      
+
       <app-menu-option style="flex-shrink: 1;width: auto" [menu]="menu"></app-menu-option>
     </div>
   </div>

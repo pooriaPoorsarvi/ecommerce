@@ -1,0 +1,22 @@
+<div class="row">
+
+    <div id="name_product" class="col-12" style="font-size: 1.25rem;font-family: Times, Times New ;text-align: center">
+      <mat-toolbar color = "warn">
+        <div style="width: 100%">
+          {{product.name}}
+        </div>
+      </mat-toolbar>
+    </div>
+
+    <div class="col-6 mt-2">
+      <i class="material-icons">favorite_border</i>
+    </div>
+
+    <div class="col-6 mt-2" style="position: relative" >
+      <i class="material-icons" style="position: absolute;;right: 0px;">favorite_border</i>
+    </div>
+
+    <div id = "product" class="col-12">
+      <img [src]="product.image_address[0]" class="img-fluid">
+    </div>
+  </div>
