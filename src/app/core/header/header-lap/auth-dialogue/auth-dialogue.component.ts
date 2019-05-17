@@ -21,7 +21,6 @@ export class AuthDialogueComponent implements OnInit {
     }
 
   ngOnInit() {
-
   }
 
 

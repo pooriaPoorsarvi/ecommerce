@@ -7,16 +7,18 @@ export class UserModel{
 
   // TODO check if name and last name is going to be ok for all retailers
   // TODO make sex and etc into enums
+  // Add last name to sign up
   constructor(public name : string,
               public last_name : string,
-              public sex : string,
-              public addresses : AddressModel[],
-              public phone_numbers : string [],
-              public emails : string[],
-              public bought_products : ProductModel[],
-              public reviews : ReviewModel[],
-              public active_oder_list : OrderModel[],
+              public emails  : string[],
               public shopping_cart : ProductModel[],
+              public image_profile ? : string,
+              public addresses ? : AddressModel[],
+              public phone_numbers ? : string [],
+              public bought_products ? : ProductModel[],
+              public active_oder_list ? : OrderModel[],
+              public reviews ? : ReviewModel[],
+              public sex? : string,
               ){}
 
 }

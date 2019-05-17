@@ -1,0 +1,23 @@
+<div class="row">
+
+<a [routerLink] = "['detail']" style="width: 100%" routerLinkActive #rld = "routerLinkActive">
+  <app-shared-button-raised color = "warn"style="width: 100%" *ngIf="rld.isActive"> Detail </app-shared-button-raised>
+  <app-shared-button-stroked style="width: 100%" *ngIf="! rld.isActive"> Detail </app-shared-button-stroked>
+</a>
+
+<a class="mt-3" [routerLink] = "['edit']" style="width: 100%" routerLinkActive #rle = "routerLinkActive">
+  <app-shared-button-raised color = "warn" style="width: 100%" *ngIf="rle.isActive"> Edit </app-shared-button-raised>
+  <app-shared-button-stroked style="width: 100%" *ngIf="!rle.isActive"> Edit </app-shared-button-stroked>
+</a>
+
+<a class="mt-3" [routerLink] = "['invoices']" style="width: 100%" routerLinkActive #rlo = "routerLinkActive">
+  <app-shared-button-raised color = "warn" style="width: 100%" *ngIf="rlo.isActive"> Invoices </app-shared-button-raised>
+  <app-shared-button-stroked style="width: 100%" *ngIf="!rlo.isActive"> Invoices </app-shared-button-stroked>
+</a>
+
+
+</div>
+
+
+
+

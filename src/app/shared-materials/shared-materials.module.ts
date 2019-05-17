@@ -45,10 +45,15 @@ import { CarouselPromoComponent } from './carousel-promo/carousel-promo.componen
 import { Routes, RouterModule } from '@angular/router';
 import { CarouselProductsComponent } from './carousel-products/carousel-products.component';
 import { ShowProductComponent } from './carousel-products/show-product/show-product.component';
+import { SharedButtonStrokedComponent } from './shared-button-stroked/shared-button-stroked.component';
+import { SharedButtonComponent } from './shared-button/shared-button.component';
+import { SharedButtonFlatComponent } from './shared-button-flat/shared-button-flat.component';
+import { SharedButtonRaisedComponent } from './shared-button-raised/shared-button-raised.component';
 
 @NgModule({
-  declarations: [CarouselPromoComponent, CarouselProductsComponent, ShowProductComponent],
-  imports : [CommonModule, RouterModule.forChild(paths), MatIconModule, MatDividerModule, MatProgressBarModule],
+  declarations: [CarouselPromoComponent, CarouselProductsComponent, ShowProductComponent, SharedButtonStrokedComponent, SharedButtonComponent, SharedButtonFlatComponent, SharedButtonRaisedComponent,
+  ],
+  imports : [MatButtonModule,CommonModule, RouterModule.forChild(paths), MatIconModule, MatDividerModule, MatProgressBarModule],
   exports: [
     CarouselProductsComponent,
     MatAutocompleteModule,
@@ -87,6 +92,10 @@ import { ShowProductComponent } from './carousel-products/show-product/show-prod
     MatTooltipModule,
     MatTreeModule,
     CarouselPromoComponent,
+    SharedButtonComponent,
+    SharedButtonStrokedComponent,
+    SharedButtonFlatComponent,
+    SharedButtonRaisedComponent,
     RouterModule,
   ]
 })

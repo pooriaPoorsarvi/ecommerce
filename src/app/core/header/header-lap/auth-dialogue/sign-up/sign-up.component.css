@@ -1,0 +1,7 @@
+@import "../../../../../../../node_modules/bootstrap/dist/css/bootstrap-grid.css";
+
+
+mat-form-field, button{
+  width: 100%;
+}
+
