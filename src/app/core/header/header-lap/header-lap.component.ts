@@ -1,8 +1,10 @@
+import { ShoppingCartService } from './../../../shared-services/shopping-cart.service';
 import { AuthDialogueComponent } from './auth-dialogue/auth-dialogue.component';
 import { DataServerService } from './../../../dataModules/DataServer.service';
 import { MenuOptionModel } from './../../../dataModules/MenuOption.model';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
+import { ProductModel } from 'src/app/dataModules/Product.model';
 
 @Component({
   selector: 'app-header-lap',
@@ -13,9 +15,11 @@ export class HeaderLapComponent implements OnInit {
 
   menus : MenuOptionModel[];
   hovers : boolean[] = [];
+  shoppingCartProducts : ProductModel[];
 
   constructor(public dataServerService : DataServerService,
-              public dialog : MatDialog) { }
+              public dialog : MatDialog,
+              public shoppingCartService : ShoppingCartService) { }
 
 
 
@@ -32,6 +36,19 @@ export class HeaderLapComponent implements OnInit {
   }
 
   ngOnInit() {
+
+
+
+    this.shoppingCartProducts = this.shoppingCartService.getSnapShot();
+    this.shoppingCartService.products_observer.subscribe(
+      (products : ProductModel[]) => {
+        this.shoppingCartProducts = products;
+      }
+    );
+
+
+
+    // TODO remove hovers
     this.dataServerService.getMenus().subscribe(
       res => {
         this.menus = res;

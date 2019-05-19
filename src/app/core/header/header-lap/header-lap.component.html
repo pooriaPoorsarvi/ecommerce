@@ -27,9 +27,9 @@
       </div>
     </div>
 
-    <div class = "col-2 col-sm1 cursorP" style="margin-left: auto;padding-right: 0px; display: flex; flex-direction: column; align-items: center;justify-content: center;">
-      <div style="display: flex; align-items: center; font-size: 1.25vw;" id = "shopping">
-          Shopping Cart <mat-icon>shopping_cart</mat-icon>
+    <div  class = "col-2 col-sm1 cursorP" style="margin-left: auto;padding-right: 0px; display: flex; flex-direction: column; align-items: center;justify-content: center;">
+      <div [matBadge]="shoppingCartProducts.length" matBadgeColor="warn" matBadgePosition="before" style="display: flex; align-items: center; font-size: 1.25vw;" id = "shopping">
+          Shopping Cart <mat-icon >shopping_cart</mat-icon>
       </div>
     </div>
 

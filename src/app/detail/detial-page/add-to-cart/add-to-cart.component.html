@@ -1,4 +1,4 @@
-<button style="height: 2.5rem; width: 15rem; border-radius: 10px;" mat-stroked-button [color] = "'warn'">
+<button (click)="addToShoppingCart()"  style="height: 2.5rem; width: 15rem; border-radius: 10px;" mat-stroked-button [color] = "'warn'">
     <i class="material-icons">add_shopping_cart</i>
     {{product.reduced_price ?  product.reduced_price : product.main_price}}&nbsp;$
 </button>

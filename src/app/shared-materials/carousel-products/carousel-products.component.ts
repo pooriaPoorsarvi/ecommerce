@@ -16,6 +16,11 @@ export class CarouselProductsComponent implements OnInit, OnDestroy {
   @Input() interval_time : number;
   @Input() percent : number;
 
+
+  sliderContainerPos : number = 0;
+
+
+
   perc = 0;
   slider_auto_bool = true;
   auto_mode = "sr";
@@ -56,8 +61,27 @@ export class CarouselProductsComponent implements OnInit, OnDestroy {
   }
 
   moveSlider(){
+
     // handles the animation
-    this.state_anime = "_sr_" + (this.cntFirst)*(100/this.nums);
+    var sp = this.sliderContainerPos;
+    var currentCntFirst = this.cntFirst;
+    var target = -1 * (currentCntFirst)*(100/this.nums);
+    var dist =  target - sp;
+    var step = dist / 50 ;
+
+    var subs = interval(1).subscribe(
+      () => {
+        if(this.sliderContainerPos == target||(this.sliderContainerPos +  step > target && step >= 0)||(this.sliderContainerPos +  step < target && step < 0)){
+          if((this.sliderContainerPos > target && step >= 0)||(this.sliderContainerPos < target && step < 0)) {
+            this.sliderContainerPos = target;
+          }
+          subs.unsubscribe();
+        }else{
+          this.sliderContainerPos += step;
+        }
+      }
+    );
+    // this.state_anime = "_sr_" + (this.cntFirst)*(100/this.nums);
   }
 
   move(){

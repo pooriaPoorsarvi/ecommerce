@@ -174,15 +174,25 @@ export class MainPageDataServerService{
                   "http://papers.co/wallpaper/papers.co-ak72-alien-blue-earth-space-planet-dark-40-wallpaper.jpg"
     ),
     ] ;
-
     this.data.products_popular = [
       prod1,
-      prod1,
-      prod1,
-      prod1,
-      prod1,
-      prod1,
+
     ];
+    var prod2 = new ProductModel("this is a sample name",
+                                  21566,
+                                  MainPageDataServerService.lorem_ipsum,
+                                  221,
+                                  dummyMaker,
+                                  new CategoryModel("This is a sample category name"),
+                                  100,
+                                  ["http://pluspng.com/img-png/money-png--1663.png"],
+                                  ["This is a sample main feature",
+                                  "This is a sample main feature",
+                                  "This is a sample main feature",
+                                  "This is a sample main feature",
+                                  ]
+                                  );
+    this.data.products_popular.push(...[prod2,prod2,prod2,prod2]);
   }
 
 

@@ -53,7 +53,14 @@ import { SharedButtonRaisedComponent } from './shared-button-raised/shared-butto
 @NgModule({
   declarations: [CarouselPromoComponent, CarouselProductsComponent, ShowProductComponent, SharedButtonStrokedComponent, SharedButtonComponent, SharedButtonFlatComponent, SharedButtonRaisedComponent,
   ],
-  imports : [MatButtonModule,CommonModule, RouterModule.forChild(paths), MatIconModule, MatDividerModule, MatProgressBarModule],
+  imports : [
+    MatButtonModule,
+    CommonModule,
+    RouterModule.forChild(paths),
+    MatIconModule,
+    MatDividerModule,
+    MatProgressBarModule,
+  ],
   exports: [
     CarouselProductsComponent,
     MatAutocompleteModule,

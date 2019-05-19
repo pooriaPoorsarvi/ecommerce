@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { SharedMaterialsModule } from './shared-materials/shared-materials.module';
+import { ShoppingCartService } from './shared-services/shopping-cart.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { SharedMaterialsModule } from './shared-materials/shared-materials.modul
     CoreModule,
     AppRoutingModule,
   ],
-  providers: [SizeService,DataServerService, BrandService],
+  providers: [SizeService,DataServerService, BrandService, ShoppingCartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
