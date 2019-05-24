@@ -1,0 +1,53 @@
+@import "../../../../node_modules/bootstrap/dist/css/bootstrap.css";
+
+
+.content-container{
+  position: relative;
+
+  overflow: auto;
+  height: 100%;
+}
+
+.scroll-container{
+  position: relative;
+}
+
+.flx-container{
+  display: flex !important;
+  flex-direction: row !important;
+  /* overflow: scroll; */
+}
+
+.arrows{
+  text-align: center;
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrowt{
+  font-size : 5vw;
+}
+
+.al{
+  left: 0px;
+  position: absolute;
+  z-index: 9999;
+}
+
+.ar{
+  right: 0px;
+  position: absolute;
+  z-index: 9999;
+}
+
+.op5{
+  opacity: 0.5;
+}
+
+mat-card{
+  cursor: pointer;
+}
+
+

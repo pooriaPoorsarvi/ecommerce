@@ -47,8 +47,8 @@ export class MainPageDataServerService{
       ),
     ];
 
-    var side_promo1 = new PromoModel("side1", "/", 0, new Date(), new CategoryModel("side1"), "https://i.pinimg.com/originals/07/82/78/0782787fa5d97e543f4e564579364de2.jpg");
-    var side_promo2 = new PromoModel("side2", "/", 0, new Date(), new CategoryModel("side2"), "https://farm8.static.flickr.com/7853/33545849808_e462fe4d05_b.jpg");
+    var side_promo1 = new PromoModel("side1", "/", 0, new Date(), new CategoryModel("side1"), "https://www.airfrance.fr/FR/common/common/img/tbaf/news/PRG/immersion-fantasmagorique-dans-la-nature-autour-de-prague/PRG-immersion-fantasmagorique-dans-la-nature-autour-de-prague-1_1-1024x1024.jpg");
+    var side_promo2 = new PromoModel("side2", "/", 0, new Date(), new CategoryModel("side2"), "https://photo.szmigiel.design/wp-content/uploads/2017/02/panoramic-stawy-milickie-szmigieldesign-_MG_2070-Pano-Edit.jpg");
 
 
 
@@ -140,7 +140,8 @@ export class MainPageDataServerService{
     ];
 
 
-    this.data = new MainPageDataServerModel(main_promos, side_promo1, side_promo2, promos_with_timer);
+    // this.data = new MainPageDataServerModel(main_promos, side_promo1, side_promo2, promos_with_timer);
+    this.data = new MainPageDataServerModel(main_promos, side_promo1, promos_with_timer);
 
 
 
@@ -176,7 +177,6 @@ export class MainPageDataServerService{
     ] ;
     this.data.products_popular = [
       prod1,
-
     ];
     var prod2 = new ProductModel("this is a sample name",
                                   21566,
@@ -193,6 +193,7 @@ export class MainPageDataServerService{
                                   ]
                                   );
     this.data.products_popular.push(...[prod2,prod2,prod2,prod2]);
+    this.data.products_recommanded = this.data.products_popular.slice();
   }
 
 

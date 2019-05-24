@@ -2,7 +2,65 @@
 
 
 
+/* .first-row{
+  height : 900px !important;
+  max-height: 900px !important;
+  padding: 0px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
+
+
+
+mat-card{
+  width: 100% !important;
+  margin: 0px !important;
+} */
+
+
+.p0 {
+  padding: 0px;
+}
+
+
+.carousel-promo-content-large{
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  max-width: 100%;
+  /* min-height: 200px;
+  height: 50vh;
+  width: 100%; */
+  overflow: hidden;
+}
+
+
+
+.container-img {
+  width: 100%;
+  padding-top: 75%;
+  position: relative;
+}
+
+
+.promo_img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  max-width: 100%;
+}
+
+
+.container-main-promos{
+  width: 100%;
+  position: relative;
+}
 
 
 

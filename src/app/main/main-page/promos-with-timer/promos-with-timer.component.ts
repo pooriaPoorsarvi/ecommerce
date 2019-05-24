@@ -1,17 +1,24 @@
+import { Subscription, interval } from 'rxjs';
+import { SizeService, SizeState } from '../../../shared-services/size-compat.service';
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { PromoModel } from 'src/app/dataModules/Promo.model';
-import { Observable, interval, Subscription } from 'rxjs';
-
-
 
 @Component({
-  selector : "app-promo-with-timer-detail",
-  templateUrl : "promo-with-timer-detail.component.html",
-  styleUrls : ["promo-with-timer-detail.component.css"]
+  selector: 'app-promos-with-timer',
+  templateUrl: './promos-with-timer.component.html',
+  styleUrls: ['./promos-with-timer.component.css']
 })
-export class PromoWithTimerDetail implements OnInit, OnDestroy{
+export class PromosWithTimer implements OnInit, OnDestroy{
 
-  @Input() promo : PromoModel;
+
+  cnt = 0;
+
+  size : SizeState;
+
+  @Input() promos : PromoModel[];
+
+  constructor(public sizeService : SizeService){}
+
 
   secs : Subscription;
   remaines : boolean = false;
@@ -36,11 +43,19 @@ export class PromoWithTimerDetail implements OnInit, OnDestroy{
     ]
   }
 
-
   ngOnInit(){
+
+    this.size = this.sizeService.stateSnapshot;
+    this.sizeService.stateBuffer.subscribe(
+      res => {
+        this.size = res;
+      }
+    );
+
+
     this.secs = interval(100).subscribe(
       () => {
-        let s = Math.floor((this.promo.end_date.getTime() - new Date().getTime()) / 1000);
+        let s = Math.floor((this.promos[this.cnt].end_date.getTime() - new Date().getTime()) / 1000);
         if (s < 0) {
           this.remaines = false;
         }else{
@@ -56,6 +71,3 @@ export class PromoWithTimerDetail implements OnInit, OnDestroy{
   }
 
 }
-
-
-

@@ -2,6 +2,7 @@ import { BrandService } from './../../../../shared-services/brand.service';
 import { DialogData } from './auth-dialouge.model';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-auth-dialogue',

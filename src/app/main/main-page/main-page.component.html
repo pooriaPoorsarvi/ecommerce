@@ -1,8 +1,155 @@
 <div style="width: 100%; height: 100%">
 
-<app-main-page-lap *ngIf="!xsOrSmall" style="width: 100% !important; height: 100% !important;display: flex"></app-main-page-lap>
 
-<app-main-page-small *ngIf="xsOrSmall" style="width: 100% !important; height: 100% !important;display: flex"></app-main-page-small>
+<!-- add fh to all the childs of col-* so that everything will be alligned
+    this has to be checked but you shouldn't add "fw" at the same time with mx-* -->
+
+
+
+<div class="container-fluid mt-3">
+
+
+
+  <!-- Promos Carousel -->
+  <div class="row p0">
+
+    <div class="col-12 p0" >
+      <div class="mx-3 p0">
+        <div class="container-main-promos"
+        [ngStyle]="{'padding-top' : (sb.large||sb.xl) ? '30%' : (sb.medium) ? '40%' : '50%' }">
+          <mat-card class="p0 carousel-promo-content-large">
+            <app-carousel-promo [promos]="getImagesPromo('main_promos')" ></app-carousel-promo>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+<!-- Product Promos -->
+  <div class="row mt-3 p0" >
+
+    <div class="col-lg-9 col-12 p0"  *ngIf="!(sb.small||sb.xs)" >
+      <div class="mx-3 fh " >
+        <div class="fw fh p0">
+          <app-promos-with-timer [promos]="data.promo_with_time"></app-promos-with-timer>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-9 col-12 p0"  *ngIf="(sb.small||sb.xs)">
+      <div class="mx-3 fh ">
+        <mat-card class="fw fh p0">
+          <app-carousel-products [products] = "productsFromPromosWithTimer()"
+          [nums] = "2"
+          [interval_time]="0.01"
+          [percent]="0.02"
+          [name_carousel]="'Limited Offers'"
+          [maxH_pic]="'35vh'"
+          [progress_bar]="false"></app-carousel-products>
+        </mat-card>
+      </div>
+    </div>
+
+    <div class="col-3 p0" *ngIf="(sb.large||sb.xl)" >
+      <div class="mr-3 fh">
+        <mat-card class="fw fh p0">
+          <img [src]="data.side_promo1.image_address" alt="side promo 1" class="fh fw">
+        </mat-card>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- Small Promos -->
+  <div class="row p0">
+
+    <!-- setting up how much width each promo should have -->
+    <div class="mt-3 col-lg-3 col-sm-6 col-12 p0" *ngFor="let prom of data.promos_main_quartile1; let i = index"
+    >
+      <!-- setting up the margin inside each of these grid cells -->
+      <div class="ml-3 fh"
+      [ngClass] = "{'mr-3': sb.xs || ((sb.small || sb.medium) && i % 2 == 1) || ((sb.large || sb.xl) && i == data.promos_main_quartile1.length - 1)}">
+        <!-- the ratio container -->
+        <div class="container-img minfh">
+          <!-- the card which has the images -->
+          <mat-card class="p0 fh promo_img">
+            <!-- the content -->
+            <img [src]="prom.image_address" alt="promo" class="fw fh" >
+          </mat-card>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- Popular Products and recommended ones -->
+  <div class="row p0 ">
+    <div class="col-md-8 col-12 p0 mt-3">
+      <div class="ml-3 fh"
+      [ngClass]="{'mr-3' : sb.small || sb.xs}"
+      >
+        <mat-card class="fw fh p0">
+          <app-carousel-products [products] = "data.products_popular"
+          [nums] = "sb.large||sb.xl ? 4 : sb.medium ? 3 : 2 "
+          [interval_time]="0.01"
+          [percent]="0.02"
+          [name_carousel]="'Popular Products'"
+          [maxH_pic]="'35vh'"
+          [progress_bar]="false"></app-carousel-products>
+        </mat-card>
+
+      </div>
+    </div>
+
+
+    <div class="col-md-4 col-12 p0 mt-3">
+      <div class="mx-3 fh"
+      >
+        <mat-card class="fw fh p0">
+          <mat-card class="fw fh p0">
+            <app-carousel-products [products] = "data.products_recommanded"
+            [nums] = "sb.large||sb.xl|| sb.medium ? 1 : 2 "
+            [interval_time]="0.01"
+            [percent]="0.02"
+            [name_carousel]="'Recommanded Products'"
+            [maxH_pic]="'35vh'"
+            [progress_bar]="true"></app-carousel-products>
+          </mat-card>
+        </mat-card>
+
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<!-- TODO delete this at the end put a footer instead of it -->
+<div class="fw" style="height: 200px;">
+
+</div>
+
+
+
+
+
 
 
 </div>

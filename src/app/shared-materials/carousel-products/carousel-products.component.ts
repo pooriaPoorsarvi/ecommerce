@@ -1,6 +1,10 @@
+import { BootstrapSizeService } from './../../shared-services/bootstrap-size.service';
+import { ProductModel } from './../../dataModules/Product.model';
 import { interval, Subscription } from 'rxjs';
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { slider100 } from 'src/app/shared-services/animation-maker.animation';
+import { PerfectScrollbarComponent } from 'ngx-perfect-scrollbar';
+import { SizeStateBootstrap } from 'src/app/shared-services/bootstrap-size.service';
 
 @Component({
   selector: 'app-carousel-products',
@@ -8,16 +12,38 @@ import { slider100 } from 'src/app/shared-services/animation-maker.animation';
   styleUrls: ['./carousel-products.component.css'],
   animations : [slider100],
 })
-export class CarouselProductsComponent implements OnInit, OnDestroy {
+export class CarouselProductsComponent implements OnInit, OnDestroy, AfterViewInit {
 
-  @Input() products : [];
+
+  sb : SizeStateBootstrap ;
+
+  constructor(public bootstrapSizeService: BootstrapSizeService) { }
+
+
+
+  @ViewChild(PerfectScrollbarComponent) componentRef?: PerfectScrollbarComponent;
+  @ViewChild("container") container : ElementRef;
+  @ViewChild("ar") arrow_right : ElementRef;
+  @ViewChild("al") arrow_left : ElementRef;
+  @ViewChild("scroller_container") scroller_container : ElementRef;
+
+
+
+
+  @Input() products : ProductModel[];
   @Input() nums : number;
   @Input() name_carousel : string;
   @Input() interval_time : number;
   @Input() percent : number;
+  @Input() maxH_pic : string;
+  @Input() progress_bar : boolean;
+
+  endx : number;
+  oneIndWidth : number;
 
 
-  sliderContainerPos : number = 0;
+
+
 
 
 
@@ -25,8 +51,6 @@ export class CarouselProductsComponent implements OnInit, OnDestroy {
   slider_auto_bool = true;
   auto_mode = "sr";
 
-  cntFirst = 0;
-  state_anime = "_sr_0";;
 
 
   subscription_auto_slide_cnt : Subscription;
@@ -34,7 +58,6 @@ export class CarouselProductsComponent implements OnInit, OnDestroy {
   date_last_clicked : Date;
 
 
-  constructor() { }
 
   touched(){
     this.slider_auto_bool = false;
@@ -42,47 +65,21 @@ export class CarouselProductsComponent implements OnInit, OnDestroy {
   }
 
   canShowRight() : boolean{
-    return this.cntFirst < this.products.length - this.nums;
+    return this.componentRef.directiveRef.position(true).x as number != this.endx;
   }
   canShowLeft() : boolean {
-    return this.cntFirst > 0 ;
+    return this.componentRef.directiveRef.position(true).x as number != 0 ;
   }
   showRight(){
-    if(this.canShowRight()){
-      this.cntFirst ++;
-      this.moveSlider();
-    }
+    var xC  = this.componentRef.directiveRef.position(true).x as number;
+    this.componentRef.directiveRef.scrollToX(xC + this.oneIndWidth, 500);
   }
   showLeft(){
-    if(this.canShowLeft()){
-      this.cntFirst --;
-      this.moveSlider();
-    }
+    var xC  = this.componentRef.directiveRef.position(true).x as number;
+    this.componentRef.directiveRef.scrollToX(xC - this.oneIndWidth, 500);
   }
 
-  moveSlider(){
 
-    // handles the animation
-    var sp = this.sliderContainerPos;
-    var currentCntFirst = this.cntFirst;
-    var target = -1 * (currentCntFirst)*(100/this.nums);
-    var dist =  target - sp;
-    var step = dist / 50 ;
-
-    var subs = interval(1).subscribe(
-      () => {
-        if(this.sliderContainerPos == target||(this.sliderContainerPos +  step > target && step >= 0)||(this.sliderContainerPos +  step < target && step < 0)){
-          if((this.sliderContainerPos > target && step >= 0)||(this.sliderContainerPos < target && step < 0)) {
-            this.sliderContainerPos = target;
-          }
-          subs.unsubscribe();
-        }else{
-          this.sliderContainerPos += step;
-        }
-      }
-    );
-    // this.state_anime = "_sr_" + (this.cntFirst)*(100/this.nums);
-  }
 
   move(){
     // handles the mode of auto slide
@@ -111,6 +108,12 @@ export class CarouselProductsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
+    this.sb = this.bootstrapSizeService.stateSnapshot;
+    this.bootstrapSizeService.stateBuffer.subscribe(
+      (sbn) => {
+        this.sb = sbn;
+      }
+    );
 
     // The following code handles auto slide and also it will turn off the auto slide for 4 seconds after
     // the user has touched() the carousels
@@ -142,8 +145,48 @@ export class CarouselProductsComponent implements OnInit, OnDestroy {
 
   }
 
+
+
+
+  ngAfterViewInit(){
+    this.componentRef.directiveRef.scrollToRight();
+    this.endx = this.componentRef.directiveRef.position(true).x as number;
+    this.oneIndWidth = this.endx / this.products.length;
+    this.componentRef.directiveRef.scrollToLeft(0, 2000);
+  }
+
   ngOnDestroy(){
     this.subscription_auto_slide_cnt.unsubscribe();
     this.subscription_auto_slide_flag.unsubscribe();
+  }
+
+
+
+
+
+
+  reach_end(){
+    this.touched();
+    this.arrow_right.nativeElement.style.opacity = 0.5;
+  }
+
+  out_of_end(){
+    this.touched();
+    this.arrow_right.nativeElement.style.opacity = 1;
+  }
+
+  reach_start(){
+    this.touched();
+    this.arrow_left.nativeElement.style.opacity = 0.5;
+  }
+
+  out_of_start(){
+    this.touched();
+    this.arrow_left.nativeElement.style.opacity = 1;
+  }
+
+
+  log(anyt){
+    console.log(anyt)
   }
 }

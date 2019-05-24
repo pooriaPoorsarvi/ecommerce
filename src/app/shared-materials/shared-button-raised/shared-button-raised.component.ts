@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-shared-button-raised',
@@ -6,7 +6,6 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./shared-button-raised.component.css']
 })
 export class SharedButtonRaisedComponent implements OnInit {
-
   @Input() color : string;
 
 

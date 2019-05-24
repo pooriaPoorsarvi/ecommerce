@@ -1,0 +1,110 @@
+<!-- you have to use fh to cope with bootstrap flex -->
+
+<mat-card class="p0">
+<div class="container-fluid">
+  <div class="row p0">
+    <!-- This is the names -->
+    <div class="col-3 p0">
+      <div class="container-fluid fh" style="display: flex; flex-direction: column; justify-content: center">
+          <div class="row p0 fh" >
+            <div class="col-12 p0" (click) = "cnt = i" *ngFor="let promo of promos; let i = index;"
+            [ngClass]="{'mb-1' : i == promos.length - 1, 'mt-3' : i != 0, 'mt-1' : i == 0 }"
+            style="text-align: center;">
+
+              <app-shared-button-raised class="fw" [color]="'warn'" *ngIf="cnt == i">
+                {{promo.product.name | slice:0:25}} {{promo.product.name.length >= 25 ? '...' : ''}}
+              </app-shared-button-raised>
+
+                <app-shared-button-flat class="fw" *ngIf="cnt != i">
+                  {{promo.product.name | slice:0:25}} {{promo.product.name.length >= 25 ? '...' : ''}}
+                </app-shared-button-flat>
+
+            </div>
+          </div>
+      </div>
+    </div>
+
+
+    <!-- The content -->
+    <div class="col-9 p0" >
+      <div class="container-fluid fh">
+        <div class="row p0 fh">
+
+
+          <div class="col-5 p0 fh">
+
+            <div class="mx-3 p0 fh">
+              <div class = "fh fw" style="display: flex; flex-direction: column">
+
+                <mat-toolbar class="promote" color = 'warn' style="flex-grow: 0" >
+                  Promotions
+                </mat-toolbar>
+
+                <div style="flex-grow: 1; display: flex; align-items: center">
+                  <img [src]="promos[cnt].product.image_address[0]" alt="promo-image" class="img-fluid">
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="col-7 p0 fh">
+
+            <div class="fh" style="display: flex; flex-direction: column; justify-content: space-between">
+
+              <div>
+                <p class = "price-before">
+                  {{promos[cnt].product.main_price}}$ CAD
+                </p>
+
+                <p class = "price-after">
+                  {{promos[cnt].product.main_price - (promos[cnt].percent * promos[cnt].product.main_price)}}$ CAD  &nbsp;
+                  <mat-chip-list >
+                    <mat-chip selected color='warn' >
+                      {{promos[cnt].percent}}% Discount
+                    </mat-chip>
+                  </mat-chip-list>
+                </p>
+                <mat-list>
+                  <h3 mat-subheader>Features</h3>
+                  <mat-list-item *ngFor="let feature of promos[cnt].product.main_features.slice(0, 2)">
+                    <mat-icon mat-list-icon >fiber_manual_record</mat-icon>
+                    <p mat-line>{{feature}}</p>
+                  </mat-list-item>
+                  <hr>
+                </mat-list>
+
+                <div class="timer mb-3" *ngIf="remaines">
+                  Remaining Time : &nbsp;
+                  <div style="display: flex; flex-direction: row"
+                  *ngFor="let time of time_counter; let i = index">
+                    <div style="display: flex;flex-direction: row" *ngIf="time > 0">
+                      {{time}} <div *ngIf="i != time_counter.length - 1" >&nbsp; :  &nbsp;</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class = "no-timer mb-3" *ngIf="!remaines">
+                  <mat-toolbar style="display: flex; align-items: center; justify-content: center" color = "warn">
+                    Sorry The Offer Has Expiered.
+                  </mat-toolbar>
+                </div>
+
+
+              </div>
+
+
+            </div>
+
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</mat-card>

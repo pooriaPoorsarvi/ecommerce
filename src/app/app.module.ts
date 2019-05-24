@@ -1,3 +1,4 @@
+import { BootstrapSizeService } from './shared-services/bootstrap-size.service';
 import { BrandService } from './shared-services/brand.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DataServerService } from './dataModules/DataServer.service';
@@ -22,7 +23,13 @@ import { ShoppingCartService } from './shared-services/shopping-cart.service';
     CoreModule,
     AppRoutingModule,
   ],
-  providers: [SizeService,DataServerService, BrandService, ShoppingCartService],
+  providers: [
+    SizeService,
+    DataServerService,
+    BrandService,
+    ShoppingCartService,
+    BootstrapSizeService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

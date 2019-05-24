@@ -44,13 +44,10 @@ export class SizeService{
 
     if(breakpointObserver.isMatched("(min-width : 1024px)")){
       this.setMode("large", true);
-      console.log("large");
     }else if (breakpointObserver.isMatched("(max-width : 767.999px)")){
       this.setMode("small", true);
-      console.log("small");
     }else{
       this.setMode("medium", true);
-      console.log("medium");
     }
 
   }

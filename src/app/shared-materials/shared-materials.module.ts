@@ -1,5 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollY: true,
+};
+
 
 const paths : Routes = [
 ];
@@ -44,25 +51,35 @@ import {
 import { CarouselPromoComponent } from './carousel-promo/carousel-promo.component';
 import { Routes, RouterModule } from '@angular/router';
 import { CarouselProductsComponent } from './carousel-products/carousel-products.component';
-import { ShowProductComponent } from './carousel-products/show-product/show-product.component';
 import { SharedButtonStrokedComponent } from './shared-button-stroked/shared-button-stroked.component';
 import { SharedButtonComponent } from './shared-button/shared-button.component';
 import { SharedButtonFlatComponent } from './shared-button-flat/shared-button-flat.component';
 import { SharedButtonRaisedComponent } from './shared-button-raised/shared-button-raised.component';
 
 @NgModule({
-  declarations: [CarouselPromoComponent, CarouselProductsComponent, ShowProductComponent, SharedButtonStrokedComponent, SharedButtonComponent, SharedButtonFlatComponent, SharedButtonRaisedComponent,
+  declarations: [
+    CarouselPromoComponent,
+    CarouselProductsComponent,
+    SharedButtonStrokedComponent,
+    SharedButtonComponent,
+    SharedButtonFlatComponent,
+    SharedButtonRaisedComponent,
   ],
   imports : [
     MatButtonModule,
+    PerfectScrollbarModule,
     CommonModule,
     RouterModule.forChild(paths),
     MatIconModule,
     MatDividerModule,
     MatProgressBarModule,
+    MatCardModule,
+    MatRippleModule,
+    MatProgressBarModule,
   ],
   exports: [
     CarouselProductsComponent,
+    PerfectScrollbarModule,
     MatAutocompleteModule,
     MatBadgeModule,
     MatBottomSheetModule,
@@ -104,6 +121,12 @@ import { SharedButtonRaisedComponent } from './shared-button-raised/shared-butto
     SharedButtonFlatComponent,
     SharedButtonRaisedComponent,
     RouterModule,
+  ],
+  providers: [
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+    }
   ]
 })
 export class SharedMaterialsModule { }
