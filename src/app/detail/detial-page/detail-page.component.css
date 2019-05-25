@@ -1,0 +1,55 @@
+@import "../../../../node_modules/bootstrap/dist/css/bootstrap.css";
+
+
+.img-container-main{
+  width: 100%;
+  position: relative;
+}
+
+.img-main{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  width: 100%;
+}
+
+.centrifier{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.spb{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+
+.li-u{
+  text-decoration: underline !important;
+  color: lightblue !important;
+  cursor: pointer;
+}
+
+#prod_name{
+  font-size: 2rem;
+}
+
+.features{
+  font-size:  1.25rem;
+}
+
+.old-price{
+  font-size: 1.125rem;
+  text-decoration: line-through;
+  color: gray;
+}
+
+.new-price {
+  font-size : 2rem;
+}
+

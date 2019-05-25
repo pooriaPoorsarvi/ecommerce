@@ -32,15 +32,15 @@
 <!-- Product Promos -->
   <div class="row mt-3 p0" >
 
-    <div class="col-lg-9 col-12 p0"  *ngIf="!(sb.small||sb.xs)" >
-      <div class="mx-3 fh " >
-        <div class="fw fh p0">
-          <app-promos-with-timer [promos]="data.promo_with_time"></app-promos-with-timer>
+    <div class="col-lg-10 col-12 p0"  *ngIf="!(sb.small||sb.xs)">
+      <div class="mx-3 fh " style="min-height: 100%">
+        <div class="fw fh p0" style="min-height: 100%">
+          <app-promos-with-timer class = "fh" style="min-height: 100%" [promos]="data.promo_with_time"></app-promos-with-timer>
         </div>
       </div>
     </div>
 
-    <div class="col-lg-9 col-12 p0"  *ngIf="(sb.small||sb.xs)">
+    <div class="col-lg-10 col-12 p0"  *ngIf="(sb.small||sb.xs)">
       <div class="mx-3 fh ">
         <mat-card class="fw fh p0">
           <app-carousel-products [products] = "productsFromPromosWithTimer()"
@@ -54,7 +54,7 @@
       </div>
     </div>
 
-    <div class="col-3 p0" *ngIf="(sb.large||sb.xl)" >
+    <div class="col-2 p0" *ngIf="(sb.large||sb.xl)">
       <div class="mr-3 fh">
         <mat-card class="fw fh p0">
           <img [src]="data.side_promo1.image_address" alt="side promo 1" class="fh fw">

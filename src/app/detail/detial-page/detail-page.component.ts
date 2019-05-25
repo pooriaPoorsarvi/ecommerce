@@ -1,9 +1,12 @@
+import { BrandService } from './../../shared-services/brand.service';
+import { BootstrapSizeService } from './../../shared-services/bootstrap-size.service';
 import { SizeService, SizeState } from './../../shared-services/size-compat.service';
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ProductServerService } from 'src/app/shared-services/product-server.service';
 import { ProductModel } from 'src/app/dataModules/Product.model';
 import { Subscription } from 'rxjs';
+import { SizeStateBootstrap } from 'src/app/shared-services/bootstrap-size.service';
 
 
 
@@ -15,6 +18,9 @@ import { Subscription } from 'rxjs';
 
 export class DetailPageComponent implements OnInit{
 
+
+  sb : SizeStateBootstrap;
+
   lap : boolean ;
 
   product : ProductModel;
@@ -23,10 +29,21 @@ export class DetailPageComponent implements OnInit{
   constructor(public sizeService : SizeService,
               public router : Router,
               public route : ActivatedRoute,
-              public productServerSerice : ProductServerService){}
+              public productServerSerice : ProductServerService,
+              public bootstrapSizeService : BootstrapSizeService,
+              public brandService : BrandService){}
 
 
   ngOnInit(){
+
+
+
+    this.sb = this.bootstrapSizeService.stateSnapshot;
+    this.bootstrapSizeService.stateBuffer.subscribe(
+      (sbn) => {
+        this.sb = sbn;
+      }
+    );
 
 
     this.subscriptionProduct = this.productServerSerice.getProduct(this.route.snapshot.params["id"] as number).subscribe(

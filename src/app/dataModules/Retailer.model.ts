@@ -4,5 +4,5 @@ import { UserModel } from './User.model';
 
 export class RetailerMoel{
   constructor(public user : UserModel,
-              public products : ProductModel[]){}
+              public products? : ProductModel[]){}
 }

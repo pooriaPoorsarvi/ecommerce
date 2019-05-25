@@ -3,6 +3,9 @@ import { MakerModel } from './../dataModules/Maker.model';
 import { Observable } from 'rxjs';
 import { ProductModel } from '../dataModules/Product.model';
 import { CategoryModel } from '../dataModules/Category.model';
+import { RetailerMoel } from '../dataModules/Retailer.model';
+import { UserModel } from '../dataModules/User.model';
+import { PromoModel } from '../dataModules/Promo.model';
 
 
 export class ProductServerService {
@@ -11,6 +14,9 @@ export class ProductServerService {
 
   getProduct(id : number) : Observable <any>{
     var dummyMaker = new MakerModel("this is a sample maker name", []);
+    var retailer : RetailerMoel = new RetailerMoel(
+      new UserModel('This is a sample retailer name'),
+    );
     var prod1 = new ProductModel("this is a sample name",
                                   420,
                                   MainPageDataServerService.lorem_ipsum,
@@ -29,7 +35,9 @@ export class ProductServerService {
                                   "This is a sample main feature",
                                   "This is a sample main feature",
                                   "This is a sample main feature",
-                                  ]
+                                  ],
+                                  retailer,
+                                  new PromoModel('','', 0.5, new Date(), null, null),
                                   );
     var res = Observable.create(
       (observer) => {

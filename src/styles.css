@@ -84,6 +84,20 @@ body{
   text-align: center;
 }
 
+
+.centrifyc{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.centrifyr{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 @media(max-width : 576px){
   body{
     min-width: 0px;
