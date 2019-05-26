@@ -1,35 +1,50 @@
-<mat-toolbar  style="padding : 0px; display: flex; flex-direction: column">
-  <div class="row my-2" style="width: 100%; margin: 0px;padding: 0px;" >
-    <div class="col-2 centerify" >
-      <mat-icon matRipple (click) = "side_nav.toggle()" [inline]="true" style="font-size: 5vh">menu</mat-icon>
-    </div>
-    <div class="col-8 centerify" >
-      <a routerLink = "/" >
-        <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
-        alt="Logo"
-        class="img-fluid" style="max-height: 6vh">
-      </a>
-    </div>
-    <div class="col-2 centerify"  >
-      <mat-icon [inline]="true" style="font-size: 5vh">contact_support</mat-icon>
-    </div>
-  </div>
-  <div style="width : 95%">
-    <hr>
-  </div>
+<mat-toolbar color = "primary" class="p0 fw">
+  <div class="container-fluid">
+    <div class="row p0" >
 
-  <div class="row my-1" style="width: 100%; margin: 0px;padding: 0px;;" >
-    <div class="col-1  centerify" >
-      <mat-icon [inline]="true" style="font-size: 5vh">shopping_cart</mat-icon>
+
+
+
+    <div class="col-3 p0 mt-3">
+      <div class="mx-3 fh centrifyc">
+        <app-shared-button-stroked [width]="''"
+        (click) = "side_nav.toggle()"
+        ><i class="material-icons fh my-icon">menu</i></app-shared-button-stroked>
+      </div>
     </div>
-    <div class="col-1  centerify"  >
-      <mat-icon [inline]="true" style="font-size: 5vh">contact_support</mat-icon>
+
+    <div class="col-6 p0 mt-3">
+      <div class="mx-3 fh centrifyc">
+        <div class="container-img"
+        [ngStyle]="{'padding-top': '45%'}">
+          <div class="img-brand">
+            <img [src]="brandService.BRAND_LOGO" class="fw fh" [alt]="brandService.BRAND_NAME + 'logo'" >
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="col-10 centerify"  >
-      <mat-form-field appearance="outline" style="transform: translateY(10%);width : 100%;">
-        <mat-label>Search</mat-label>
-        <input matInput placeholder="Search Here">
-      </mat-form-field>
+
+    <div class="col-3 p0 mt-3">
+      <div class="mx-3 fh centrifyc">
+        <app-shared-button-stroked><i class="material-icons fh my-icon">shopping_cart</i></app-shared-button-stroked>
+      </div>
+    </div>
+
+    <div class="col-12 p0 mt-3" >
+      <hr>
+    </div>
+
+    <div class="col-12 p0 my-3" >
+      <div class="mx-3" style="margin: 0px" >
+        <mat-form-field class="fw" appearance="fill">
+          <mat-label>Search</mat-label>
+          <input matInput placeholder="Search">
+          <mat-icon matSuffix>search</mat-icon>
+          <!-- <mat-hint>Hint</mat-hint> -->
+        </mat-form-field>
+      </div>
+    </div>
+
     </div>
   </div>
 </mat-toolbar>

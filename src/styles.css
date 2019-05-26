@@ -85,6 +85,27 @@ body{
 }
 
 
+@media(max-width : 576px){
+  body{
+    min-width: 0px;
+  }
+}
+
+app-root{
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0px;
+  padding: 0px;
+}
+
+
+
+
+
+
+
+
+
 .centrifyc{
   display: flex;
   flex-direction: column;
@@ -98,15 +119,69 @@ body{
   align-items: center;
 }
 
-@media(max-width : 576px){
-  body{
-    min-width: 0px;
+.endifyc{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.endifyr{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+
+.startifyc{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.startifyr{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+
+
+/* XS */
+@media (max-width : 575.999px){
+  .my-icon{
+    font-size: 3rem;
   }
 }
 
-app-root{
-  width: 100% !important;
-  height: 100% !important;
-  margin: 0px;
-  padding: 0px;
+/* SM */
+@media (min-width : 576px) and (max-width : 767.999px){
+  .my-icon{
+    font-size: 4rem;
+  }
 }
+
+/* MD */
+@media (min-width : 768px) and (max-width : 991.999px){
+  .my-icon{
+    font-size: 5rem;
+  }
+}
+
+/* LG */
+@media (min-width : 992px) and (max-width : 1199.999px){
+  .my-icon{
+    font-size: 5.5rem;
+  }
+}
+
+
+/* XL */
+@media (min-width : 1200px) {
+  .my-icon{
+    font-size: 6rem;
+  }
+}
+
+

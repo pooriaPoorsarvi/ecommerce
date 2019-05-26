@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class SharedButtonStrokedComponent implements OnInit {
 
   @Input() color : string;
+  @Input() width : string = '100%';
 
   constructor() { }
 
