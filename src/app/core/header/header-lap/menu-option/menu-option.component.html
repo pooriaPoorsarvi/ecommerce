@@ -1,17 +1,46 @@
 
-<button mat-button [matMenuTriggerFor]="menu1" style="font-size: 1vw;" *ngIf="!small && !medium">{{menu.name}}</button>
-<button mat-button [matMenuTriggerFor]="menu1" style="font-size: 1.35vw;" *ngIf="!small && medium">{{menu.name}}</button>
-<button mat-button [matMenuTriggerFor]="menu1" style="font-size: 1.7vw;padding: 0px;" *ngIf="small && !medium">{{menu.name}}</button>
+<app-shared-button [matMenuOpt]="menu1" style="font-size: 1.3vw;" *ngIf="!small && !medium">{{menu.name}}</app-shared-button>
+<app-shared-button  [matMenuOpt]="menu1" style="font-size: 1.5vw;" *ngIf="!small && medium">{{menu.name}}</app-shared-button>
+<app-shared-button [matMenuOpt]="menu1"  style="font-size: 1.7vw;padding: 0px;" *ngIf="small && !medium">{{menu.name}}</app-shared-button>
+<!-- [matMenuTriggerFor]="menu1" -->
+<mat-menu class="p0"  #menu1="matMenu" >
+  <div id= "container_main" >
+    <div class="container-fluid">
 
-<mat-menu  #menu1="matMenu">
-  <div style="height: 60vh;width: 50vw;display: flex; flex-direction: column;flex-wrap: wrap; align-content: space-around;">
-    <div style="margin-top:1%; margin-left:1%; font-size: 100%;" *ngFor="let sm of menu.submenus" >
-      <div style = "color: gray" *ngIf = "!sm.hasSub">
-        {{sm.name}}
+      <div class="row p0" style="font-size: 1.3rem">
+
+        <!-- This will be the list of menu options -->
+        <div class="col-8">
+
+          <div class="container-fluid">
+
+            <div class="row">
+
+              <div class="col-4" *ngFor="let sm of menu.submenus">
+
+                <div  *ngIf = "!sm.hasSub">
+                  {{sm.name}}
+                </div>
+                <div class = "accentColor" *ngIf = "sm.hasSub">
+                  <mat-icon style="font-size: 70%; width: auto; height: auto;">whatshot</mat-icon>{{sm.name}}
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- The image associated with the options -->
+        <div class="col-4">
+          <img [src]="image" class="fw">
+        </div>
+
       </div>
-      <div style = "color: darkblue" *ngIf = "sm.hasSub">
-        <mat-icon style="font-size: 70%; width: auto; height: auto;">whatshot</mat-icon>{{sm.name}}
-      </div>
+
     </div>
   </div>
 </mat-menu>

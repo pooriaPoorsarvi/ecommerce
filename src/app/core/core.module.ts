@@ -10,16 +10,18 @@ import { AuthDialogueComponent } from './header/header-lap/auth-dialogue/auth-di
 import { LoginComponent } from './header/header-lap/auth-dialogue/login/login.component';
 import { SignUpComponent } from './header/header-lap/auth-dialogue/sign-up/sign-up.component';
 import { ButtonsAuthComponent } from './header/header-lap/auth-dialogue/buttons-auth/buttons-auth.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
-  declarations: [HeaderComponent, NavbarComponent, HeaderLapComponent, MenuOptionComponent, HeaderHandComponent, AuthDialogueComponent, LoginComponent, SignUpComponent, ButtonsAuthComponent],
+  declarations: [HeaderComponent, NavbarComponent, HeaderLapComponent, MenuOptionComponent, HeaderHandComponent, AuthDialogueComponent, LoginComponent, SignUpComponent, ButtonsAuthComponent, FooterComponent],
   imports: [
     CommonModule,
     SharedMaterialsModule
   ],
   exports : [
     HeaderComponent,
-    NavbarComponent
+    NavbarComponent,
+    FooterComponent
   ],
   entryComponents: [AuthDialogueComponent,  HeaderLapComponent],
 })

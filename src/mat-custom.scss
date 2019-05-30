@@ -1,0 +1,46 @@
+
+@import '../node_modules/@angular/material/theming';
+// @import '../node_modules/material/theming';
+
+
+@include mat-core();
+
+$myDefaultPrimary : 900;
+$myDefaultAccent : 700;
+
+$brand-app-primary: mat-palette($mat-blue-gray, $myDefaultPrimary);
+$brand-app-accent:  mat-palette($mat-indigo, $myDefaultAccent, 100, 900);
+
+
+$brand-app-warn:    mat-palette($mat-red);
+
+$brand-app-theme: mat-light-theme($brand-app-primary, $brand-app-accent, $brand-app-warn);
+
+// TODO THERE IS ONLY ONE PLACE THAT WE HAVE USED THIS COLORS MANUALLY AND THAT IS THE DIVDER IN HEADER
+// TODO CHANGE THE ABOVE AND IF YOU DIDN'T YOU HAVE TO CHANGE THINGS MANNUALY
+// TODO the issue above is fixed to some digree by adding the class my-accentb and my-primaryc in the styles.css but you still have to modify that
+
+
+
+
+// $foregroundCard : map-get($brand-app-theme, foreground);
+// .MatCardForGround{
+//   color: $foregroundCard;
+// }
+
+
+
+@include angular-material-theme($brand-app-theme);
+
+
+.accentColor {
+  color: mat-color($brand-app-accent, darker);
+}
+
+.primaryBack{
+  background: mat-color($brand-app-primary);
+  color: mat-color($brand-app-primary, default-contrast);
+}
+
+
+

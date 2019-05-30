@@ -1,7 +1,20 @@
 
+@import "../../../../../../node_modules/bootstrap/dist/css/bootstrap.css";
+
 ::ng-deep .mat-menu-panel{
   max-width: none !important;
   /* width: 1vw !important; */
   max-height: none !important;
   /* overflow: hidden !important; */
 }
+
+
+#container_main{
+  width: 80vw;
+}
+
+
+mat-toolbar{
+  height: auto !important;
+}
+

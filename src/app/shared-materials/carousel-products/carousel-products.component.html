@@ -11,7 +11,7 @@
           <hr *ngIf="!progress_bar" class="mt-1">
           <mat-progress-bar
           class="example-margin"
-          [color]="'warn'"
+          [color]="'accent'"
           [mode]="'determinate'"
           [value]="perc"
           *ngIf="progress_bar"
@@ -30,10 +30,11 @@
     </div>
   </div>
 <!-- The lines above where used for the header -->
-  <div style="display: flex; position: relative; flex-grow: 1">
+  <div style="display: flex; position: relative; flex-grow: 1" >
 
     <div class="arrows al" >
-      <mat-card class="p0" matRipple (click)="showLeft();touched()" >
+      <mat-card class="p0" matRipple (click)="showLeft();touched()"
+      (mouseover)="hoverCardRight = 1" (mouseout) = "hoverCardRight = 0.1" [style.opacity] = "hoverCardRight">
         <div class="mx-2" #al>
           <i class="material-icons fw arrowt my-3 txs">keyboard_arrow_left</i>
         </div>
@@ -51,16 +52,20 @@
 
 
           <!-- The content starts here and everything above was to set the scroll bar -->
-          <div class="flx-container fh p0" #container>
+          <div class="flx-container fh p0 mb-5"  #container>
 
             <div *ngFor="let prod of products; let i = index;"
-            class="container-fluid fh"
-            [ngStyle]="{'width': 100/nums + '%', 'max-width': 100/nums + '%', 'min-width': 100/nums + '%'}"
+            class="container-fluid "
+            [ngStyle]="{'width': 100/nums-2 + '%', 'max-width': 100/nums + '%', 'min-width': 100/nums + '%'}"
             >
+            <!-- <div class="mx-3 my-3"></div> -->
               <div class="row p0 fh">
                 <div class="col-12 my-3 p0 fh">
                   <div class="ml-3 fh txs"
-                  [ngClass]="{'mr-3' : i == products.length - 1}" >
+                  [ngClass]="{'mr-3' : i == products.length - 1, 'mat-elevation-z2' : hoversProducts[i]}"
+                  (mouseover)="hoversProducts[i] = true"
+                  (mouseout)="hoversProducts[i] = false"
+                   >
                     <img [src]="prod.image_address[0]" [ngStyle]="{'max-height': maxH_pic}"
                     class="img-fluid">
                     <div>
@@ -84,7 +89,8 @@
 
 
     <div class="arrows ar" >
-      <mat-card class="p0" matRipple (click) = "showRight(); touched()">
+      <mat-card class="p0" matRipple (click) = "showRight(); touched()"
+      (mouseover)="hoverCardLeft = 1" (mouseout) = "hoverCardLeft = 0.1" [style.opacity] = "hoverCardLeft" >
         <div class="mx-2" #ar>
           <i class="material-icons fw arrowt my-3 txs">keyboard_arrow_right</i>
          </div>

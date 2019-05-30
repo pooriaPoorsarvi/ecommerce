@@ -23,7 +23,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/mat-custom.scss",
+              "src/mat-classes.scss"
             ],
             "scripts": [],
             "es5BrowserSupport": true

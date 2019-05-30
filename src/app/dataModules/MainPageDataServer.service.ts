@@ -175,6 +175,7 @@ export class MainPageDataServerService{
                   "http://papers.co/wallpaper/papers.co-ak72-alien-blue-earth-space-planet-dark-40-wallpaper.jpg"
     ),
     ] ;
+    prod1.name = "this is a sample name this is a sample name this is a sample name this is a sample name"
     this.data.products_popular = [
       prod1,
     ];

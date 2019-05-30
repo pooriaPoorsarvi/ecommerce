@@ -15,6 +15,11 @@ import { SizeStateBootstrap } from 'src/app/shared-services/bootstrap-size.servi
 export class CarouselProductsComponent implements OnInit, OnDestroy, AfterViewInit {
 
 
+  hoverCardRight = 0.1;
+  hoverCardLeft = 0.1;
+  hoversProducts : boolean[] = [];
+
+
   sb : SizeStateBootstrap ;
 
   constructor(public bootstrapSizeService: BootstrapSizeService) { }
@@ -107,6 +112,11 @@ export class CarouselProductsComponent implements OnInit, OnDestroy, AfterViewIn
   }
 
   ngOnInit() {
+
+
+    for(var i = 0 ; i < this.products.length ; i ++){
+      this.hoversProducts.push(false);
+    }
 
     this.sb = this.bootstrapSizeService.stateSnapshot;
     this.bootstrapSizeService.stateBuffer.subscribe(

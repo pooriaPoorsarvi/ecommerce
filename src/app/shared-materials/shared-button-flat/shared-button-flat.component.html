@@ -1,3 +1,8 @@
-<button style="width: 100%" mat-flat-button [color] = "color" class="wrapping">
+<button [matBadge] = "matB" [matBadgeColor]="matBc" [matBadgePosition]="matBp"
+[style.height]="height" [style.width] = "width" mat-flat-button [color] = "color" 
+class = "txs"
+style="display: flex;flex-wrap: wrap;justify-content: center;align-items: center;white-space: normal;">
   <ng-content></ng-content>
 </button>
+<!-- class="wrapping txs"
+style="display: flex; flex-wrap: wrap;justify-content: center;align-items: center;white-space: pre-wrap;" -->

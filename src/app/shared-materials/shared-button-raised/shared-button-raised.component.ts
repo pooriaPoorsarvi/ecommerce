@@ -7,6 +7,14 @@ import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 })
 export class SharedButtonRaisedComponent implements OnInit {
   @Input() color : string;
+  @Input() width : string  = '100%';
+  @Input() height : string  =  '100%';
+  @Input() matB : any = null;
+  @Input() matBc : string = '';
+  @Input() matBp : string = '';
+
+
+  @Input() styleIn : any = {};
 
 
   constructor() { }

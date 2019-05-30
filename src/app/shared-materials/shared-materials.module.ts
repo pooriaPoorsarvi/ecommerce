@@ -76,6 +76,8 @@ import { SharedButtonRaisedComponent } from './shared-button-raised/shared-butto
     MatCardModule,
     MatRippleModule,
     MatProgressBarModule,
+    MatBadgeModule,
+    MatMenuModule,
   ],
   exports: [
     CarouselProductsComponent,

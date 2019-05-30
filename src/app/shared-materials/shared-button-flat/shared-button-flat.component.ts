@@ -8,6 +8,11 @@ import { Component, OnInit, Input } from '@angular/core';
 export class SharedButtonFlatComponent implements OnInit {
 
   @Input() color : string;
+  @Input() width : string  = '100%';
+  @Input() height : string  = '100%';
+  @Input() matB : any = null;
+  @Input() matBc : string = '';
+  @Input() matBp : string = '';
 
 
   constructor() { }

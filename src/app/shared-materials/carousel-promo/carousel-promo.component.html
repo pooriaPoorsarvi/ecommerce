@@ -27,7 +27,7 @@
 
 <div style="position: absolute; bottom: 0; width: 100%; height: 10%; left: 0px; display: flex; justify-content: center; align-items: center">
   <div *ngFor="let promo of promos; let i = index">
-  <mat-icon style="color : red" *ngIf="i == cnt">panorama_fish_eye</mat-icon>
+  <mat-icon class = "accentColor" *ngIf="i == cnt">panorama_fish_eye</mat-icon>
   <mat-icon style="color : white" *ngIf="i != cnt">panorama_fish_eye</mat-icon>
   </div>
 </div>

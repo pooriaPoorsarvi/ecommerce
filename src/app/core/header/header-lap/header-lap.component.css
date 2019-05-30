@@ -1,35 +1,49 @@
+@import "../../../../../node_modules/bootstrap/dist/css/bootstrap.css";
 
-@import "../../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
-
-.row{
-  overflow: hidden;
+mat-toolbar, mat-toolbar-row{
+  min-height: auto !important;
+  height: auto !important;
+  max-height: auto !important;
 }
 
-.cursorP{
-  cursor: pointer !important;
+.container-img {
+  width: 100%;
+  padding-top: 25%; /* 1:1 Aspect Ratio */
+  position: relative; /* If you want text inside of it */
 }
 
-@keyframes example {
-  from {color: blue;border: 0.1vw solid blue;}
-  to {color: red;border: 0.1vw solid red;}
+/* If you want text inside of the container */
+.img-itself {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
 }
 
-#shopping{
-  border-radius: 10px;
-  border: 0.1vw solid blue;
-  padding: 5%;
-  color: blue;
-}
-#shopping:hover{
-  border-radius: 10px;
-  border: 0.1vw solid red;
-  padding: 5%;
-  color: red;
-  animation-name: example;
-  animation-duration: 0.25s;
+.space-bet{
+  justify-content: space-around !important;
 }
 
-a{
-  cursor: pointer;
+.button-detail{
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
+
+.container-all{
+  display: flex;
+  flex-direction: column;
+}
+
+
+.container-menu-names{
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 100%;
+}
+

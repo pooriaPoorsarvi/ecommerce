@@ -1,54 +1,91 @@
-<div style="display: flex; flex-direction: column; width: 100%;">
-<mat-toolbar  style="width:100%;height: auto;padding: 0px; margin: 0px;">
+<div class = "container-all fw">
+<mat-toolbar color = "primary" class="p0 fw">
+  <div class="container-fluid">
+    <div class="row p0" >
 
 
-  <div class="row"  style = "width: 100%;margin: 0px; padding: 0px;">
+      <div class="col-2 p0 my-3">
 
-    <a routerLink = "/" class="col-2" style="display: flex; flex-direction: column; justify-content: center; align-items: center">
-      <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
-      alt="Logo" class="img-fluid"
-      >
-    </a>
-    <div class = "col-5 col-sm-6" style="padding-left: 0px; padding-right: 0;">
-      <mat-form-field   color="warn" style=  "width: 100%;" >
-          <input  type = "search"  matInput placeholder="Search" >
-      </mat-form-field>
-    </div>
-    <div class = "col-1 cursorP" style="padding-right: 0px; padding-left: 0.5%; display: flex; flex-direction: column; justify-content: center;">
-      <div style="display: flex; align-items: center; font-size: 1.25vw">
-          Questions  <mat-icon>contact_support</mat-icon>
+
+        <div class="ml-3 fh centrifyr">
+            <div class="container-img">
+            <div class="img-itself" >
+              <a routerLink = "/" class="col-2 p0" class="fw"  >
+                <img [src]='brandService.BRAND_LOGO' [alt]="brandService.BRAND_NAME + 'logo'"
+                alt="Logo" class="fw fh"
+                >
+              </a>
+            </div>
+          </div>
+        </div>
+
+
       </div>
-    </div>
 
 
-    <div (click) = "openDialouge()" class = "col-1 cursorP" style="padding-right: 0px; padding-left: 2%; display: flex; flex-direction: column; justify-content: center;">
-      <div style="display: flex; align-items: center; font-size: 1.25vw">
-          Login  <mat-icon>account_circle</mat-icon>
+      <div class="col-6 p0 my-3" >
+        <div class="ml-3 centrifyr">
+          <mat-form-field class = "fw">
+            <input  type = "search"  matInput placeholder="Search" >
+          </mat-form-field>
+        </div>
       </div>
-    </div>
 
-    <div  class = "col-2 col-sm1 cursorP" style="margin-left: auto;padding-right: 0px; display: flex; flex-direction: column; align-items: center;justify-content: center;">
-      <div [matBadge]="shoppingCartProducts.length" matBadgeColor="warn" matBadgePosition="before" style="display: flex; align-items: center; font-size: 1.25vw;" id = "shopping">
-          Shopping Cart <mat-icon >shopping_cart</mat-icon>
+      <!-- The rest of top layer navbar icons -->
+      <div class="col-4 p0"  >
+        <div class="container-fluid fh" >
+          <div class="row p0 fh" >
+
+            <div class="col-6 p0 auto-wrap centrifyr" >
+              <div class="ml-3 fh centrifyr txs fw"  >
+                <app-shared-button-flat   [height]="'50%'"
+                color="accent"  class="fw fh centrifyr">
+                  <div class="button-detail">
+                      <i class="material-icons auto-wrap">account_circle</i> Login
+                  </div>
+                </app-shared-button-flat>
+              </div>
+            </div>
+
+            <div class="col-6 p0 auto-wrap centrifyr" >
+              <div class="mx-3 fh centrifyr txs fw"  >
+                <app-shared-button-flat
+                [matB]="shoppingCartProducts.length"
+                [matBc]="'warn'"
+                [matBp]="'before'"
+                [height]="'50%'"
+                color="accent"  class="fw fh centrifyr">
+                  <div class="button-detail">
+                      <i class="material-icons auto-wrap">shopping_cart</i> Shopping Cart
+                  </div>
+                </app-shared-button-flat>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
       </div>
+
+
+
+
+    </div>
+  </div>
+</mat-toolbar>
+
+<mat-toolbar [color] = "'accent'">
+  <div class="container-menu-names">
+
+    <div *ngFor="let menu of menus;let i = index"  >
+      <app-menu-option style="flex-shrink: 1;width: auto" [menu]="menu" [image]="imageMenu"></app-menu-option>
     </div>
 
   </div>
 </mat-toolbar>
-
-
-<!-- background : #616161; -->
-<mat-toolbar  color = "warn" style="color: white;width:100%;max-width: 100%;;height: auto;padding: 0px; margin: 0px;">
-  <div   style="display: flex; justify-content: space-around; width: 100%; max-width: 100%;">
-
-    <div style="" *ngFor="let menu of menus;let i = index"  >
-
-      <app-menu-option style="flex-shrink: 1;width: auto" [menu]="menu"></app-menu-option>
-    </div>
-  </div>
-</mat-toolbar>
-
+<!-- TODO test this or delete it -->
+<!-- <div class="testMine fw">
+a
+</div> -->
 
 </div>
-
-

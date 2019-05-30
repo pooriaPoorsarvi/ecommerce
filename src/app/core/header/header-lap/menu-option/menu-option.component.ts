@@ -14,6 +14,7 @@ export class MenuOptionComponent implements OnInit {
   medium : boolean = false ;
 
   @Input() menu : MenuOptionModel;
+  @Input() image : string;
   hovered = false;
 
   constructor(public sizeService : SizeService) { }

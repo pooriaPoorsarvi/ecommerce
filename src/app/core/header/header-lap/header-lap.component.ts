@@ -1,3 +1,4 @@
+import { BrandService } from './../../../shared-services/brand.service';
 import { ShoppingCartService } from './../../../shared-services/shopping-cart.service';
 import { AuthDialogueComponent } from './auth-dialogue/auth-dialogue.component';
 import { DataServerService } from './../../../dataModules/DataServer.service';
@@ -16,10 +17,12 @@ export class HeaderLapComponent implements OnInit {
   menus : MenuOptionModel[];
   hovers : boolean[] = [];
   shoppingCartProducts : ProductModel[];
+  imageMenu : string;
 
   constructor(public dataServerService : DataServerService,
               public dialog : MatDialog,
-              public shoppingCartService : ShoppingCartService) { }
+              public shoppingCartService : ShoppingCartService,
+              public brandService : BrandService) { }
 
 
 
@@ -57,6 +60,14 @@ export class HeaderLapComponent implements OnInit {
         }
       }
     );
+
+    this.dataServerService.getPicture().subscribe(
+      (url : string) => {
+        this.imageMenu = url;
+      }
+    );
+
+
   }
 
 

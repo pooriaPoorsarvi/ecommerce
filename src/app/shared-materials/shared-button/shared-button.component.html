@@ -1,5 +1,7 @@
 
-<button style="width: 100%" class="wrapping" mat-button [color] = "color">
+<button
+[matMenuTriggerFor] = "matMenuOpt"
+[style.height]="height" [style.width] = "width" class="wrapping" mat-button [color] = "color">
   <ng-content></ng-content>
 </button>
 

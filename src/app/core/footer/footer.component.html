@@ -1,0 +1,56 @@
+
+<mat-toolbar class="mt-3 txs" color = "primary" style="white-space: pre-wrap;">
+
+    <div class="container-fluid" >
+
+      <div class="row p0" >
+
+        <!-- Giving Info -->
+        <div class="col-lg-6 col-12 p0 my-3" >
+
+          <div class="container-fluid fh" >
+
+            <div class="row fh p0" >
+              <!-- TODO this is based on use having four features of footer, fix this in the feature -->
+              <div class="col-sm-3 col-6 p0" *ngFor="let item of bs.FOOTER_INFO; let i = index"
+              [ngClass]="{'mt-3' : i > 1 && sb.xs}" >
+                <div class="mx-3 fh">
+                  <app-shared-button-flat [color]="'accent'" [height]="'100%'" class="txs fh"
+                  (click)="reRoute(item.address)" >
+                    {{item.name}}
+                  </app-shared-button-flat>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Getting Info -->
+        <div class="col-lg-6 col-12 p0 my-3"  >
+          <div class="container-fluid fh" >
+            <div class="row p0 fh">
+
+              <div class="col-12 p0 fh">
+                <div class="mr-3 p0 fh" style="display: flex; align-items: center">
+                  <mat-form-field class="mx-3" style="flex-grow: 1">
+                    <input matInput placeholder="Enter Your Email For Free Discounts">
+                  </mat-form-field>
+                  <app-shared-button-flat [width]="'auto'"[height] = "''" color="accent">
+                    <i class="fa fa-bell-o"></i> Sing Me Up
+                  </app-shared-button-flat>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </mat-toolbar>
+
+

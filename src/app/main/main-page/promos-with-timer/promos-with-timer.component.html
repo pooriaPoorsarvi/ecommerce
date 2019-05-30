@@ -11,7 +11,7 @@
             [ngClass]="{'mb-1' : i == promos.length - 1, 'mt-3' : i != 0, 'mt-1' : i == 0 }"
             style="text-align: center;">
 
-              <app-shared-button-raised class="fw" [color]="'warn'" *ngIf="cnt == i">
+              <app-shared-button-raised class="fw" [color]="'accent'" *ngIf="cnt == i">
                 {{promo.product.name | slice:0:25}} {{promo.product.name.length >= 25 ? '...' : ''}}
               </app-shared-button-raised>
 
@@ -36,7 +36,7 @@
             <div class="mx-3 p0 fh">
               <div class = "fh fw" style="display: flex; flex-direction: column">
 
-                <mat-toolbar class="promote" color = 'warn' style="flex-grow: 0" >
+                <mat-toolbar class="promote" color = 'accent' style="flex-grow: 0" >
                   Promotions
                 </mat-toolbar>
 
@@ -62,7 +62,7 @@
                 <p class = "price-after">
                   {{promos[cnt].product.main_price - (promos[cnt].percent * promos[cnt].product.main_price)}}$ CAD  &nbsp;
                   <mat-chip-list >
-                    <mat-chip selected color='warn' >
+                    <mat-chip selected color='accent' >
                       {{promos[cnt].percent}}% Discount
                     </mat-chip>
                   </mat-chip-list>
@@ -70,7 +70,7 @@
                 <mat-list>
                   <h3 mat-subheader>Features</h3>
                   <mat-list-item *ngFor="let feature of promos[cnt].product.main_features.slice(0, 2)">
-                    <mat-icon mat-list-icon >fiber_manual_record</mat-icon>
+                    <mat-icon mat-list-icon class="accentColor">fiber_manual_record</mat-icon>
                     <p mat-line>{{feature}}</p>
                   </mat-list-item>
                   <hr>

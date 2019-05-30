@@ -68,7 +68,7 @@
                           <div class="col-6  p0 mt-3">
                             <div class="fh fw"
                             >
-                              <mat-icon [color]="'warn'">directions_car</mat-icon> Fast Delivery
+                              <mat-icon [color]="'accent'">directions_car</mat-icon> Fast Delivery
                             </div>
                           </div>
 
@@ -76,7 +76,7 @@
                             <div class="fh fw"
                             >
                             <!-- [ngClass]="{'centrifyr' : sb.medium}" -->
-                              <mat-icon [color]="'warn'">person</mat-icon> Retailer : <a class="li-u">{{product.retailer ? product.retailer.user.name : brandService.BRAND_NAME}}</a>
+                              <mat-icon [color]="'accent'">person</mat-icon> Retailer : <a class="li-u">{{product.retailer ? product.retailer.user.name : brandService.BRAND_NAME}}</a>
                             </div>
                           </div>
 
@@ -86,7 +86,7 @@
 
                           <div class="col-12 p0 mt-3">
                             <div class="fh fw centrifyr" >
-                              <mat-icon [color]="'warn'">check_box</mat-icon> Guaranteed Product
+                              <mat-icon [color]="'accent'">check_box</mat-icon> Guaranteed Product
                             </div>
                           </div>
 
@@ -114,9 +114,9 @@
                           <div class="col-12"></div>
 
                           <div class="col-12 my-3 p0">
-                            <app-shared-button-stroked color = "warn">
-                              {{product.promo_code ? product.main_price * (1-product.promo_code.percent) : product.main_price}} $ <mat-icon color = "warn">add_shopping_cart</mat-icon>
-                            </app-shared-button-stroked>
+                            <app-shared-button-raised color = "accent">
+                                <mat-icon>add_shopping_cart</mat-icon> {{product.promo_code ? product.main_price * (1-product.promo_code.percent) : product.main_price}} $
+                            </app-shared-button-raised>
                           </div>
 
                           </div>
@@ -126,7 +126,7 @@
                       <div class="col-lg-4 col-12" >
                         <!-- TODO add the condition when we dont have any main features -->
                         <mat-chip-list class="centrifyc">
-                          <mat-chip [color] = "'warn'" selected>
+                          <mat-chip [color] = "'accent'" selected>
                             Product Features
                           </mat-chip>
                         </mat-chip-list>
