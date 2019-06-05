@@ -10,5 +10,21 @@ export class BrandService{
     {name : 'Get To Know Us', address : ['/']},
     {name : 'Job Oppurtunities', address : ['/']},
   ];
+
+
+  BACK_END_ROOT = "http://ecommerce.us-east-1.elasticbeanstalk.com/";
+
+  API_URL = "api/v1/";
+
+  USERS_URL = "user/";
+
+  REGISTER_URL = "register/"
+
+
+  getRegisterUrl() : string {
+    return this.BACK_END_ROOT + this.API_URL + this.USERS_URL + this.REGISTER_URL;
+  }
+
+
 }
 

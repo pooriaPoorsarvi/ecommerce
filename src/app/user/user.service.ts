@@ -14,7 +14,7 @@ export class UserService {
   getUser() : Observable <any>{
     let user = new UserModel("This is a sample user name",
                               "This is a sample user last name",
-                              ["pooriapoorsarvi@gmail.com"],
+                              "pooriapoorsarvi@gmail.com",
                               []);
     return Observable.create(
       (observer) => {

@@ -15,7 +15,7 @@ export class ProductServerService {
   getProduct(id : number) : Observable <any>{
     var dummyMaker = new MakerModel("this is a sample maker name", []);
     var retailer : RetailerMoel = new RetailerMoel(
-      new UserModel('This is a sample retailer name'),
+      new UserModel('This is a sample retailer name', "pooriapoorsarvi@gmail.com"),
     );
     var prod1 = new ProductModel("this is a sample name",
                                   420,

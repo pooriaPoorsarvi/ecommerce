@@ -1,0 +1,23 @@
+@import "../../../../node_modules/bootstrap/dist/css/bootstrap.css";
+
+
+.container-map-big{
+    position: relative;
+    width: 100%;
+    padding-top: 50%;
+}
+
+.container-map-small{
+  position: relative;
+  width: 100%;
+  padding-top: 25%;
+}
+
+.map-itself{
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+

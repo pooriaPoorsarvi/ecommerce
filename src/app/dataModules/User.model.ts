@@ -9,8 +9,8 @@ export class UserModel{
   // TODO make sex and etc into enums
   // Add last name to sign up
   constructor(public name : string,
+              public email  : string,
               public last_name? : string,
-              public emails?  : string[],
               public shopping_cart? : ProductModel[],
               public image_profile ? : string,
               public addresses ? : AddressModel[],

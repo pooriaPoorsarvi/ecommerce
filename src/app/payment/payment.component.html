@@ -1,0 +1,108 @@
+
+
+<div class="fw" class="mt-3">
+  <div class="container-fluid">
+
+    <mat-card class="fw"  >
+      <div class="container">
+
+        <!-- Showing everything inside the shopping cart  -->
+        <div class="row p0" *ngFor="let prod of shoppingCartService.getSnapShot()">
+
+          <div class="border-detail col-lg-1 col-md-6 col-12 p0 mt-3 centrifyc" >
+            <img [src]="prod.image_address[0]" class="img-fluid" [alt]="prod.name + 'image' " >
+          </div>
+
+          <div class="border-detail col-lg-3 col-md-6 col-12 p0 mt-3 centrifyc">
+            <div class="mx-3">
+              {{prod.name}}
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-12 p0 mt-3 text-centerify" *ngIf="bs.large||bs.xl">
+            <div class="mx-3 centrifyc">
+              <app-shared-button-flat class="fw" [height] = "''" color="warn">
+                remove
+              </app-shared-button-flat>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-12 p0 mt-3 text-centerify">
+            <div class="mx-3 centrifyc">
+              <app-shared-button-flat class="fw" [height] = "''" color="accent">
+                add
+              </app-shared-button-flat>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-12 p0 mt-3 text-centerify" *ngIf="!(bs.large||bs.xl)">
+            <div class="mx-3 centrifyc">
+              <app-shared-button-flat class="fw" [height] = "''" color="warn">
+                remove
+              </app-shared-button-flat>
+            </div>
+          </div>
+
+
+          <div class="col-lg-2 col-12 mt-3 p0">
+            <div [ngClass]="{'ml-3' : bs.large || bs.xl}">
+              <mat-form-field class="fw" color="primary">
+                <input matInput type="number" placeholder="Number" #f>
+                <!-- TODO add an error check for this part to see if the format is correct -->
+                <!-- <mat-error *ngIf="f.isvalid">Min size: 10px</mat-error> -->
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="col-12 mt-3 p0">
+            <hr>
+          </div>
+
+        </div>
+
+        <div class="row p0">
+
+          <div class="col-12">
+            <h3>
+              Total Ammount : {{computeTotalAmount()}} $
+            </h3>
+          </div>
+
+          <div class="col-lg-6 col-12 p0 mt-3" *ngIf="bs.large||bs.xl">
+            <div class="mx-3 centrifyc">
+              <app-shared-button-flat class="fw" color = "warn">
+                remove shopping cart
+              </app-shared-button-flat>
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-12 p0 mt-3">
+            <div class="mx-3 centrifyc">
+              <app-shared-button-flat (click)="checkout()"  class="fw" color = "accent">
+                Check out
+              </app-shared-button-flat>
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-12 p0 mt-3" *ngIf="!(bs.large||bs.xl)">
+            <div class="mx-3 centrifyc">
+              <app-shared-button-flat class="fw" color = "warn">
+                remove shopping cart
+              </app-shared-button-flat>
+            </div>
+          </div>
+
+        </div>
+
+
+
+      </div>
+
+
+
+
+    </mat-card>
+
+  </div>
+</div>
+

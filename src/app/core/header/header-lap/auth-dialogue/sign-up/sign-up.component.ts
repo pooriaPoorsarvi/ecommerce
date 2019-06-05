@@ -1,3 +1,4 @@
+import { AuthenticationService } from './../../../../../shared-services/authentication.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignUpComponent implements OnInit {
 
-  constructor() { }
+  constructor(public authenticationService : AuthenticationService) { }
 
   ngOnInit() {
+  }
+
+  register(){
+    this.authenticationService.registerUser("string2a@gmail.com", "Fudg3Fudg3Fudg3Q!").subscribe(
+      (asd) => {
+        console.log(asd);
+      },
+      (error) => {
+        console.log("error", error);
+      }
+    );
   }
 
 }

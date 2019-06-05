@@ -1,0 +1,140 @@
+
+<div class="fw mt-3" >
+  <div class="container-fluid">
+    <mat-card class="fw">
+
+
+      <div class="container-fluid">
+
+        <div class="row p0">
+
+          <div class="col-12 mt-3 p0">
+            <h4>Please choose Your Address</h4>
+            <hr>
+          </div>
+          <div class="col-12"></div>
+
+          <!-- <div class="col-lg-5 col-md-6 col-12 p0 mt-3" *ngIf="user.addresses"> -->
+          <div class="col-12 p0 mt-3" *ngIf="user.addresses">
+            <div class=" mx-3">
+              <div class="container-fluid">
+
+                <div class="row p0 mt-3">
+                  <!-- <div class="col-12 p0">
+                    <h5>Old Addresses</h5>
+                    <hr>
+                  </div> -->
+                  <!-- The bellow is to choose an address by its name -->
+                  <div class="col-12 p0" >
+
+                    <mat-form-field class="fw p0" >
+                      <mat-label>Used Address Options</mat-label>
+                      <mat-select>
+                        <mat-option *ngFor="let address of user.addresses;let i = index;" [value]="i">
+                          {{address.name}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- These are the part that we use for showing information -->
+          <!-- <div class="col-lg-7 col-md-6 col-12 p0"> -->
+          <div class="col-12 p0">
+            <div class="mx-3">
+              <div class="container-fluid">
+                <div class="row p0">
+
+                  <div class="col-12 p0 mt-3">
+                    <div [ngClass]="{'container-map-small' : bs.large || bs.xl, 'container-map-big' : !(bs.large || bs.xl)}">
+                      <div class="map-itself">
+                        <agm-map [latitude]="lat" [longitude]="lng" class="fw fh">
+                          <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                        </agm-map>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-6 col-12 p0 mt-3">
+                    <div class="mx-3">
+                      <mat-form-field class="fw" required>
+                        <input matInput placeholder="name">
+                      </mat-form-field>
+                    </div>
+                  </div>
+
+                  <!-- Make this province and city into an enum with select -->
+                  <div class="col-lg-6 col-12 p0 mt-3">
+                    <div class="mx-3">
+                      <mat-form-field class="fw" required>
+                        <input matInput placeholder="Province">
+                      </mat-form-field>
+                    </div>
+                  </div>
+
+                  <!-- Make this province and city into an enum with select -->
+                  <div class="col-lg-6 col-12 p0 mt-3">
+                    <div class="mx-3">
+                      <mat-form-field class="fw" required>
+                        <input matInput placeholder="Zip Code">
+                      </mat-form-field>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-6 col-12 p0 mt-3">
+                    <div class="mx-3">
+                      <mat-form-field class="fw" required>
+                          <input matInput placeholder="Address">
+                      </mat-form-field>
+                    </div>
+                  </div>
+
+
+                  <div class="col-lg-6 col-12 p0 mt-3">
+                    <div class="mx-3">
+                      <!-- TODO add a check to see if you have a phone number or not then based on that make a desicion on making this field required -->
+                      <!-- TODO add regex check for this and all the fields of this page -->
+                      <mat-form-field class="fw">
+                        <input matInput type="number" placeholder="Phone Number">
+                      </mat-form-field>
+                    </div>
+                  </div>
+
+
+                  <div class="col-lg-6 col-12 p0 mt-3 centrifyc">
+                    <!-- This fw is added because we needed to centrify things which would have made things small so we needed fw and we couldn't use that fw and mx-3 at the same time -->
+                    <div class="fw">
+                      <div class="mx-3">
+                        <app-shared-button-flat class="fw" color = "accent">
+                          Buy The Shopping Cart
+                        </app-shared-button-flat>
+                      </div>
+                    </div>
+
+                  </div>
+
+
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+
+      </div>
+
+
+    </mat-card>
+  </div>
+</div>
+
+

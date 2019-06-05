@@ -1,3 +1,4 @@
+import { AuthenticationService } from './shared-services/authentication.service';
 import { BootstrapSizeService } from './shared-services/bootstrap-size.service';
 import { BrandService } from './shared-services/brand.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,6 +12,7 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { SharedMaterialsModule } from './shared-materials/shared-materials.module';
 import { ShoppingCartService } from './shared-services/shopping-cart.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { ShoppingCartService } from './shared-services/shopping-cart.service';
     BrowserAnimationsModule,
     SharedMaterialsModule,
     CoreModule,
+    HttpClientModule,
     AppRoutingModule,
   ],
   providers: [
@@ -29,6 +32,7 @@ import { ShoppingCartService } from './shared-services/shopping-cart.service';
     BrandService,
     ShoppingCartService,
     BootstrapSizeService,
+    AuthenticationService,
   ],
   bootstrap: [AppComponent]
 })
