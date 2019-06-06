@@ -1,5 +1,4 @@
 
-
 <div class="fw" class="mt-3">
   <div class="container-fluid">
 
@@ -7,58 +6,78 @@
       <div class="container">
 
         <!-- Showing everything inside the shopping cart  -->
-        <div class="row p0" *ngFor="let prod of shoppingCartService.getSnapShot()">
+        <form [formGroup] = "form">
+          <div formArrayName = "amounts">
 
-          <div class="border-detail col-lg-1 col-md-6 col-12 p0 mt-3 centrifyc" >
-            <img [src]="prod.image_address[0]" class="img-fluid" [alt]="prod.name + 'image' " >
-          </div>
+            <div class="row p0" *ngFor="let prod of products; let i = index"
+            [formGroupName] = "i">
 
-          <div class="border-detail col-lg-3 col-md-6 col-12 p0 mt-3 centrifyc">
-            <div class="mx-3">
-              {{prod.name}}
+              <div class="border-detail col-lg-1 col-md-6 col-12 p0 mt-3 centrifyc" >
+                <img [src]="prod.image_address[0]" class="img-fluid" [alt]="prod.name + 'image' " >
+              </div>
+
+              <!-- TODO add a pip line to add space to numbers so that you'll be able to show the full name -->
+              <div class="border-detail col-lg-2 col-md-3 col-12 p0 mt-3 centrifyc">
+                <div class="mx-3">
+                  name : <br>
+                  {{prod.name}}
+                </div>
+              </div>
+              <!-- TODO add a pip line to add space to numbers so that you'll be able to show the full amount -->
+              <div class="border-detail col-lg-1 col-md-3 col-12 p0 mt-3 centrifyc">
+                <div class="mx-3">
+                  price : <br>
+                  {{prod.promo_code ? prod.main_price * (1-prod.promo_code.percent) : prod.main_price }} $
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-12 p0 mt-3 text-centerify" *ngIf="bs.large||bs.xl">
+                <div class="mx-3 centrifyc">
+                  <app-shared-button-flat (click)="prod.quantity = 0"
+                  class="fw" [height] = "''" color="warn">
+                    remove
+                  </app-shared-button-flat>
+                </div>
+              </div>
+
+              <div class="col-lg-3 co l-12 p0 mt-3 text-centerify">
+                <div class="mx-3 centrifyc">
+                  <app-shared-button-flat (click)="prod.quantity = prod.quantity + 1"
+                  class="fw" [height] = "''" color="accent">
+                    add
+                  </app-shared-button-flat>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-12 p0 mt-3 text-centerify" *ngIf="!(bs.large||bs.xl)">
+                <div class="mx-3 centrifyc">
+                  <app-shared-button-flat (click)="prod.quantity = 0"
+                  class="fw" [height] = "''" color="warn">
+                    remove
+                  </app-shared-button-flat>
+                </div>
+              </div>
+
+
+              <div class="col-lg-2 col-12 mt-3 p0">
+                <div [ngClass]="{'ml-3' : bs.large || bs.xl}">
+                  <mat-form-field class="fw" color="primary">
+                    <input matInput type="number" placeholder="Number"  formControlName = "amount" [(ngModel)] = "prod.quantity">
+                    <!-- <mat-hint>Please Select At Least 0 Of This Product</mat-hint> -->
+                    <mat-error *ngIf="true">The Amount Of Product Is Not Correct.</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="col-12 mt-3 p0">
+                <hr>
+              </div>
+
             </div>
+
+
           </div>
-
-          <div class="col-lg-3 col-12 p0 mt-3 text-centerify" *ngIf="bs.large||bs.xl">
-            <div class="mx-3 centrifyc">
-              <app-shared-button-flat class="fw" [height] = "''" color="warn">
-                remove
-              </app-shared-button-flat>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-12 p0 mt-3 text-centerify">
-            <div class="mx-3 centrifyc">
-              <app-shared-button-flat class="fw" [height] = "''" color="accent">
-                add
-              </app-shared-button-flat>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-12 p0 mt-3 text-centerify" *ngIf="!(bs.large||bs.xl)">
-            <div class="mx-3 centrifyc">
-              <app-shared-button-flat class="fw" [height] = "''" color="warn">
-                remove
-              </app-shared-button-flat>
-            </div>
-          </div>
-
-
-          <div class="col-lg-2 col-12 mt-3 p0">
-            <div [ngClass]="{'ml-3' : bs.large || bs.xl}">
-              <mat-form-field class="fw" color="primary">
-                <input matInput type="number" placeholder="Number" #f>
-                <!-- TODO add an error check for this part to see if the format is correct -->
-                <!-- <mat-error *ngIf="f.isvalid">Min size: 10px</mat-error> -->
-              </mat-form-field>
-            </div>
-          </div>
-
-          <div class="col-12 mt-3 p0">
-            <hr>
-          </div>
-
-        </div>
+        </form>
 
         <div class="row p0">
 
@@ -70,7 +89,8 @@
 
           <div class="col-lg-6 col-12 p0 mt-3" *ngIf="bs.large||bs.xl">
             <div class="mx-3 centrifyc">
-              <app-shared-button-flat class="fw" color = "warn">
+              <app-shared-button-flat (click)="shoppingCartService.removeAllProducts()"
+              class="fw" color = "warn">
                 remove shopping cart
               </app-shared-button-flat>
             </div>
@@ -86,7 +106,8 @@
 
           <div class="col-lg-6 col-12 p0 mt-3" *ngIf="!(bs.large||bs.xl)">
             <div class="mx-3 centrifyc">
-              <app-shared-button-flat class="fw" color = "warn">
+              <app-shared-button-flat (click)="shoppingCartService.removeAllProducts()"
+              class="fw" color = "warn">
                 remove shopping cart
               </app-shared-button-flat>
             </div>

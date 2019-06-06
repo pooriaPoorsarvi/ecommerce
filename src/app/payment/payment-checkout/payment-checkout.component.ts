@@ -1,3 +1,6 @@
+import { AddressModel } from './../../dataModules/Address.model';
+import { Subject } from 'rxjs';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { BootstrapSizeService } from './../../shared-services/bootstrap-size.service';
 import { AuthenticationService } from './../../shared-services/authentication.service';
 import { Component, OnInit } from '@angular/core';
@@ -11,12 +14,24 @@ import { SizeStateBootstrap } from 'src/app/shared-services/bootstrap-size.servi
 })
 export class PaymentCheckoutComponent implements OnInit {
 
+
+  selectedAddress = new AddressModel(null, null, null, null, null, null, null, null);
+
+
+
+
   bs : SizeStateBootstrap;
 
   lat: any;
   lng: any;
 
   user : UserModel;
+
+
+  form : FormGroup;
+
+  latLangCheck = new Subject<boolean>() ;
+
 
   constructor(public authenticationService : AuthenticationService,
               public bootstrapSizeService : BootstrapSizeService) {
@@ -25,11 +40,12 @@ export class PaymentCheckoutComponent implements OnInit {
       navigator.geolocation.getCurrentPosition( pos => {
         this.lng = +pos.coords.longitude;
         this.lat = +pos.coords.latitude;
+        this.latLangCheck.next(true);
       },
       error => {
         console.log(error);
       },
-      {timeout:10000}
+      {timeout:100000}
       )
 
     }
@@ -50,6 +66,23 @@ export class PaymentCheckoutComponent implements OnInit {
         this.user = user;
       }
     );
+
+
+
+
+    this.form = new FormGroup({
+      'name' : new FormControl(null, [Validators.required]),
+      'province' : new FormControl(null, [Validators.required]),
+      'city' : new FormControl(null, [Validators.required]),
+      'zip' : new FormControl(null, [Validators.required]),
+      'address' : new FormControl(null, [Validators.required]),
+      'phone' : new FormControl(),
+    });
+
+  }
+
+  log(a) {
+    console.log(a);
   }
 
 }

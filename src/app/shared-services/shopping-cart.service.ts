@@ -29,7 +29,36 @@ export class ShoppingCartService{
                                   "This is a sample main feature",
                                   ]
                                   );
-    this.products.push(...[prod1, prod1, prod1, prod1]);
+    var prod2 = new ProductModel("this is a sample name",
+                                  420,
+                                  MainPageDataServerService.lorem_ipsum,
+                                  221,
+                                  dummyMaker,
+                                  new CategoryModel("This is a sample category name"),
+                                  100,
+                                  ["http://pluspng.com/img-png/money-png--1663.png"],
+                                  ["This is a sample main feature",
+                                  "This is a sample main feature",
+                                  "This is a sample main feature",
+                                  "This is a sample main feature",
+                                  ]
+                                  );
+    var prod3 = new ProductModel("this is a sample name",
+                                  420,
+                                  MainPageDataServerService.lorem_ipsum,
+                                  221,
+                                  dummyMaker,
+                                  new CategoryModel("This is a sample category name"),
+                                  100,
+                                  ["http://pluspng.com/img-png/money-png--1663.png"],
+                                  ["This is a sample main feature",
+                                  "This is a sample main feature",
+                                  "This is a sample main feature",
+                                  "This is a sample main feature",
+                                  ]
+                                  );
+
+    this.products.push(...[prod1, prod2, prod3]);
 
 
     // TODO add the logic to send the request to get the current products in the shopping cart and it should be done in the following lines
@@ -46,6 +75,12 @@ export class ShoppingCartService{
   public addProduct(product : ProductModel){
     // TODO update server
     this.products.push(product);
+    this.products_observer.next(this.products.slice());
+  }
+
+  public removeAllProducts(){
+    // TODO update server
+    this.products.splice(0, this.products.length);
     this.products_observer.next(this.products.slice());
   }
 

@@ -23,8 +23,10 @@ export class AuthenticationService{
 
     this.current_activated_user = new UserModel('pooria', 'pooriapoorsarvi@gmai.com');
     this.current_activated_user.addresses = [
-      new AddressModel("address 1", null, null, null, null, null),
-      new AddressModel("address 2", null, null, null, null, null)
+      new AddressModel("address 1", 'this is an example province', 'this a sample city', 'this is a sample zip',
+       'this is a sample address', null, 10, 10),
+       new AddressModel("address 1", 'this is an example province', 'this a sample city', 'this is a sample zip',
+        'this is a sample address', 105522, 10, 10),
     ];
 
   }
@@ -36,7 +38,7 @@ export class AuthenticationService{
     header.append("Access-Control-Allow-Methods", "DELETE, POST, GET, OPTIONS");
     header.append("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-    return this.httpClient.put(this.brandService.getRegisterUrl(),{
+    return this.httpClient.post(this.brandService.getRegisterUrl(),{
       'email' : email,
       'password' : password,
       'name' : name,

@@ -55,6 +55,7 @@ import { SharedButtonStrokedComponent } from './shared-button-stroked/shared-but
 import { SharedButtonComponent } from './shared-button/shared-button.component';
 import { SharedButtonFlatComponent } from './shared-button-flat/shared-button-flat.component';
 import { SharedButtonRaisedComponent } from './shared-button-raised/shared-button-raised.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -123,6 +124,8 @@ import { SharedButtonRaisedComponent } from './shared-button-raised/shared-butto
     SharedButtonFlatComponent,
     SharedButtonRaisedComponent,
     RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     {

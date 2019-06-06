@@ -8,6 +8,8 @@ export class AddressModel{
               public city : string,
               public zip : string,
               public address : string,
-              public phone : number){}
+              public phone : number,
+              public lat : number,
+              public lang : number){}
 }
 
