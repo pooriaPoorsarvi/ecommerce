@@ -1,7 +1,8 @@
 
+<!-- TODO fix this
+[matMenuTriggerFor] = "matMenuOpt" or the problem of not being able to use ng-content more than once
+problem this might be solvable with select -->
 <button
-[matMenuTriggerFor] = "matMenuOpt"
-[style.height]="height" [style.width] = "width" class="wrapping" mat-button [color] = "color">
+[style.height]="height"  [style.width] = "width" class="wrapping" mat-button [color] = "color" *ngIf="! matMenuOpt">
   <ng-content></ng-content>
 </button>
-

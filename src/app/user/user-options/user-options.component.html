@@ -1,6 +1,6 @@
 <div class="row">
 
-<a [routerLink] = "['detail']" style="width: 100%" routerLinkActive #rld = "routerLinkActive">
+<a [routerLink] = "['detail']" class="mt-3" style="width: 100%" routerLinkActive #rld = "routerLinkActive">
   <app-shared-button-raised color = "accent"style="width: 100%" *ngIf="rld.isActive"> Detail </app-shared-button-raised>
   <app-shared-button-stroked style="width: 100%" *ngIf="! rld.isActive"> Detail </app-shared-button-stroked>
 </a>

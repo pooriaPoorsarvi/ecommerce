@@ -1,17 +1,37 @@
-<div class="container-fluid">
-  <div class="row mt-3">
-    <div class="col-2">
+
+<mat-tab-group dynamicHeight>
+  <mat-tab label="User Detail">
+    <div class="mx-3">
+      <app-user-detail class="fw"></app-user-detail>
+    </div>
+  </mat-tab>
+  <mat-tab label="User Invoices">
+    <div class="mx-3 my-3">
+      <app-user-invoices></app-user-invoices>
+    </div>
+  </mat-tab>
+  <mat-tab label="User Addresses">
+    <div class="example-large-box mat-elevation-z4">
+      Large content
+    </div>
+  </mat-tab>
+</mat-tab-group>
+
+
+<!-- <div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-2 col-md-3 col-12">
       <div class="ml-3">
         <app-user-options></app-user-options>
       </div>
     </div>
-    <div class="col-10">
+    <div class="col-lg-10 col-md-9 col-sm- col-12">
       <div class="ml-3">
         <router-outlet></router-outlet>
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 
 

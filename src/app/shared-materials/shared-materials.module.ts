@@ -56,6 +56,7 @@ import { SharedButtonComponent } from './shared-button/shared-button.component';
 import { SharedButtonFlatComponent } from './shared-button-flat/shared-button-flat.component';
 import { SharedButtonRaisedComponent } from './shared-button-raised/shared-button-raised.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedButtonWithTriggerComponent } from './shared-button-with-trigger/shared-button-with-trigger.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SharedButtonComponent,
     SharedButtonFlatComponent,
     SharedButtonRaisedComponent,
+    SharedButtonWithTriggerComponent,
   ],
   imports : [
     MatButtonModule,
@@ -83,6 +85,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   exports: [
     CarouselProductsComponent,
     PerfectScrollbarModule,
+    SharedButtonWithTriggerComponent,
     MatAutocompleteModule,
     MatBadgeModule,
     MatBottomSheetModule,

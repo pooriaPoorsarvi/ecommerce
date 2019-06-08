@@ -7,9 +7,10 @@ import { UserInvoicesComponent } from './user-invoices/user-invoices.component';
 import { UserComponent } from './user.component';
 import { SharedMaterialsModule } from '../shared-materials/shared-materials.module';
 import { UserOptionsComponent } from './user-options/user-options.component';
+import { InvoiceComponent } from './invoice/invoice.component';
 
 @NgModule({
-  declarations: [UserEditComponent, UserDetailComponent, UserInvoicesComponent, UserComponent, UserOptionsComponent],
+  declarations: [UserEditComponent, UserDetailComponent, UserInvoicesComponent, UserComponent, UserOptionsComponent, InvoiceComponent],
   imports: [
     CommonModule,
     SharedMaterialsModule,

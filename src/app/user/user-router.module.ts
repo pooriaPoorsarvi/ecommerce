@@ -5,13 +5,11 @@ import { Routes } from '@angular/router';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { UserInvoicesComponent } from './user-invoices/user-invoices.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { InvoiceComponent } from './invoice/invoice.component';
 
 const paths : Routes = [
-  {path : ":id",  component : UserComponent, children : [
-    // {path : "edit", component : UserEditComponent},
-    {path : "detail", component : UserDetailComponent},
-    {path : "invoices", component : UserInvoicesComponent},
-  ]},
+  {path : 'invoice/:id', component : InvoiceComponent},
+  {path : ":id",  component : UserComponent},
   {path : "**", redirectTo : "/home"}
 ];
 

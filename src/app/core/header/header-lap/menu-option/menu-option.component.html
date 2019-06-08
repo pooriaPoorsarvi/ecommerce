@@ -1,7 +1,7 @@
 
-<app-shared-button [matMenuOpt]="menu1" style="font-size: 1.3vw;" *ngIf="!small && !medium">{{menu.name}}</app-shared-button>
-<app-shared-button  [matMenuOpt]="menu1" style="font-size: 1.5vw;" *ngIf="!small && medium">{{menu.name}}</app-shared-button>
-<app-shared-button [matMenuOpt]="menu1"  style="font-size: 1.7vw;padding: 0px;" *ngIf="small && !medium">{{menu.name}}</app-shared-button>
+<app-shared-button-with-trigger [matMenuOpt]="menu1" style="font-size: 1.3vw;" *ngIf="!small && !medium">{{menu.name}}</app-shared-button-with-trigger>
+<app-shared-button-with-trigger  [matMenuOpt]="menu1" style="font-size: 1.5vw;" *ngIf="!small && medium">{{menu.name}}</app-shared-button-with-trigger>
+<app-shared-button-with-trigger [matMenuOpt]="menu1"  style="font-size: 1.7vw;padding: 0px;" *ngIf="small && !medium">{{menu.name}}</app-shared-button-with-trigger>
 <!-- [matMenuTriggerFor]="menu1" -->
 <mat-menu class="p0"  #menu1="matMenu" >
   <div id= "container_main" >
