@@ -1,18 +1,17 @@
-import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { CategorySearchService } from '../shared-services/category-search.service';
-import { SearchResultModel } from './../dataModules/search-result.model';
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ProductModel } from '../dataModules/Product.model';
+import { Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material';
+import { ProductModel } from '../dataModules/Product.model';
+import { SearchResultModel } from '../dataModules/search-result.model';
 
 @Component({
-  selector: 'app-category',
-  templateUrl: './category.component.html',
-  styleUrls: ['./category.component.css']
+  selector: 'app-search',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.css']
 })
-export class CategoryComponent implements OnInit, OnDestroy {
-
+export class SearchComponent implements OnInit {
 
   pageSize = 5;
   pageSizeOptions: number[] = [5, 10, 25, 100];
@@ -32,7 +31,6 @@ export class CategoryComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
-
     var f = (search_results) => {
       this.search_results = search_results;
     };
@@ -47,6 +45,7 @@ export class CategoryComponent implements OnInit, OnDestroy {
     );
 
   }
+
 
   ngOnDestroy(){
     this.subs.unsubscribe();
@@ -105,7 +104,4 @@ export class CategoryComponent implements OnInit, OnDestroy {
     );
   }
 
-
-
 }
-

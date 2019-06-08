@@ -1,7 +1,7 @@
 import { InvoiceModel } from './../../shared-services/invoice.model';
 import { UserService } from './../user.service';
 import { Component, OnInit } from '@angular/core';
-import { Route, ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-invoice',
@@ -11,25 +11,41 @@ import { Route, ActivatedRoute, Params } from '@angular/router';
 export class InvoiceComponent implements OnInit {
 
   viewed_invoice : InvoiceModel;
-  id : string;
+  param : number;
 
-  constructor(public userService : UserService,
-              public route : Route,
-              public router : ActivatedRoute) { }
+  constructor(public router : Router,
+              public route : ActivatedRoute,
+              public userService : UserService) { }
 
   ngOnInit() {
-    this.router.snapshot.params['id'];
+    this.route.snapshot.params['param'];
     this.check_viewed_invoice();
-    this.router.params.subscribe(
+    this.route.params.subscribe(
       (params) => {
-        this.id = params['id'];
+        this.param = +params['param'];
         this.check_viewed_invoice();
       }
     );
   }
 
   check_viewed_invoice(){
+    if(!this.userService.viewedInvoice){
+      this.userService.get_and_set_viewed_invoice(this.param).subscribe(
+        (inv) => {
+          this.viewed_invoice = inv;
+        }
+      );
+      return ;
+    }
 
+    if(this.param != this.userService.viewedInvoice.id){
+      this.userService.get_and_set_viewed_invoice(this.param).subscribe(
+        (inv) => {
+          this.viewed_invoice = inv;
+        }
+      );
+      return ;
+    }
   }
 
 }

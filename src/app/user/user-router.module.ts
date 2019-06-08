@@ -8,8 +8,10 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import { InvoiceComponent } from './invoice/invoice.component';
 
 const paths : Routes = [
-  {path : 'invoice/:id', component : InvoiceComponent},
-  {path : ":id",  component : UserComponent},
+  {path : ":id", children : [
+    {path:'', component : UserComponent},
+    {path : 'invoice/:param', component : InvoiceComponent},
+  ]},
   {path : "**", redirectTo : "/home"}
 ];
 

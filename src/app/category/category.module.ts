@@ -1,4 +1,4 @@
-import { CategoryService } from './category.service';
+import { CategorySearchService } from '../shared-services/category-search.service';
 import { CategoryRouterModule } from './category-router.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -12,6 +12,6 @@ import { SharedMaterialsModule } from '../shared-materials/shared-materials.modu
     SharedMaterialsModule,
     CategoryRouterModule,
   ],
-  providers : [CategoryService]
+  providers : [CategorySearchService]
 })
 export class CategoryModule { }

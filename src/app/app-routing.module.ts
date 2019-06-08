@@ -8,6 +8,7 @@ const routes: Routes = [
   {path : "user", loadChildren : "./user/user.module#UserModule"},
   {path : "payment", loadChildren : "./payment/payment.module#PaymentModule"},
   {path : 'category', loadChildren : './category/category.module#CategoryModule'},
+  {path : 'search', loadChildren : './search/search.module#SearchModule'},
   {path : "**", redirectTo:'home'},
 ];
 

@@ -27,13 +27,17 @@ export class UserService {
     );
   }
 
-  get_and_set_viewed_invoice(id : string) : Observable <InvoiceModel>{
+  get_and_set_viewed_invoice(id : number) : Observable <InvoiceModel>{
 
     // TODO make sure that you'll update the seen invoice locally to after getting it from the server
     return Observable.create(
       (observer) => {
-        this.viewedInvoice = DummyInvoiceCreatorService.give()[0];
-        observer.next(this.viewedInvoice);
+        DummyInvoiceCreatorService.give().subscribe(
+          (res) => {
+            this.viewedInvoice = res[0];
+            observer.next(this.viewedInvoice);
+          }
+        );
       }
     );
   }

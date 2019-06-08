@@ -1,0 +1,10 @@
+
+@import "../../../node_modules/bootstrap/dist/css/bootstrap.css";
+
+
+.search_filter{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+

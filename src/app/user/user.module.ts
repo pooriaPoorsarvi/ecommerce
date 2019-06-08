@@ -1,3 +1,4 @@
+import { UserService } from './user.service';
 import { UserRouterModule } from './user-router.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -15,6 +16,7 @@ import { InvoiceComponent } from './invoice/invoice.component';
     CommonModule,
     SharedMaterialsModule,
     UserRouterModule,
-  ]
+  ],
+  providers : [UserService],
 })
 export class UserModule { }

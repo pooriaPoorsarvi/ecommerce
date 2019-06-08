@@ -1,15 +1,15 @@
-import { SearchResultModel } from './../dataModules/search-result.model';
+import { SearchResultModel } from '../dataModules/search-result.model';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { ProductModel } from '../dataModules/Product.model';
-import { ProductDummyServer } from '../shared-services/product-dummy-server.service';
+import { ProductDummyServer } from './product-dummy-server.service';
 
 
 
 @Injectable()
-export class CategoryService {
+export class CategorySearchService {
 
   constructor(public route : ActivatedRoute,
               public httpClient : HttpClient){}
