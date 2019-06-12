@@ -1,5 +1,12 @@
 
+export const SERVER_API_URL = "http://ecommerce.us-east-1.elasticbeanstalk.com/"
 
+export function user_info_url() : string{
+  return SERVER_API_URL+"api/v1/user/userinfo/";
+}
+export function login_url() : string {
+  return SERVER_API_URL + 'api/v1/user/login';
+}
 export class BrandService{
   BRAND_NAME : string = "BRAND NAME";
   EMPTY_USERS_PROFILE_PIC : string = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
@@ -18,7 +25,9 @@ export class BrandService{
 
   USERS_URL = "user/";
 
-  REGISTER_URL = "register/"
+  REGISTER_URL = "register/";
+
+
 
 
   getRegisterUrl() : string {

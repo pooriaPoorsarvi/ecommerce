@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+/* @import "~@angular/material/prebuilt-themes/indigo-pink.css"; */
 
 
 
@@ -226,6 +226,43 @@ app-root{
 
 .accentC{
   color: #303f9f;
+}
+
+
+
+
+
+/* Spinner Classes */
+
+
+
+.spinner-base{
+  position: fixed;
+  display : flex;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  top: 0px;
+  z-index: 2;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-behind-spinner-base{
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  top: 0px;
+  z-index: 1;
+}
+
+.content-behind-spinner-base-not-needed{
+
+}
+
+.container-of-spinner-and-all{
+  position: relative;
 }
 
 

@@ -1,3 +1,7 @@
+import { ProductDummyServer } from './shared-services/product-dummy-server.service';
+import { AuthExpiredInterceptor } from './interceptors/auth-expired.interceptors';
+import { AuthInterceptor } from './interceptors/auth.interceptors';
+import {AuthServerProvider} from './shared-services/underly-auth.service';
 import { AuthenticationService } from './shared-services/authentication.service';
 import { BootstrapSizeService } from './shared-services/bootstrap-size.service';
 import { BrandService } from './shared-services/brand.service';
@@ -12,7 +16,9 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { SharedMaterialsModule } from './shared-materials/shared-materials.module';
 import { ShoppingCartService } from './shared-services/shopping-cart.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {NgxWebstorageModule} from 'ngx-webstorage';
+import { SpinnerService } from './shared-services/spinner.service';
 
 @NgModule({
   declarations: [
@@ -20,6 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
+    NgxWebstorageModule.forRoot(),
     BrowserAnimationsModule,
     SharedMaterialsModule,
     CoreModule,
@@ -33,7 +40,21 @@ import { HttpClientModule } from '@angular/common/http';
     ShoppingCartService,
     BootstrapSizeService,
     AuthenticationService,
+    ProductDummyServer,
+    AuthServerProvider,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthExpiredInterceptor,
+      multi: true
+    },
+    SpinnerService,
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

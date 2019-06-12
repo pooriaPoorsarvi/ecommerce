@@ -15,16 +15,17 @@ export class ProductModel{
               public main_price : number,
               public detail : string,
               public uid : number,
-              public maker : MakerModel,
-              public category : CategoryModel,
-              public remainingCount : number,
+              public maker : MakerModel | {id : number},
+              public category : CategoryModel | {id : number},
+              public remainingCount  : number,
               public image_address : string[],
               public main_features? : string [],
               public retailer? : RetailerMoel,
               public promo_code? : PromoModel,
               public reviews? : ReviewModel,
               // Check if you can ommit the last part because right now you use it in carousels
-              public reduced_price? : number,){}
+              public reduced_price? : number,
+              public pid ?: number){}
 
 }
 

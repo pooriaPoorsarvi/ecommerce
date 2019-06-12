@@ -62,7 +62,7 @@ export class UserInvoicesComponent implements OnInit {
 
 
   go_to_invoice(activatedElement : InvoiceModel){
-    this.router.navigate(['../invoice', activatedElement.id], {relativeTo : this.route});
+    this.router.navigate(['./invoice', activatedElement.id], {relativeTo : this.route});
   }
 
 

@@ -13,6 +13,7 @@ export class SharedButtonFlatComponent implements OnInit {
   @Input() matB : any = null;
   @Input() matBc : string = '';
   @Input() matBp : string = '';
+  @Input() minHeight : string = '';
 
 
   constructor() { }

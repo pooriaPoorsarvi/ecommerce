@@ -1,10 +1,12 @@
+import { map } from 'rxjs/operators';
 import { SearchResultModel } from '../dataModules/search-result.model';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { ProductModel } from '../dataModules/Product.model';
 import { ProductDummyServer } from './product-dummy-server.service';
+import { SERVER_API_URL } from './brand.service';
 
 
 
@@ -15,7 +17,15 @@ export class CategorySearchService {
               public httpClient : HttpClient){}
 
 
-  getCategory() : Observable<SearchResultModel<ProductModel> [] >{
+  getCategory(id : number) : Observable<any>{
+
+    var params = new HttpParams().set('catId', ''+id);
+    return this.httpClient.get(SERVER_API_URL+"api/v1/product/category/", {params : params}).pipe(map(
+      (products : SearchResultModel<ProductModel>[]) => {
+
+        return products;
+      }
+    ));
 
     var products = ProductDummyServer.give(50);
     var search_results : SearchResultModel<ProductModel>[] = [];

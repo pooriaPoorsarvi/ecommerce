@@ -19,6 +19,8 @@ export class UserModel{
               public active_oder_list ? : OrderModel[],
               public reviews ? : ReviewModel[],
               public sex? : string,
+              public role? : string,
+              public id? : number,
               ){}
 
 }

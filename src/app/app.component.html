@@ -1,19 +1,36 @@
 
-<!-- The main purpose of these inline stylings is to remind how to add empty content when the page is not full -->
 
-<mat-sidenav-container style="min-height: 100%;display: flex; flex-direction: column;width: 100%; padding: 0px; margin: 0px;">
-  <mat-sidenav style="width:50vw" [mode] = "'over'" #side_nav>
-    <app-navbar></app-navbar>
-  </mat-sidenav>
-  <!-- TODO Decide To Add a size limit like digi kala site and make it more dynamice for smaller sizes -->
-  <mat-sidenav-content style="min-height: 100%;display: flex; flex-direction: column;">
-    <app-header  [sidenav] = "side_nav"  ></app-header>
-    <!-- note that if you wanted to make the navbar fixed to the top you can get rid of the margin issue by making an empty div or a hidden nav, the first one is better, and then make that like a normal element -->
-    <div style="flex-grow: 1">
-        <router-outlet></router-outlet>
-    </div>
-    <app-footer></app-footer>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<div class="container-of-spinner-and-all">
+
+  <div class = "fw fh spinner-base" *ngIf="need_to_spin" >
+  <mat-spinner style="width: 50%; height: 50%;" color = "warn"></mat-spinner>
+  </div>
 
 
+  <div class = "content-behind-spinner-base" *ngIf="true" [ngStyle] = "{'opacity' : need_to_spin ? 0.5 : 1}">
+
+
+  <!-- The line below is to add products -->
+  <!-- <app-shared-button-raised color='accent' (click)="productDummyServer.push_online()" >ProductDummyServer</app-shared-button-raised> -->
+  <!-- The main purpose of these inline stylings is to remind how to add empty content when the page is not full -->
+
+  <mat-sidenav-container style="min-height: 100%;display: flex; flex-direction: column;width: 100%; padding: 0px; margin: 0px;">
+    <mat-sidenav style="width:50vw" [mode] = "'over'" #side_nav>
+      <app-navbar></app-navbar>
+    </mat-sidenav>
+    <!-- TODO Decide To Add a size limit like digi kala site and make it more dynamice for smaller sizes -->
+    <mat-sidenav-content style="min-height: 100%;display: flex; flex-direction: column;">
+      <app-header  [sidenav] = "side_nav"  ></app-header>
+      <!-- note that if you wanted to make the navbar fixed to the top you can get rid of the margin issue by making an empty div or a hidden nav, the first one is better, and then make that like a normal element -->
+      <div style="flex-grow: 1">
+          <router-outlet></router-outlet>
+      </div>
+      <app-footer></app-footer>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+
+  </div>
+
+
+  </div>

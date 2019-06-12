@@ -25,6 +25,8 @@ export class CategoryComponent implements OnInit, OnDestroy {
 
   subs_route : Subscription;
 
+  id : number;
+
 
   constructor(public categoryService : CategorySearchService,
               public route : ActivatedRoute) { }
@@ -36,13 +38,14 @@ export class CategoryComponent implements OnInit, OnDestroy {
     var f = (search_results) => {
       this.search_results = search_results;
     };
-    this.subs = this.categoryService.getCategory().subscribe(f);
+    this.subs = this.categoryService.getCategory(+this.route.snapshot.params['id']).subscribe(f);
     this.subs_route = this.route.params.subscribe(
-      () => {
+      (params) => {
+        this.id = +params['id'];
         if(this.subs != null){
           this.subs.unsubscribe();
         }
-        this.subs = this.categoryService.getCategory().subscribe(f);
+        this.subs = this.categoryService.getCategory(this.id).subscribe(f);
       }
     );
 

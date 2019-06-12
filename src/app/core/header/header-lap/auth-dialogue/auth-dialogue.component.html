@@ -1,41 +1,58 @@
 
-<div style="position: relative;max-height: 70vh;" [perfectScrollbar]="{suppressScrollY: false,suppressScrollX: true}">
 
-  <div style="width: 100%">
-    <div class="row">
 
-      <div id="brand_and_option" class="col-12" style="text-align: center">
+<div style="max-height: 70vh;" [perfectScrollbar]="{suppressScrollY: false,suppressScrollX: true}">
+
+
+
+  <!-- <div style="width: 100%"> -->
+    <div class="container-of-spinner-and-all fw"  >
+
+      <div class="spinner-base" *ngIf="spinner_needed" >
+        <mat-spinner color = "warn"></mat-spinner>
+      </div>
+
+
+      <div class = "content-behind-spinner-base-not-needed fw" [ngStyle]="{'opacity': spinner_needed ? 0.5 : 1}">
 
         <div class="row">
-          <div class="col-12">
-            {{brand_service.BRAND_NAME}}
-          </div>
 
-          <div   matRipple (click)="login = true;"  class="col-6 cp" [ngStyle]="{'background' :  login ?  'whitesmoke' : '','font-weight': login ? 'bold' : ''}">
-            <div  class="mt-3">
-              Login
-              <hr>
-            </div>
-          </div>
+          <div id="brand_and_option" class="col-12" style="text-align: center">
 
-          <div matRipple (click)="login = false;"  class="col-6 cp" [ngStyle]="{'background' : ! login ?  'whitesmoke' : '','font-weight': ! login ? 'bold' : ''}">
-            <div  class="mt-3">
-              Sign Up
-              <hr>
+            <div class="row">
+              <div class="col-12">
+                {{brand_service.BRAND_NAME}}
+              </div>
+
+              <div   matRipple (click)="login = true;"  class="col-6 cp" [ngStyle]="{'background' :  login ?  'whitesmoke' : '','font-weight': login ? 'bold' : ''}">
+                <div  class="mt-3">
+                  Login
+                  <hr>
+                </div>
+              </div>
+
+              <div matRipple (click)="login = false;"  class="col-6 cp" [ngStyle]="{'background' : ! login ?  'whitesmoke' : '','font-weight': ! login ? 'bold' : ''}">
+                <div  class="mt-3">
+                  Sign Up
+                  <hr>
+                </div>
+              </div>
+
             </div>
+
           </div>
 
         </div>
-
+        <div class="row">
+          <div class="col-12">
+            <app-login [dialogRef] = "dialogRef" *ngIf="login"></app-login>
+            <app-sign-up *ngIf="! login"></app-sign-up>
+          </div>
+        </div>
       </div>
 
     </div>
-    <div class="row">
-      <div class="col-12">
-        <app-login *ngIf="login"></app-login>
-        <app-sign-up *ngIf="! login"></app-sign-up>
-      </div>
-    </div>
-  </div>
+  <!-- </div> -->
+
 
 </div>

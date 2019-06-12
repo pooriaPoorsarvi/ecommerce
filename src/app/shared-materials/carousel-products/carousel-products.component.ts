@@ -2,7 +2,7 @@ import { BootstrapSizeService } from './../../shared-services/bootstrap-size.ser
 import { ProductModel } from './../../dataModules/Product.model';
 import { interval, Subscription } from 'rxjs';
 import { Component, OnInit, Input, OnDestroy, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { slider100 } from 'src/app/shared-services/animation-maker.animation';
+// import { slider100 } from 'src/app/shared-services/animation-maker.animation';
 import { PerfectScrollbarComponent } from 'ngx-perfect-scrollbar';
 import { SizeStateBootstrap } from 'src/app/shared-services/bootstrap-size.service';
 
@@ -10,7 +10,7 @@ import { SizeStateBootstrap } from 'src/app/shared-services/bootstrap-size.servi
   selector: 'app-carousel-products',
   templateUrl: './carousel-products.component.html',
   styleUrls: ['./carousel-products.component.css'],
-  animations : [slider100],
+  // animations : [slider100],
 })
 export class CarouselProductsComponent implements OnInit, OnDestroy, AfterViewInit {
 

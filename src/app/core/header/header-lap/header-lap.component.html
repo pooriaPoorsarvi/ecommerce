@@ -36,7 +36,7 @@
         <div class="container-fluid fh" >
           <div class="row p0 fh" >
 
-            <div class="col-6 p0 auto-wrap centrifyr" >
+            <!-- <div class="col-6 p0 auto-wrap centrifyr" >
               <div class="ml-3 fh centrifyr txs fw"  >
                 <app-shared-button-flat (click)="openDialouge()"    [height]="'50%'"
                 color="accent"  class="fw fh centrifyr">
@@ -45,9 +45,32 @@
                   </div>
                 </app-shared-button-flat>
               </div>
+            </div> -->
+
+            <div class="col-6 col-6 p0" >
+              <div class="ml-3 fh" >
+                <app-shared-button-flat [color]="'accent'" [height]="'60%'" (click)="accountClick()"
+                style="white-space: normal;" class="centrifyc fh fw" [width] = "'100%'">
+                <i class="material-icons auto-wrap"
+                [ngStyle]="{'font-size': bs.large || bs.xl ? '1.5rem' : '2rem'}" >account_circle</i>
+                {{bs.large || bs.xl ? authenticationService.is_authenticated() ? 'Your Account' : 'Login' : ''}}
+                </app-shared-button-flat>
+              </div>
             </div>
 
-            <div class="col-6 p0 auto-wrap centrifyr" >
+            <div class="col-6 col-6 p0" >
+              <div class="mx-3 fh" >
+                <app-shared-button-flat [color]="'accent'" [height]="'60%'"
+                style="white-space: normal;" class="centrifyc fh fw" [width] = "'100%'"
+                [matB]="shoppingCartProducts.length"
+                [matBc]="'warn'"
+                [matBp]="'before'" >
+                <i class="material-icons auto-wrap"
+                [ngStyle]="{'font-size': bs.large || bs.xl ? '1.5rem' : '2rem'}" >shopping_cart</i> {{bs.large || bs.xl ? 'Shopping Cart' : ''}}
+                </app-shared-button-flat>
+              </div>
+            </div>
+            <!-- <div class="col-6 p0 auto-wrap centrifyr" >
               <div class="mx-3 fh centrifyr txs fw"  >
                 <app-shared-button-flat
                 [matB]="shoppingCartProducts.length"
@@ -55,12 +78,10 @@
                 [matBp]="'before'"
                 [height]="'50%'"
                 color="accent"  class="fw fh centrifyr">
-                  <div class="button-detail">
-                      <i class="material-icons auto-wrap">shopping_cart</i> Shopping Cart
-                  </div>
+                  <i class="material-icons auto-wrap">shopping_cart</i> Shopping Cart
                 </app-shared-button-flat>
               </div>
-            </div>
+            </div> -->
 
 
           </div>

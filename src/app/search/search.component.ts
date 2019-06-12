@@ -34,13 +34,13 @@ export class SearchComponent implements OnInit {
     var f = (search_results) => {
       this.search_results = search_results;
     };
-    this.subs = this.categoryService.getCategory().subscribe(f);
+    this.subs = this.categoryService.getCategory(1).subscribe(f);
     this.subs_route = this.route.params.subscribe(
       () => {
         if(this.subs != null){
           this.subs.unsubscribe();
         }
-        this.subs = this.categoryService.getCategory().subscribe(f);
+        this.subs = this.categoryService.getCategory(1).subscribe(f);
       }
     );
 
