@@ -27,7 +27,7 @@ export class AuthenticationService{
   constructor(public httpClient : HttpClient,
               public brandService : BrandService,
               public authServerProvider : AuthServerProvider){
-    // TODO check the usage of the buffer
+    // TODO check the usage of the buffer and also add a spinner for here
     if(this.authServerProvider.getCurrentUser())
     this.getInfo().subscribe(
       (user) => {},

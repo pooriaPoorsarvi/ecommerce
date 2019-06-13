@@ -6,7 +6,8 @@ export class MakerModel{
   constructor(public name : string,
               public address_info? : AddressModel[],
               public phone_numbers ?: string,
-              public emails ? : string,){}
+              public emails ? : string,
+              public id ? : number,){}
 }
 
 

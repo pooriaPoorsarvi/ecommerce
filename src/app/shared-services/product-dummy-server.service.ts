@@ -29,8 +29,8 @@ export class ProductDummyServer{
     var tmp = ProductDummyServer.give(40);
 
     for(let i of tmp){
-      i.category = {'id' : catId};
-      i.maker = {'id' :  makerId};
+      // TODO later check if we can add to the server
+
       this.httpClient.post(SERVER_API_URL + 'api/v1/product/', {
           "category": {
             "id": catId

@@ -4,15 +4,15 @@ import { DetailComponent } from './detail.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DetailPageComponent } from './detial-page/detail-page.component';
-import { DetailPageLapComponent } from './detial-page/detail-page-lap/detail-page-lap.component';
 import { SharedMaterialsModule } from '../shared-materials/shared-materials.module';
-import { ProductMainCardComponent } from './detial-page/detail-page-lap/product-main-card/product-main-card.component';
 import { AddToCartComponent } from './detial-page/add-to-cart/add-to-cart.component';
-import {DetailHandComponent} from './detial-page/detail-hand/detail-hand.component';
-import { DetailHandCardComponent } from './detial-page/detail-hand/detail-hand-card/detail-hand-card.component';
 
 @NgModule({
-  declarations: [DetailPageComponent, DetailComponent, DetailPageLapComponent, ProductMainCardComponent, AddToCartComponent, DetailHandComponent, DetailHandCardComponent],
+  declarations: [
+    DetailPageComponent,
+    DetailComponent,
+    AddToCartComponent,
+  ],
   imports: [
     CommonModule,
     SharedMaterialsModule,
