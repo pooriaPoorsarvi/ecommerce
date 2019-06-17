@@ -1,45 +1,48 @@
 
 
-<div class="container mt-3">
-  <div class="row">
+<form [formGroup]="form" class="fw fh" >
+<div class="container">
+  <div class="row" >
 
-    <div class="col-12">
+    <div class="col-12 mt-3">
       <mat-form-field>
-        <input matInput placeholder="name">
+        <input matInput placeholder="name" type="text" formControlName="name">
+        <mat-error>Please Enter The Right Format</mat-error>
       </mat-form-field>
     </div>
 
 
-    <div class="col-12">
+    <div class="col-12 mt-3">
       <mat-form-field>
-        <input matInput placeholder="email">
+        <input matInput placeholder="email" type="email" formControlName="email">
+        <mat-error>Please Enter The Right Format</mat-error>
       </mat-form-field>
     </div>
 
-    <div class="col-12">
+    <div class="col-12 mt-3">
       <mat-form-field>
-        <input matInput placeholder="password">
+        <input matInput placeholder="password" type="password" formControlName="password">
+        <mat-error>Please Enter The Right Format</mat-error>
       </mat-form-field>
     </div>
 
-    <div class="col-12">
+    <div class="col-12 mt-3">
       <mat-form-field>
-        <input matInput placeholder="Reapeat Password">
+        <input matInput placeholder="Reapeat Password" type="password"  formControlName="repeat-password" >
+        <mat-error>The passwords must match</mat-error>
       </mat-form-field>
     </div>
 
-    <div class="col-12" >
+    <div class="col-12 my-3" >
       <div class="mx-5">
-        <button (click)="register()"  color = 'accent' mat-raised-button>
+        <button (click)="register()"  color = 'accent' mat-raised-button [ngStyle]="{'opacity' : form.valid ? 1 : 0.8}">
           Sign Me Up
         </button>
       </div>
     </div>
 
-
-
   </div>
 </div>
-
+</form>
 
 

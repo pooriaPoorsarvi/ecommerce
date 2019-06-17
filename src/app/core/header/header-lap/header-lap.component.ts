@@ -1,3 +1,4 @@
+import { RoutingService } from './../../../shared-services/routing.service';
 import { AuthenticationService } from './../../../shared-services/authentication.service';
 import { BootstrapSizeService } from './../../../shared-services/bootstrap-size.service';
 import { SizeStateBootstrap } from 'src/app/shared-services/bootstrap-size.service';
@@ -33,14 +34,15 @@ export class HeaderLapComponent implements OnInit {
               public brandService : BrandService,
               public bootstrapSizeService : BootstrapSizeService,
               public authenticationService : AuthenticationService,
-              public router : Router) { }
+              public router : Router,
+              public routingService : RoutingService) { }
 
 
 
   openDialouge(){
     const dialogRef = this.dialog.open(AuthDialogueComponent, {
       width: '500px',
-      data: {login : true}
+      data: {login : false}
     });
 
     // dialogRef.afterClosed().subscribe(result => {

@@ -1,3 +1,4 @@
+import { RoutingService } from './shared-services/routing.service';
 import { ProductDummyServer } from './shared-services/product-dummy-server.service';
 import { AuthExpiredInterceptor } from './interceptors/auth-expired.interceptors';
 import { AuthInterceptor } from './interceptors/auth.interceptors';
@@ -42,17 +43,18 @@ import { SpinnerService } from './shared-services/spinner.service';
     AuthenticationService,
     ProductDummyServer,
     AuthServerProvider,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthExpiredInterceptor,
-      multi: true
-    },
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: AuthInterceptor,
+    //   multi: true
+    // },
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: AuthExpiredInterceptor,
+    //   multi: true
+    // },
     SpinnerService,
+    RoutingService,
   ],
   bootstrap: [AppComponent]
 })

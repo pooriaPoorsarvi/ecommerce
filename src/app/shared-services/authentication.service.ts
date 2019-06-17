@@ -14,6 +14,8 @@ import { SpinnerService } from './spinner.service';
 @Injectable()
 export class AuthenticationService{
 
+
+
   public current_activated_user : UserModel = null;
   public activated_user_buffer = new Subject<UserModel>();
 
@@ -32,6 +34,11 @@ export class AuthenticationService{
     this.getInfo().subscribe(
       (user) => {},
       (err) => {
+        var a = this.authServerProvider.logout().subscribe(
+          () => {
+            a.unsubscribe();
+          }
+        );
         console.log("initial auto login failed", err);
       }
     );
@@ -49,9 +56,10 @@ export class AuthenticationService{
               lastName? : string | null, sex? : string | null, ){
 
     var header = new HttpHeaders();
+    header.append('Origin', '*');
     header.append('Access-Control-Allow-Origin', '*');
-    // header.append("Access-Control-Allow-Methods", "DELETE, POST, GET, OPTIONS");
-    // header.append("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+    header.append("Access-Control-Allow-Methods", "DELETE, POST, GET, OPTIONS");
+    header.append("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
     return this.httpClient.post(this.brandService.getRegisterUrl(),{
       'email' : email,
@@ -65,27 +73,27 @@ export class AuthenticationService{
 
 
   login(val : {username : string, password:  string, rememberMe : boolean},spinnerService : SpinnerService, dialogRef ? : MatDialogRef<AuthDialogueComponent>){
-
-    spinnerService.changeValue(true);
+    var spinner_value = spinnerService.getUniqueKey();
+    spinnerService.add(spinner_value);
     this.authServerProvider.login(
       val
     ).subscribe(
       (right)  => {
         this.getInfo().subscribe(
           (right2) => {
-            this.closeConnection(spinnerService, dialogRef);
+            this.closeConnection(spinnerService, spinner_value, dialogRef);
           },
           (err) => {
             console.log("error 2", err);
-            this.closeConnection(spinnerService, dialogRef);
+            this.closeConnection(spinnerService, spinner_value, dialogRef);
           }
         );
-        this.closeConnection(spinnerService, dialogRef);
+        this.closeConnection(spinnerService, spinner_value, dialogRef);
 
       },
       (err) => {
         console.log("error 1", err);
-        this.closeConnection(spinnerService, dialogRef);
+        this.closeConnection(spinnerService, spinner_value, dialogRef);
       }
     );
 
@@ -104,8 +112,8 @@ export class AuthenticationService{
 
   }
 
-  closeConnection(spinnerService : SpinnerService, dialogRef ? : MatDialogRef<AuthDialogueComponent>){
-    spinnerService.changeValue(false);
+  closeConnection(spinnerService : SpinnerService, key_spinner : string, dialogRef ? : MatDialogRef<AuthDialogueComponent>){
+    spinnerService.remove(key_spinner);
     if(dialogRef)
     dialogRef.close();
   }

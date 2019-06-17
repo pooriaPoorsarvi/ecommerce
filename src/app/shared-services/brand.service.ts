@@ -25,7 +25,7 @@ export class BrandService{
 
   USERS_URL = "user/";
 
-  REGISTER_URL = "register/";
+  REGISTER_URL = "register";
 
 
 

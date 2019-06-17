@@ -1,3 +1,4 @@
+import { ShoppingCartService } from './../../shared-services/shopping-cart.service';
 import { BrandService } from './../../shared-services/brand.service';
 import { BootstrapSizeService } from './../../shared-services/bootstrap-size.service';
 import { SizeService, SizeState } from './../../shared-services/size-compat.service';
@@ -31,11 +32,11 @@ export class DetailPageComponent implements OnInit{
               public route : ActivatedRoute,
               public productServerSerice : ProductServerService,
               public bootstrapSizeService : BootstrapSizeService,
-              public brandService : BrandService){}
+              public brandService : BrandService,
+              public shoppingCartService : ShoppingCartService){}
 
 
   ngOnInit(){
-
 
 
     this.sb = this.bootstrapSizeService.stateSnapshot;

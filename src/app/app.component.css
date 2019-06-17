@@ -18,3 +18,7 @@ mat-sidenav-content, mat-sidenav-container{
   height: auto !important;
 }
 
+.allow-grow{
+  display: flex;
+  flex-direction: column;
+}

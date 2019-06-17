@@ -114,7 +114,7 @@
                           <div class="col-12"></div>
 
                           <div class="col-12 my-3 p0">
-                            <app-shared-button-raised color = "accent">
+                            <app-shared-button-raised (click)="this.shoppingCartService.addProduct(product)"  color = "accent">
                                 <mat-icon>add_shopping_cart</mat-icon> {{product.promo_code ? product.main_price * (1-product.promo_code.percent) : product.main_price}} $
                             </app-shared-button-raised>
                           </div>
