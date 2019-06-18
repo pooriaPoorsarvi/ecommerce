@@ -1,12 +1,11 @@
 
 
-<!-- TODO the code would break without the style="background: transparent" dunno why but it has to be fixed -->
-<div style="max-height: 70vh;" [perfectScrollbar]="{suppressScrollY: false,suppressScrollX: true}" style="background: transparent">
+<div style="max-height: 80vh;" [perfectScrollbar]="{suppressScrollY: false,suppressScrollX: true}">
 
 
 
   <!-- <div style="width: 100%"> -->
-    <div class="container-of-spinner-and-all fw"  >
+    <div class="container-of-spinner-and-all fw fh"  >
 
       <div class="spinner-base" *ngIf="spinner_needed" >
         <mat-spinner color = "warn"></mat-spinner>
@@ -46,7 +45,7 @@
         <div class="row">
           <div class="col-12">
             <app-login [dialogRef] = "dialogRef" *ngIf="login"></app-login>
-            <app-sign-up *ngIf="! login"></app-sign-up>
+            <app-sign-up [dialogRef] = "dialogRef" *ngIf="! login"></app-sign-up>
           </div>
         </div>
       </div>

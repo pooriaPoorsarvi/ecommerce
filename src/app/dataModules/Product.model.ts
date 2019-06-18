@@ -25,7 +25,7 @@ export class ProductModel{
               public reviews? : ReviewModel,
               // Check if you can ommit the last part because right now you use it in carousels
               public reduced_price? : number,
-              public pid ?: number){}
+              ){}
 
 }
 

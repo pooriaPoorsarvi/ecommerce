@@ -12,6 +12,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ProductModel } from 'src/app/dataModules/Product.model';
 import { Router } from '@angular/router';
+import { ShoppingCartModel } from 'src/app/dataModules/shopping-cart.model';
 
 @Component({
   selector: 'app-header-lap',
@@ -25,7 +26,7 @@ export class HeaderLapComponent implements OnInit {
 
   menus : MenuOptionModel[];
   hovers : boolean[] = [];
-  shoppingCartProducts : ProductModel[];
+  shoppingCartProducts : ShoppingCartModel;
   imageMenu : string;
 
   constructor(public dataServerService : DataServerService,
@@ -71,8 +72,9 @@ export class HeaderLapComponent implements OnInit {
 
 
     this.shoppingCartProducts = this.shoppingCartService.getSnapShot();
+    // HEREEEEE
     this.shoppingCartService.products_observer.subscribe(
-      (products : ProductModel[]) => {
+      (products : ShoppingCartModel) => {
         this.shoppingCartProducts = products;
       }
     );

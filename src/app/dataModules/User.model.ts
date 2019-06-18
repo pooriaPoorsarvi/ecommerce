@@ -2,6 +2,7 @@ import { OrderModel } from './Order.model';
 import { AddressModel } from './Address.model';
 import { ProductModel } from './Product.model';
 import {ReviewModel} from './Review.model';
+import { ShoppingCartModel } from './shopping-cart.model';
 
 export class UserModel{
 
@@ -11,7 +12,6 @@ export class UserModel{
   constructor(public name : string,
               public email  : string,
               public last_name? : string,
-              public shopping_cart? : ProductModel[],
               public image_profile ? : string,
               public addresses ? : AddressModel[],
               public phone_numbers ? : string [],

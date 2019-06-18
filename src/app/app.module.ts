@@ -38,21 +38,21 @@ import { SpinnerService } from './shared-services/spinner.service';
     SizeService,
     DataServerService,
     BrandService,
-    ShoppingCartService,
     BootstrapSizeService,
     AuthenticationService,
     ProductDummyServer,
     AuthServerProvider,
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: AuthInterceptor,
-    //   multi: true
-    // },
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: AuthExpiredInterceptor,
-    //   multi: true
-    // },
+    ShoppingCartService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthExpiredInterceptor,
+      multi: true
+    },
     SpinnerService,
     RoutingService,
   ],

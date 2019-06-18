@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthServerProvider } from '../../../../../shared-services/underly-auth.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { SpinnerService } from 'src/app/shared-services/spinner.service';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -28,32 +28,19 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
 
     this.form = new FormGroup({
-        "username" :  new FormControl(),
-        "password" : new FormControl(),
+        "username" :  new FormControl(null, [Validators.required]),
+        "password" : new FormControl(null, [Validators.required]),
         "rememberMe" : new FormControl(true),
     });
 
   }
 
   login(){
+    if(!this.form.valid)
+    return;
     this.authenticationService.login(this.form.value, this.spinnerService, this.dialogRef);
   }
 
-  signup(){
-    // var header = new HttpHeaders();
 
-    // this.httpClient.get(login_url(), {headers : header}).subscribe(
-    //   (result) => {
-    //     console.log(result);
-    //     // TODO add a spinner before closing
-    //     this.dialogRef.close();
-    //   },
-    //   (err) => {
-    //     console.log(err);
-    //     // TODO add a spinner before closing
-    //     this.dialogRef.close();
-    //   }
-    // );
-  }
 
 }

@@ -1,51 +1,52 @@
 
 
-<div class="container mt-3">
+<form [formGroup]="form" class="container">
 
-  <form [formGroup]="form">
     <div class="row">
 
-      <div class="col-12">
+      <div class="col-12 mt-3">
         <mat-form-field>
           <input matInput placeholder="email" formControlName="username" required email>
+          <mat-error>Please Enter A Valid Email Address</mat-error>
         </mat-form-field>
       </div>
 
-      <div class="col-12">
+      <div class="col-12 mt-3">
           <mat-form-field>
             <input matInput type = "password" placeholder="password" formControlName="password" required password>
+            <mat-error>Please Enter Your Password</mat-error>
           </mat-form-field>
       </div>
 
-      <div class="col-6" >
+      <div class="col-md-6 col-12 mt-3" >
         <div class="mx-2">
-          <button mat-stroked-button (click)="login()" >
+          <app-shared-button-raised color = "accent" mat-stroked-button (click)="login()"
+          [ngStyle]="{'opacity': form.valid ? 1 : 0.8}">
             Login
-          </button>
+          </app-shared-button-raised>
         </div>
       </div>
 
-      <div class="col-6" >
+      <div class="col-md-6 col-12 mt-3" >
         <div class="mx-2">
           <!-- TODO do somthing with this -->
-          <button (click)="signup()"  mat-stroked-button>
+          <app-shared-button-raised mat-stroked-button [ngStyle]="{'opacity': 0.6}">
             Forgot Password
-          </button>
+          </app-shared-button-raised>
         </div>
       </div>
 
       <div class="col-12 mt-3" >
         <div class="mx-2">
-          <button color = "warn" mat-raised-button>
+          <app-shared-button-raised color = "warn" mat-raised-button [ngStyle]="{'opacity': 0.6}">
             Login With Google  Account
-          </button>
+          </app-shared-button-raised>
         </div>
       </div>
 
     </div>
-  </form>
+</form>
 
-</div>
 
 
 

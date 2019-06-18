@@ -1,6 +1,13 @@
-import { ProductModel } from '../dataModules/Product.model';
+import { ProductModel } from './Product.model';
 
 
+
+// class InvoiceModel{
+//   constructor(public product : ProductModel,
+//               public count : number){}
+// }
+
+// tslint:disable-next-line: max-classes-per-file
 export class InvoiceModel{
 
   total_price : number;
@@ -11,6 +18,7 @@ export class InvoiceModel{
                 this.computeTotalPrice();
                 this.number_of_products = this.products.length;
               }
+
   computeTotalPrice(){
     this.total_price = 0;
     for (let product of this.products){

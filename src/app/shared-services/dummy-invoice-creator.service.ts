@@ -1,4 +1,4 @@
-import { InvoiceModel } from './invoice.model';
+import { InvoiceModel } from '../dataModules/invoice.model';
 import { ProductDummyServer } from './product-dummy-server.service';
 import { ProductModel } from 'src/app/dataModules/Product.model';
 import { Injectable } from '@angular/core';

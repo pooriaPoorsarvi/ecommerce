@@ -32,10 +32,15 @@ export class AuthenticationService{
     // TODO check the usage of the buffer and also add a spinner for here
     if(this.authServerProvider.getCurrentUser())
     this.getInfo().subscribe(
-      (user) => {},
+      (user) => {
+        console.log("logged in");
+        this.activated_user_buffer.next(this.current_activated_user);
+      },
       (err) => {
         var a = this.authServerProvider.logout().subscribe(
           () => {
+            this.activated_user_buffer.next(null);
+            this.current_activated_user = null;
             a.unsubscribe();
           }
         );
@@ -52,7 +57,9 @@ export class AuthenticationService{
     // ];
 
   }
-  registerUser(email : string, password : string, name? : string | null,
+  registerUser(email : string, password : string,
+              spinnerService : SpinnerService,
+              dialogRef ? : MatDialogRef<AuthDialogueComponent>, name? : string | null,
               lastName? : string | null, sex? : string | null, ){
 
     var header = new HttpHeaders();
@@ -60,14 +67,21 @@ export class AuthenticationService{
     header.append('Access-Control-Allow-Origin', '*');
     header.append("Access-Control-Allow-Methods", "DELETE, POST, GET, OPTIONS");
     header.append("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-
+    var key1 = spinnerService.getUniqueKey();
+    spinnerService.add(key1);
     return this.httpClient.post(this.brandService.getRegisterUrl(),{
       'email' : email,
       'password' : password,
       'name' : name,
       'lastName' : lastName,
       'sex' : sex
-    },{'headers':header});
+    },{'headers':header}).pipe(map(
+      (something) => {
+        spinnerService.remove(key1);
+        this.login({username : email, password : password, rememberMe : true}, spinnerService, dialogRef);
+        return something;
+      }
+    ));
 
   }
 
@@ -81,6 +95,7 @@ export class AuthenticationService{
       (right)  => {
         this.getInfo().subscribe(
           (right2) => {
+            this.activated_user_buffer.next(this.current_activated_user);
             this.closeConnection(spinnerService, spinner_value, dialogRef);
           },
           (err) => {
@@ -108,6 +123,15 @@ export class AuthenticationService{
         this.current_activated_user = user as UserModel;
         return user;
       },
+      (err : any) => {
+        var a = this.authServerProvider.logout().subscribe(
+          () => {
+            this.current_activated_user = null;
+            this.activated_user_buffer.next(null);
+            a.unsubscribe();
+          }
+        );
+      }
     ));
 
   }

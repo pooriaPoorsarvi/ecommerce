@@ -1,4 +1,4 @@
-import { InvoiceModel } from './../../shared-services/invoice.model';
+import { InvoiceModel } from '../../dataModules/invoice.model';
 import { Component, OnInit } from '@angular/core';
 import { DummyInvoiceCreatorService } from 'src/app/shared-services/dummy-invoice-creator.service';
 import {trigger, state, transition, style, animate} from '@angular/animations';

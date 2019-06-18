@@ -1,4 +1,4 @@
-import { InvoiceModel } from './../shared-services/invoice.model';
+import { InvoiceModel } from '../dataModules/invoice.model';
 import { Observable, observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Inject, Injectable } from '@angular/core';
@@ -19,7 +19,7 @@ export class UserService {
     let user = new UserModel("This is a sample user name",
                               "This is a sample user last name",
                               "pooriapoorsarvi@gmail.com",
-                              []);
+                              );
     return Observable.create(
       (observer) => {
         observer.next(user);

@@ -4,6 +4,7 @@ import { ShoppingCartService } from './../shared-services/shopping-cart.service'
 import { Component, OnInit } from '@angular/core';
 import { ProductModel } from '../dataModules/Product.model';
 import { FormControl, Validators, FormGroup, FormArray } from '@angular/forms';
+import { ShoppingCartModel } from '../dataModules/shopping-cart.model';
 
 @Component({
   selector: 'app-payment',
@@ -23,7 +24,7 @@ export class PaymentComponent implements OnInit {
 
   bs : SizeStateBootstrap;
 
-  products : ProductModel[];
+  products : ShoppingCartModel;
 
 
   constructor(public shoppingCartService : ShoppingCartService,
@@ -35,14 +36,14 @@ export class PaymentComponent implements OnInit {
 
   computeTotalAmount() : number{
     var sum = 0;
-    for (let prod of this.products){
+    for (let prod of this.products.orders){
       var price : number;
-      if(prod.promo_code){
-        price = (1-prod.promo_code.percent) * prod.main_price;
+      if(prod.product.promo_code){
+        price = (1-prod.product.promo_code.percent) * prod.product.main_price;
       }else{
-        price = prod.main_price;
+        price = prod.product.main_price;
       }
-      sum += price * prod.quantity;
+      sum += price * prod.count;
     }
     return sum;
   }
@@ -52,6 +53,7 @@ export class PaymentComponent implements OnInit {
 
 
     this.products = this.shoppingCartService.getSnapShot();
+    // HEREEEEE
     this.shoppingCartService.products_observer.subscribe(
       (products) => {
         this.products = products;
@@ -67,10 +69,10 @@ export class PaymentComponent implements OnInit {
 
 
     this.amounts = [];
-    for(let prod of this.products){
+    for(let prod of this.products.orders){
       this.amounts.push(
         new FormGroup({
-          "amount" : new FormControl(prod.quantity, [
+          "amount" : new FormControl(prod.count, [
             Validators.required,
             Validators.min(0),
           ]),

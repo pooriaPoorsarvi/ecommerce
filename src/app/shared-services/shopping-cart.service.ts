@@ -1,72 +1,42 @@
+import { AuthenticationService } from './authentication.service';
+import { HttpClient } from '@angular/common/http';
 import { MakerModel } from './../dataModules/Maker.model';
 import { MainPageDataServerService } from './../dataModules/MainPageDataServer.service';
 import { Observable, Subject } from 'rxjs';
 import { ProductModel } from '../dataModules/Product.model';
 import { Injectable } from '@angular/core';
 import { CategoryModel } from '../dataModules/Category.model';
-import { SessionStorageService } from 'ngx-webstorage';
+import { SessionStorageService, LocalStorageService } from 'ngx-webstorage';
+import { ShoppingCartModel } from '../dataModules/shopping-cart.model';
+import { get_shopping_cart_url } from './brand.service';
 
 @Injectable()
 export class ShoppingCartService{
   static shopping_cart_name = "shopping cart";
-  private products : ProductModel[] = null;
+  private products : ShoppingCartModel = null;
   public updated : boolean = false;
-  public products_observer : Subject <ProductModel[]> = new Subject <ProductModel[]> ();
+  public products_observer : Subject <ShoppingCartModel> = new Subject <ShoppingCartModel> ();
 
   constructor(
-    private $sessionStorage: SessionStorageService){
+    public authenticationService : AuthenticationService,
+    public httpClient : HttpClient,
+    private $localStorage: LocalStorageService,){
 
-    // this.products = [];
-    // var dummyMaker = new MakerModel("this is a sample maker name", []);
-    // var prod1 = new ProductModel("this is a sample name",
-    //                               420,
-    //                               MainPageDataServerService.lorem_ipsum,
-    //                               221,
-    //                               dummyMaker,
-    //                               new CategoryModel("This is a sample category name"),
-    //                               100,
-    //                               ["http://pluspng.com/img-png/money-png--1663.png"],
-    //                               ["This is a sample main feature",
-    //                               "This is a sample main feature",
-    //                               "This is a sample main feature",
-    //                               "This is a sample main feature",
-    //                               ]
-    //                               );
-    // var prod2 = new ProductModel("this is a sample name",
-    //                               420,
-    //                               MainPageDataServerService.lorem_ipsum,
-    //                               221,
-    //                               dummyMaker,
-    //                               new CategoryModel("This is a sample category name"),
-    //                               100,
-    //                               ["http://pluspng.com/img-png/money-png--1663.png"],
-    //                               ["This is a sample main feature",
-    //                               "This is a sample main feature",
-    //                               "This is a sample main feature",
-    //                               "This is a sample main feature",
-    //                               ]
-    //                               );
-    // var prod3 = new ProductModel("this is a sample name",
-    //                               420,
-    //                               MainPageDataServerService.lorem_ipsum,
-    //                               221,
-    //                               dummyMaker,
-    //                               new CategoryModel("This is a sample category name"),
-    //                               100,
-    //                               ["http://pluspng.com/img-png/money-png--1663.png"],
-    //                               ["This is a sample main feature",
-    //                               "This is a sample main feature",
-    //                               "This is a sample main feature",
-    //                               "This is a sample main feature",
-    //                               ]
-    //                               );
 
     // this.products.push(...[prod1, prod2, prod3]);
+    this.syncAccounts();
     var tmp = this.getSavedShoppingCart();
+
+    this.authenticationService.activated_user_buffer.subscribe(
+      () => {
+        this.syncAccounts();
+      }
+    );
+
     if(tmp != null){
       this.products = tmp;
     }else{
-      this.products = [];
+      this.products = new ShoppingCartModel([]);
     }
 
 
@@ -74,57 +44,63 @@ export class ShoppingCartService{
     // TODO the following line needs to be deleted and then add a logic in which we can add the added products from before to the shopping cart we got from the internet
     this.updated  = true;
 
-    this.products_observer.next(this.products.slice());
+    this.products_observer.next(this.products);
   }
 
-  public getSnapShot() : ProductModel [] {
-    return this.products.slice();
+  public getSnapShot() : ShoppingCartModel {
+    return this.products;
   }
 
   public addProduct(product : ProductModel){
     // TODO update server
-    this.products.push(product);
+    this.products.addProduct(product);
     this.saveLocallyShoppingCart();
-    this.products_observer.next(this.products.slice());
+    this.products_observer.next(this.products);
   }
 
   public removeAllProducts(){
     // TODO update server
-    this.products.splice(0, this.products.length);
+    this.products.removeAll();
     this.saveLocallyShoppingCart();
-    this.products_observer.next(this.products.slice());
+    this.products_observer.next(this.products);
   }
 
-  public removeProduct(ind : number){
+  public removeProduct(product : ProductModel){
     // TOD update server
-    if(ind >= this.products.length){
-      return;
-    }
-    this.products.splice(ind, 1);
+    this.products.removeProduct(product);
     this.saveLocallyShoppingCart();
-    this.products_observer.next(this.products.slice());
+    this.products_observer.next(this.products);
   }
 
 
 
 
 
-  getSavedShoppingCart() : ProductModel[]{
-    var res = this.$sessionStorage.retrieve(ShoppingCartService.shopping_cart_name);
-    return res;
+  getSavedShoppingCart() : ShoppingCartModel{
+    var res = this.$localStorage.retrieve(ShoppingCartService.shopping_cart_name);
+    if (res == null) {
+      return null;
+    }
+    var res2 = new ShoppingCartModel(res.orders);
+    return res2;
   }
 
 
   saveLocallyShoppingCart(){
-    this.$sessionStorage.store(ShoppingCartService.shopping_cart_name, this.products)
+    this.$localStorage.store(ShoppingCartService.shopping_cart_name, this.products)
   }
 
 
-
-
-
-
+  syncAccounts(){
+    if(!this.authenticationService.is_authenticated()){
+      return;
+    }
+    this.httpClient.get(get_shopping_cart_url()).subscribe(
+      (val) => {
+        console.log("online shopping cart", val);
+      }
+    );
+  }
 
 }
-
 

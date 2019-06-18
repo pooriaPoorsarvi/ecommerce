@@ -6,7 +6,7 @@
 
     <div class="col-12 mt-3">
       <mat-form-field>
-        <input matInput placeholder="name" type="text" formControlName="name">
+        <input matInput placeholder="name" type="text" formControlName="name" required>
         <mat-error>Please Enter The Right Format</mat-error>
       </mat-form-field>
     </div>
@@ -14,28 +14,28 @@
 
     <div class="col-12 mt-3">
       <mat-form-field>
-        <input matInput placeholder="email" type="email" formControlName="email">
+        <input matInput placeholder="email" type="email" formControlName="email" required>
         <mat-error>Please Enter The Right Format</mat-error>
       </mat-form-field>
     </div>
 
     <div class="col-12 mt-3">
       <mat-form-field>
-        <input matInput placeholder="password" type="password" formControlName="password">
+        <input matInput placeholder="password" type="password" formControlName="password" required>
         <mat-error>Please Enter The Right Format</mat-error>
       </mat-form-field>
     </div>
 
     <div class="col-12 mt-3">
       <mat-form-field>
-        <input matInput placeholder="Reapeat Password" type="password"  formControlName="repeat-password" >
+        <input matInput placeholder="Reapeat Password" type="password"  formControlName="repeat-password" required>
         <mat-error>The passwords must match</mat-error>
       </mat-form-field>
     </div>
 
     <div class="col-12 my-3" >
       <div class="mx-5">
-        <button (click)="register()"  color = 'accent' mat-raised-button [ngStyle]="{'opacity' : form.valid ? 1 : 0.8}">
+        <button (click)="register()"  color = 'accent' mat-raised-button [ngStyle]="{'opacity' : form.valid ? 1 : 0.8}" required>
           Sign Me Up
         </button>
       </div>

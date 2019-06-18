@@ -1,6 +1,9 @@
+import { SpinnerService } from './../../../../../shared-services/spinner.service';
+import { AuthDialogueComponent } from './../auth-dialogue.component';
+import { MatDialogRef } from '@angular/material';
 import { FormGroup, FormControl, ValidatorFn, AbstractControl, Validators } from '@angular/forms';
 import { AuthenticationService } from './../../../../../shared-services/authentication.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 
 
@@ -11,17 +14,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignUpComponent implements OnInit {
 
+
+
+  @Input() public dialogRef: MatDialogRef<AuthDialogueComponent>;
+
+
   repeatPassword : string = '';
 
   form : FormGroup;
 
-  constructor(public authenticationService : AuthenticationService) { }
+  constructor(public authenticationService : AuthenticationService,
+              public spinnerService : SpinnerService) { }
 
   ngOnInit() {
 
     var f = (b : AbstractControl) => {
       return (control: AbstractControl): {[key: string]: any} | null => {
-        console.log(control.value, b.value, control.value != b.value);
+        // console.log(control.value, b.value, control.value != b.value);
         const forbidden = control.value != b.value;
         return forbidden ? {'forbiddenName': 'hey'} : null;
       };
@@ -42,7 +51,10 @@ export class SignUpComponent implements OnInit {
   register(){
     if(!this.form.valid)
     return;
-    this.authenticationService.registerUser(this.form.get('email').value, this.form.get('password').value, this.form.get('name').value).subscribe(
+    this.authenticationService.registerUser(this.form.get('email').value, this.form.get('password').value,
+    this.spinnerService,
+    this.dialogRef,
+    this.form.get('name').value).subscribe(
       (asd) => {
         console.log(asd);
       },
