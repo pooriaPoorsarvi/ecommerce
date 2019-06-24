@@ -1,3 +1,4 @@
+import { SpinnerService } from 'src/app/shared-services/spinner.service';
 import { SizeStateBootstrap, BootstrapSizeService } from './../../shared-services/bootstrap-size.service';
 import { ProductModel } from 'src/app/dataModules/Product.model';
 import { PromosWithTimer } from './promos-with-timer/promos-with-timer.component';
@@ -22,7 +23,8 @@ export class MainPageComponent implements OnInit {
 
   constructor(public sizeService : SizeService,
               public data_serever : MainPageDataServerService,
-              public bootstrapSizeService : BootstrapSizeService){}
+              public bootstrapSizeService : BootstrapSizeService,
+              public spinnerService : SpinnerService){}
 
 
 
@@ -48,9 +50,23 @@ export class MainPageComponent implements OnInit {
 
 
 
-    this.data_serever.getMainPageContent().subscribe(
-      result => {
-        this.data = result;
+    this.data = this.data_serever.getMainPageContent();
+    var key : string;
+    var before = this.data.ready_snap;
+    if(!this.data.ready_snap){
+      key = this.spinnerService.getUniqueKey();
+      this.spinnerService.add(key);
+    }
+    this.data.ready_buffer.subscribe(
+      (now : boolean) => {
+        if(before != now){
+          before = now;
+          if(now){
+            this.spinnerService.remove(key);
+          }else{
+            this.spinnerService.add(key);
+          }
+        }
       }
     );
 

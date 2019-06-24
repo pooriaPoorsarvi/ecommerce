@@ -57,7 +57,7 @@
             <div class="container-image">
               <div class="img-s" >
                 <img [src]="suggestion.value.image_address[0]"
-                (error)="suggestion.value.image_address[0] = 'http://sainfoinc.com/wp-content/uploads/2018/02/image-not-available.jpg'"
+                (error)="suggestion.value.image_address[0] = bs.empty_images"
                 class="fw fh">
               </div>
             </div>

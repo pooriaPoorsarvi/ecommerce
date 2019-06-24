@@ -1,3 +1,4 @@
+import { Subject } from 'rxjs';
 import { MakerModel } from './Maker.model';
 import { ProductModel } from './Product.model';
 import { PromoModel } from './Promo.model';
@@ -8,6 +9,9 @@ This model was made in order to have a standard way of showing the data in the i
 */
 
 export class MainPageDataServerModel{
+
+  ready_snap = false;
+  ready_buffer = new Subject<boolean>();
 
   constructor(public main_promos : PromoModel[],
               public side_promo1 : PromoModel,
@@ -30,10 +34,15 @@ export class MainPageDataServerModel{
               public promos_main_quartile2? : PromoModel[],
               public promos_binary ? : PromoModel[],
               public promos_lone ? : PromoModel[],
-              ){}
+              ){
+                this.ready_buffer.next(this.ready_snap);
+              }
 
 
-
+  change_ready(val : boolean) {
+    this.ready_snap = val;
+    this.ready_buffer.next(this.ready_snap);
+  }
 
 }
 

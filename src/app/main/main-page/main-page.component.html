@@ -92,7 +92,7 @@
 
   <!-- Popular Products and recommended ones -->
   <div class="row p0 ">
-    <div class="col-md-8 col-12 p0 mt-3">
+    <div class="col-md-8 col-12 p0 mt-3" *ngIf="data.products_popular">
       <div class="ml-3 fh"
       [ngClass]="{'mr-3' : sb.small || sb.xs}"
       >
@@ -110,7 +110,7 @@
     </div>
 
 
-    <div class="col-md-4 col-12 p0 mt-3">
+    <div class="col-md-4 col-12 p0 mt-3" *ngIf="data.products_recommanded">
       <div class="mx-3 fh"
       >
         <mat-card class="fw fh p0">

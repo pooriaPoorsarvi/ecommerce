@@ -68,7 +68,9 @@
                   (mouseover)="hoversProducts[i] = true"
                   (mouseout)="hoversProducts[i] = false"
                    >
+                   <!-- TODO fix the problem that you have that you can't open in a new tab -->
                     <img [src]="prod.image_address[0]" [ngStyle]="{'max-height': maxH_pic}"
+                    (error)="prod.image_address[0] = bs.empty_images"
                     class="img-fluid">
                     <div>
                       {{prod.name}}

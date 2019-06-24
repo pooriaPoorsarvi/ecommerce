@@ -1,3 +1,5 @@
+import { SpinnerService } from 'src/app/shared-services/spinner.service';
+import { HttpClient } from '@angular/common/http';
 import { MainPageDataServerService } from './../dataModules/MainPageDataServer.service';
 import { MakerModel } from './../dataModules/Maker.model';
 import { Observable } from 'rxjs';
@@ -6,13 +8,33 @@ import { CategoryModel } from '../dataModules/Category.model';
 import { RetailerMoel } from '../dataModules/Retailer.model';
 import { UserModel } from '../dataModules/User.model';
 import { PromoModel } from '../dataModules/Promo.model';
+import { Injectable } from '@angular/core';
+import {get_product_url} from '../shared-services/brand.service';
 
-
+@Injectable()
 export class ProductServerService {
 
-  constructor(){}
+  constructor(public httpClient : HttpClient,
+              public spinnerService : SpinnerService){}
 
   getProduct(id : number) : Observable <any>{
+    // console.log("get_product_url", get_product_url, get_product_url(id))
+    var key : string = this.spinnerService.getUniqueKey()
+    this.spinnerService.add(key);
+    var res = this.httpClient.get(get_product_url(id));
+    res.subscribe(
+      (res) => {
+        this.spinnerService.remove(key);
+      },
+      (err) => {
+        this.spinnerService.remove(key);
+      }
+    );
+    return res;
+
+
+
+    // This is the dummy one
     var dummyMaker = new MakerModel("this is a sample maker name", []);
     var retailer : RetailerMoel = new RetailerMoel(
       new UserModel('This is a sample retailer name', "pooriapoorsarvi@gmail.com"),
@@ -39,12 +61,12 @@ export class ProductServerService {
                                   retailer,
                                   new PromoModel('','', 0.5, new Date(), null, null),
                                   );
-    var res = Observable.create(
+    var res1 = Observable.create(
       (observer) => {
         observer.next(prod1);
       }
     );
-    return res;
+    return res1;
   }
 
 }

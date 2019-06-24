@@ -6,6 +6,7 @@ import { Component, OnInit, Input, OnDestroy, ViewChild, ElementRef, AfterViewIn
 // import { slider100 } from 'src/app/shared-services/animation-maker.animation';
 import { PerfectScrollbarComponent } from 'ngx-perfect-scrollbar';
 import { SizeStateBootstrap } from 'src/app/shared-services/bootstrap-size.service';
+import { BrandService } from 'src/app/shared-services/brand.service';
 
 @Component({
   selector: 'app-carousel-products',
@@ -24,7 +25,8 @@ export class CarouselProductsComponent implements OnInit, OnDestroy, AfterViewIn
   sb : SizeStateBootstrap ;
 
   constructor(public bootstrapSizeService: BootstrapSizeService,
-              public routingService : RoutingService) { }
+              public routingService : RoutingService,
+              public bs  : BrandService) { }
 
 
 

@@ -1,3 +1,4 @@
+import { SpinnerService } from './../../shared-services/spinner.service';
 import { RoutingService } from './../../shared-services/routing.service';
 import { ShoppingCartService } from './../../shared-services/shopping-cart.service';
 import { BrandService } from './../../shared-services/brand.service';
@@ -7,7 +8,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ProductServerService } from 'src/app/shared-services/product-server.service';
 import { ProductModel } from 'src/app/dataModules/Product.model';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { SizeStateBootstrap } from 'src/app/shared-services/bootstrap-size.service';
 
 
@@ -35,7 +36,8 @@ export class DetailPageComponent implements OnInit{
               public bootstrapSizeService : BootstrapSizeService,
               public brandService : BrandService,
               public shoppingCartService : ShoppingCartService,
-              public routingService : RoutingService){}
+              public routingService : RoutingService,
+              public spinnerService : SpinnerService,){}
 
 
   ngOnInit(){
@@ -49,19 +51,11 @@ export class DetailPageComponent implements OnInit{
     );
 
 
-    this.subscriptionProduct = this.productServerSerice.getProduct(this.route.snapshot.params["id"] as number).subscribe(
-      (product) => {
-        this.product = product;
-      }
-    );
+    this.subscriptionProduct = this.loadProduct(this.productServerSerice.getProduct(this.route.snapshot.params["id"] as number));
     this.route.params.subscribe(
       (params : Params) => {
         this.subscriptionProduct.unsubscribe();
-        this.subscriptionProduct = this.productServerSerice.getProduct(params["id"] as number).subscribe(
-          (product) => {
-            this.product = product;
-          }
-        );
+        this.subscriptionProduct = this.loadProduct(this.productServerSerice.getProduct(params["id"] as number));
       }
     );
 
@@ -72,6 +66,16 @@ export class DetailPageComponent implements OnInit{
         this.lap = ! sizeBuffer.small;
       }
     );
+
+  }
+
+  loadProduct(req : Observable<ProductModel>){
+    return req.subscribe((product) => {
+      this.product = product;
+    },
+    (err) => {
+      console.log("error was occured while loading the product", err);
+    });
 
   }
 

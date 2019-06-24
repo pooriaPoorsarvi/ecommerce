@@ -1,11 +1,14 @@
+import { HttpClient } from '@angular/common/http';
 import { PromoModel } from './Promo.model';
 import { MainPageDataServerModel } from './MainPageData.model';
 import { CategoryModel } from './Category.model';
 import { Observable } from 'rxjs';
 import { ProductModel } from './Product.model';
 import { MakerModel } from './Maker.model';
+import { Injectable } from '@angular/core';
+import { get_main_products } from '../shared-services/brand.service';
 
-
+@Injectable()
 export class MainPageDataServerService{
 
   static lorem_ipsum  = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in dui condimentum, hendrerit metus ac, cursus enim. Donec in sollicitudin risus, sed accumsan mi. Donec diam metus, accumsan in volutpat ac, egestas quis ipsum. Aliquam aliquam auctor tellus, eget lacinia mi tempor vitae. Fusce porttitor felis dolor, eget efficitur nibh egestas sit amet. Maecenas non massa id turpis consectetur fringilla eu eget dolor. In congue augue id justo scelerisque, nec suscipit nibh consectetur. Donec a consectetur massa. Vestibulum dapibus pellentesque felis, sed dapibus lacus condimentum quis. Donec maximus ante sed dictum gravida. Cras facilisis dui eu metus finibus ullamcorper placerat eget ex. Donec vitae neque ipsum. Nullam nec finibus arcu.
@@ -21,7 +24,7 @@ export class MainPageDataServerService{
   // TODO add some controls in the backend for the sizes of the images and also handle which images have to be transparent
   private data : MainPageDataServerModel ;
 
-  constructor(){
+  constructor(public httpClient : HttpClient){
 
     var main_promos = [
       new PromoModel("promo1",
@@ -69,7 +72,7 @@ export class MainPageDataServerService{
     var prod1 = new ProductModel("this is a sample name",
                                   420,
                                   MainPageDataServerService.lorem_ipsum,
-                                  221,
+                                  5,
                                   dummyMaker,
                                   new CategoryModel("This is a sample category name",1),
                                   100,
@@ -176,13 +179,13 @@ export class MainPageDataServerService{
     ),
     ] ;
     prod1.name = "this is a sample name this is a sample name this is a sample name this is a sample name"
-    this.data.products_popular = [
-      prod1,
-    ];
+    // this.data.products_popular = [
+    //   prod1,
+    // ];
     var prod2 = new ProductModel("this is a sample name",
                                   21566,
                                   MainPageDataServerService.lorem_ipsum,
-                                  221,
+                                  5,
                                   dummyMaker,
                                   new CategoryModel("This is a sample category name",1),
                                   100,
@@ -193,17 +196,25 @@ export class MainPageDataServerService{
                                   "This is a sample main feature",
                                   ]
                                   );
-    this.data.products_popular.push(...[prod2,prod2,prod2,prod2]);
-    this.data.products_recommanded = this.data.products_popular.slice();
+
+    // this.data.products_popular.push(...[prod2,prod2,prod2,prod2]);
+    // this.data.products_recommanded = this.data.products_popular.slice();
   }
 
 
-  getMainPageContent() : Observable <MainPageDataServerModel> {
-    return Observable.create(
-      (observer) => {
-        observer.next(this.data);
+  getMainPageContent() : MainPageDataServerModel {
+    this.httpClient.get(get_main_products()).subscribe(
+      (res : ProductModel[]) => {
+        console.log("cocked and loaded", res)
+        this.data.products_popular = res;
+        this.data.products_recommanded = res;
+        this.data.change_ready(true);
+      },
+      (err) => {
+        console.log("error while loading the main page products", err);
       }
     );
+    return this.data;
   }
 
 

@@ -6,6 +6,7 @@ import { SearchResultModel } from './../dataModules/search-result.model';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductModel } from '../dataModules/Product.model';
 import { PageEvent } from '@angular/material';
+import { BrandService } from '../shared-services/brand.service';
 
 @Component({
   selector: 'app-category',
@@ -33,7 +34,8 @@ export class CategoryComponent implements OnInit, OnDestroy {
 
   constructor(public categoryService : CategorySearchService,
               public route : ActivatedRoute,
-              public routingService : RoutingService) { }
+              public routingService : RoutingService,
+              public bs : BrandService) { }
 
 
 

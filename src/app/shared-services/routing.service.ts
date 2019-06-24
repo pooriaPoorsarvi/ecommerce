@@ -17,6 +17,7 @@ export class RoutingService{
     return '/detail/'+ product.uid;
   }
   goToProduct(product : ProductModel){
+  console.log(product);
   this.finalNavigate([this.getProductUrl(product)], null);
   }
 

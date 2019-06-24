@@ -12,20 +12,21 @@
             <div class="row p0" *ngFor="let prod of products.orders; let i = index"
             [formGroupName] = "i">
 
-              <div class="border-detail col-lg-1 col-md-6 col-12 p0 mt-3 centrifyc" >
+              <div class="border-detail col-lg-1 col-md-6 col-12 p0 mt-3 centrifyc cursorP"
+              (click)="routingService.goToProduct(prod.product)" >
                 <img [src]="prod.product.image_address[0]" class="img-fluid" [alt]="prod.product.name + 'image' " >
               </div>
 
               <!-- TODO add a pip line to add space to numbers so that you'll be able to show the full name -->
               <div class="border-detail col-lg-2 col-md-3 col-12 p0 mt-3 centrifyc">
-                <div class="mx-3">
+                <div class="mx-3 cursorP" (click)="routingService.goToProduct(prod.product)" >
                   name : <br>
                   {{prod.product.name}}
                 </div>
               </div>
               <!-- TODO add a pip line to add space to numbers so that you'll be able to show the full amount -->
               <div class="border-detail col-lg-1 col-md-3 col-12 p0 mt-3 centrifyc">
-                <div class="mx-3">
+                <div class="mx-3 cursorP" (click)="routingService.goToProduct(prod.product)">
                   price : <br>
                   {{prod.product.promo_code ? prod.product.main_price * (1-prod.product.promo_code.percent) : prod.product.main_price }} $
                 </div>

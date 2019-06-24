@@ -1,3 +1,4 @@
+import { RoutingService } from './../shared-services/routing.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BootstrapSizeService, SizeStateBootstrap } from './../shared-services/bootstrap-size.service';
 import { ShoppingCartService } from './../shared-services/shopping-cart.service';
@@ -30,7 +31,8 @@ export class PaymentComponent implements OnInit {
   constructor(public shoppingCartService : ShoppingCartService,
               public  bootstrapSizeService : BootstrapSizeService,
               public router : Router,
-              public route : ActivatedRoute) { }
+              public route : ActivatedRoute,
+              public routingService : RoutingService) { }
 
 
 

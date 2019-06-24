@@ -5,7 +5,7 @@
 <div class="container-fluid">
 
 
-  <div class="row p0 mt-3">
+  <div class="row p0 mt-3" *ngIf="product">
 
     <div class="col-12 p0">
 
@@ -24,7 +24,9 @@
                   <div class="img-container-main"
                   [ngStyle]="{'padding-top' : (sb.large || sb.xl) ? '100%' : '80%'}">
                     <div class="img-main fh" >
-                      <img [src]="product.image_address[0]" alt="product image" class="fw fh">
+                      <img [src]="product.image_address[0]"
+                      (error)="product.image_address[0] = brandService.empty_images"
+                      alt="product image" class="fw fh">
                     </div>
                   </div>
                 </div>
@@ -45,7 +47,8 @@
                         <hr>
                       </div>
 
-                      <div class="col-lg-8 col-12" >
+                      <div class="col-12"
+                      [ngClass]="{'col-lg-8': product.main_features ? true : false}" >
                         <div class="container-fluid">
                           <div class="row p0">
                             <!-- Brand Info -->
@@ -102,7 +105,7 @@
                           </div>
                           <div class="p0 mt-3  new-price"
                           [ngClass]="{'col-12' : ! product.promo_code, 'col-4' : product.promo_code}" >
-                            {{product.main_price * (1-product.promo_code.percent)}} $ CAD
+                            {{!product.promo_code ? product.main_price : product.main_price * (1-product.promo_code.percent)}} $ CAD
                           </div>
                           <div class="col-4 mt-3  p0 " *ngIf="product.promo_code">
                             <mat-chip-list class="fh">
@@ -123,7 +126,7 @@
                         </div>
                       </div>
 
-                      <div class="col-lg-4 col-12" >
+                      <div class="col-lg-4 col-12" *ngIf="product.main_features">
                         <!-- TODO add the condition when we dont have any main features -->
                         <mat-chip-list class="centrifyc">
                           <mat-chip [color] = "'accent'" selected>
