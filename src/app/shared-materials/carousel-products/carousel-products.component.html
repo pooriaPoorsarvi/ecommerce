@@ -55,10 +55,12 @@
           <div class="flx-container fh p0 mb-5"  #container>
 
             <div *ngFor="let prod of products; let i = index;"
-            class="container-fluid "
+            (click)="routingService.goToProduct(prod)"
+            class="container-fluid cursorP"
             [ngStyle]="{'width': 100/nums-2 + '%', 'max-width': 100/nums + '%', 'min-width': 100/nums + '%'}"
             >
-            <!-- <div class="mx-3 my-3"></div> -->
+            <!-- why ? -->
+            <a [routerLink]="[routingService.getProductUrl(prod)]"></a>
               <div class="row p0 fh">
                 <div class="col-12 my-3 p0 fh">
                   <div class="ml-3 fh txs"

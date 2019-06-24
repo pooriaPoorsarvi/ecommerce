@@ -1,6 +1,10 @@
 
-<div class="fw mt-3" >
-  <div class="container-fluid">
+<div class="fw fh mt-3" >
+  <!-- TODO make this page more sofisticated by using gaurds -->
+  <div *ngIf="!user" class="fw fh centrifyr">
+    <h1>Please Login Or Register and reload in order to check out</h1>
+  </div>
+  <div class="container-fluid" *ngIf="user">
     <mat-card class="fw">
 
 

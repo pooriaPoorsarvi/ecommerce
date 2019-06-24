@@ -22,7 +22,7 @@ export class ProductServerService {
                                   MainPageDataServerService.lorem_ipsum,
                                   221,
                                   dummyMaker,
-                                  new CategoryModel("This is a sample category name"),
+                                  new CategoryModel("This is a sample category name", 1),
                                   100,
                                   ["http://pluspng.com/img-png/money-png--1663.png",
                                   "http://pluspng.com/img-png/money-png--1663.png",

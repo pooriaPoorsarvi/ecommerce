@@ -1,3 +1,5 @@
+import { Params } from '@angular/router';
+import { ClickAble } from './click-able.model';
 import { PromoModel } from './Promo.model';
 import { ReviewModel } from './Review.model';
 import {MakerModel }  from './Maker.model'
@@ -5,11 +7,18 @@ import { RetailerMoel } from './Retailer.model';
 import { CategoryModel } from './Category.model';
 
 export class ProductModel{
+
+  // This is because when we reatrive products we won't have the functions
+
+
+
+
   // TODO handle how promos can be public or private in the backend, because we dont wann import all the private promo codes here
   // TODO keep in mind when designing the data base that we might have two completly Identical Products with different Retailers, this might affect the uid
   // TODO keep in mind which picture from the image_adress will be used for promos, for now we're gonna use the 0 one
 
   quantity : number = 1 ;
+
 
   constructor(public name : string,
               public main_price : number,
@@ -26,6 +35,7 @@ export class ProductModel{
               // Check if you can ommit the last part because right now you use it in carousels
               public reduced_price? : number,
               ){}
+
 
 }
 

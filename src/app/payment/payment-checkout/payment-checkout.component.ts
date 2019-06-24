@@ -22,8 +22,8 @@ export class PaymentCheckoutComponent implements OnInit {
 
   bs : SizeStateBootstrap;
 
-  lat: any;
-  lng: any;
+  lat: any = 51.811774899999996;
+  lng: any = 35.747866;
 
   user : UserModel;
 
@@ -35,20 +35,23 @@ export class PaymentCheckoutComponent implements OnInit {
 
   constructor(public authenticationService : AuthenticationService,
               public bootstrapSizeService : BootstrapSizeService) {
+
+    // TODO make site SSH and add this geo service
     if (navigator)
     {
       navigator.geolocation.getCurrentPosition( pos => {
         this.lng = +pos.coords.longitude;
         this.lat = +pos.coords.latitude;
+        console.log("current lat lang", this.lng, this.lat)
         this.latLangCheck.next(true);
       },
       error => {
-        console.log(error);
+        console.log("error geo", error);
       },
       {timeout:100000}
       )
-
     }
+
   }
 
   ngOnInit() {
@@ -59,7 +62,6 @@ export class PaymentCheckoutComponent implements OnInit {
         this.bs = bs ;
       }
     );
-
     this.user = this.authenticationService.current_activated_user;
     this.authenticationService.activated_user_buffer.subscribe(
       (user) => {

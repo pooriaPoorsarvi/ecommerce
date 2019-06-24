@@ -1,7 +1,7 @@
 import { SpinnerService } from './shared-services/spinner.service';
 import { ActivatedRoute } from '@angular/router';
 import { interval } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { ProductDummyServer } from './shared-services/product-dummy-server.service';
 
 @Component({
@@ -16,13 +16,15 @@ export class AppComponent implements OnInit{
   title = 'ecommerce';
   constructor(public route : ActivatedRoute,
               public productDummyServer : ProductDummyServer,
-              public spinnerService : SpinnerService) {}
+              public spinnerService : SpinnerService,
+              private cdr: ChangeDetectorRef) {}
   ngOnInit(){
 
     this.need_to_spin = this.spinnerService.in_use_snapp_shot;
     this.spinnerService.in_use_buffer.subscribe(
       (value) => {
         this.need_to_spin = value;
+        this.cdr.detectChanges();
       }
     );
 

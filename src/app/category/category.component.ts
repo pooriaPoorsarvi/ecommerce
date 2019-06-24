@@ -1,3 +1,4 @@
+import { RoutingService } from './../shared-services/routing.service';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { CategorySearchService } from '../shared-services/category-search.service';
@@ -17,6 +18,8 @@ export class CategoryComponent implements OnInit, OnDestroy {
   pageSize = 5;
   pageSizeOptions: number[] = [5, 10, 25, 100];
 
+
+
   // MatPaginator Output
   pageEvent: PageEvent;
 
@@ -29,7 +32,8 @@ export class CategoryComponent implements OnInit, OnDestroy {
 
 
   constructor(public categoryService : CategorySearchService,
-              public route : ActivatedRoute) { }
+              public route : ActivatedRoute,
+              public routingService : RoutingService) { }
 
 
 

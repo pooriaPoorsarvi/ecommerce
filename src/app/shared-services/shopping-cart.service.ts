@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 import { CategoryModel } from '../dataModules/Category.model';
 import { SessionStorageService, LocalStorageService } from 'ngx-webstorage';
 import { ShoppingCartModel } from '../dataModules/shopping-cart.model';
-import { get_shopping_cart_url } from './brand.service';
+import { get_shopping_cart_url, add_ind_shopping_cart_url } from './brand.service';
 
 @Injectable()
 export class ShoppingCartService{
@@ -55,6 +55,14 @@ export class ShoppingCartService{
     // TODO update server
     this.products.addProduct(product);
     this.saveLocallyShoppingCart();
+    this.httpClient.post(add_ind_shopping_cart_url(),product).subscribe(
+      (res) => {
+        console.log("res adding product", res);
+      },
+      (err) => {
+        console.log("err adding product", err);
+      }
+    );
     this.products_observer.next(this.products);
   }
 

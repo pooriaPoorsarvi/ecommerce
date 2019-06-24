@@ -1,3 +1,4 @@
+import { RoutingService } from './../../shared-services/routing.service';
 import { ShoppingCartService } from './../../shared-services/shopping-cart.service';
 import { BrandService } from './../../shared-services/brand.service';
 import { BootstrapSizeService } from './../../shared-services/bootstrap-size.service';
@@ -33,7 +34,8 @@ export class DetailPageComponent implements OnInit{
               public productServerSerice : ProductServerService,
               public bootstrapSizeService : BootstrapSizeService,
               public brandService : BrandService,
-              public shoppingCartService : ShoppingCartService){}
+              public shoppingCartService : ShoppingCartService,
+              public routingService : RoutingService){}
 
 
   ngOnInit(){

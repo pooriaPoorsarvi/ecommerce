@@ -28,27 +28,27 @@ export class MainPageDataServerService{
                      "/",
                      0,
                      new Date(),
-                     new CategoryModel("first cat"),
+                     new CategoryModel("first cat",1),
                     "https://cdn-assets.alltrails.com/uploads/photo/image/20143242/extra_large_7390529a85d0da704b630d3fe371b1e4.jpg"
       ),
       new PromoModel("promo2",
                      "/",
                      0,
                      new Date(),
-                     new CategoryModel("second cat"),
+                     new CategoryModel("second cat",1),
                     "https://jpdirollphotography.files.wordpress.com/2019/01/dsc_6292-edited-final-lum-mask-100518-c-web-srgb.jpg"
       ),
       new PromoModel("promo3",
                      "/",
                      0,
                      new Date(),
-                     new CategoryModel("third cat"),
+                     new CategoryModel("third cat",1),
                     "https://cdn-assets.alltrails.com/uploads/photo/image/21732959/extra_large_e9ff46febfc0f6e85fab546c8808945b.jpg"
       ),
     ];
 
-    var side_promo1 = new PromoModel("side1", "/", 0, new Date(), new CategoryModel("side1"), "https://www.airfrance.fr/FR/common/common/img/tbaf/news/PRG/immersion-fantasmagorique-dans-la-nature-autour-de-prague/PRG-immersion-fantasmagorique-dans-la-nature-autour-de-prague-1_1-1024x1024.jpg");
-    var side_promo2 = new PromoModel("side2", "/", 0, new Date(), new CategoryModel("side2"), "https://photo.szmigiel.design/wp-content/uploads/2017/02/panoramic-stawy-milickie-szmigieldesign-_MG_2070-Pano-Edit.jpg");
+    var side_promo1 = new PromoModel("side1", "/", 0, new Date(), new CategoryModel("side1",1), "https://www.airfrance.fr/FR/common/common/img/tbaf/news/PRG/immersion-fantasmagorique-dans-la-nature-autour-de-prague/PRG-immersion-fantasmagorique-dans-la-nature-autour-de-prague-1_1-1024x1024.jpg");
+    var side_promo2 = new PromoModel("side2", "/", 0, new Date(), new CategoryModel("side2",1), "https://photo.szmigiel.design/wp-content/uploads/2017/02/panoramic-stawy-milickie-szmigieldesign-_MG_2070-Pano-Edit.jpg");
 
 
 
@@ -71,7 +71,7 @@ export class MainPageDataServerService{
                                   MainPageDataServerService.lorem_ipsum,
                                   221,
                                   dummyMaker,
-                                  new CategoryModel("This is a sample category name"),
+                                  new CategoryModel("This is a sample category name",1),
                                   100,
                                   ["http://pluspng.com/img-png/money-png--1663.png"],
                                   ["This is a sample main feature",
@@ -85,7 +85,7 @@ export class MainPageDataServerService{
                      "/",
                      0,
                      new Date("January 1, 2020 12:00:00"),
-                     new CategoryModel("first cat"),
+                     new CategoryModel("first cat",1),
                     "",
                     prod1,
       ),
@@ -93,7 +93,7 @@ export class MainPageDataServerService{
                      "/",
                      0,
                      new Date(),
-                     new CategoryModel("second cat"),
+                     new CategoryModel("second cat",1),
                     "",
                     prod1,
       ),
@@ -101,7 +101,7 @@ export class MainPageDataServerService{
                      "/",
                      0,
                      new Date(),
-                     new CategoryModel("third cat"),
+                     new CategoryModel("third cat",1),
                     "",
                     prod1,
       ),
@@ -109,7 +109,7 @@ export class MainPageDataServerService{
                      "/",
                      0,
                      new Date(),
-                     new CategoryModel("first cat"),
+                     new CategoryModel("first cat",1),
                     "",
                     prod1
       ),
@@ -117,7 +117,7 @@ export class MainPageDataServerService{
                      "/",
                      0,
                      new Date(),
-                     new CategoryModel("second cat"),
+                     new CategoryModel("second cat",1),
                     "",
                     prod1
       ),
@@ -125,7 +125,7 @@ export class MainPageDataServerService{
                      "/",
                      0,
                      new Date(),
-                     new CategoryModel("third cat"),
+                     new CategoryModel("third cat",1),
                     "",
                     prod1,
       ),
@@ -133,7 +133,7 @@ export class MainPageDataServerService{
                      "/",
                      0,
                      new Date(),
-                     new CategoryModel("third cat"),
+                     new CategoryModel("third cat",1),
                     "",
                     prod1,
       ),
@@ -150,28 +150,28 @@ export class MainPageDataServerService{
                    "/",
                    0,
                    new Date(),
-                   new CategoryModel("third cat"),
+                   new CategoryModel("third cat",1),
                   "https://static.wixstatic.com/media/b8faca_6f555564e0f844248871cf3f5d065989~mv2_d_2048_2048_s_2.jpg/v1/fill/w_2048,h_2048,al_c,q_90/file.jpg"
     ),
     new PromoModel("promo3",
                    "/",
                    0,
                    new Date(),
-                   new CategoryModel("third cat"),
+                   new CategoryModel("third cat",1),
                   "http://papers.co/wallpaper/papers.co-ob69-lake-mountain-river-nature-40-wallpaper.jpg"
     ),
     new PromoModel("promo3",
                    "/",
                    0,
                    new Date(),
-                   new CategoryModel("third cat"),
+                   new CategoryModel("third cat",1),
                   "http://papers.co/wallpaper/papers.co-my27-nature-river-lake-mountain-tree-vacation-flare-40-wallpaper.jpg"
     ),
     new PromoModel("promo3",
                    "/",
                    0,
                    new Date(),
-                   new CategoryModel("third cat"),
+                   new CategoryModel("third cat",1),
                   "http://papers.co/wallpaper/papers.co-ak72-alien-blue-earth-space-planet-dark-40-wallpaper.jpg"
     ),
     ] ;
@@ -184,7 +184,7 @@ export class MainPageDataServerService{
                                   MainPageDataServerService.lorem_ipsum,
                                   221,
                                   dummyMaker,
-                                  new CategoryModel("This is a sample category name"),
+                                  new CategoryModel("This is a sample category name",1),
                                   100,
                                   ["http://pluspng.com/img-png/money-png--1663.png"],
                                   ["This is a sample main feature",

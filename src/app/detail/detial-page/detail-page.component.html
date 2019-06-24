@@ -55,7 +55,7 @@
                               </div>
                             </div>
                             <!-- Category Info -->
-                            <div class="col-6 p0 mt-3" >
+                            <div class="col-6 p0 mt-3 cursorP" (click)="routingService.goToCategory(product.category)" >
                               <div class="fh">
                               Category : <a class="li-u">{{product.category.name}}</a>
                               </div>

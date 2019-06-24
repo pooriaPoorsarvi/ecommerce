@@ -1,3 +1,4 @@
+import { RoutingService } from './../../../shared-services/routing.service';
 import { Subscription, interval } from 'rxjs';
 import { SizeService, SizeState } from '../../../shared-services/size-compat.service';
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
@@ -17,7 +18,8 @@ export class PromosWithTimer implements OnInit, OnDestroy{
 
   @Input() promos : PromoModel[];
 
-  constructor(public sizeService : SizeService){}
+  constructor(public sizeService : SizeService,
+              public routingService : RoutingService){}
 
 
   secs : Subscription;

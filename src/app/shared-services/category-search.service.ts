@@ -1,3 +1,4 @@
+import { SpinnerService } from './spinner.service';
 import { map } from 'rxjs/operators';
 import { SearchResultModel } from '../dataModules/search-result.model';
 import { Observable } from 'rxjs';
@@ -14,18 +15,31 @@ import { SERVER_API_URL } from './brand.service';
 export class CategorySearchService {
 
   constructor(public route : ActivatedRoute,
-              public httpClient : HttpClient){}
+              public httpClient : HttpClient,
+              public spinnerService : SpinnerService){}
 
 
   getCategory(id : number) : Observable<any>{
-
+    var key : string  = this.spinnerService.getUniqueKey();
+    this.spinnerService.add(key);
     var params = new HttpParams().set('catId', ''+id);
-    return this.httpClient.get(SERVER_API_URL+"api/v1/product/category/", {params : params}).pipe(map(
+    var res = this.httpClient.get(SERVER_API_URL+"api/v1/product/category/", {params : params}).pipe(map(
       (products : SearchResultModel<ProductModel>[]) => {
 
+        console.log(<ProductModel>products[0].value );
         return products;
       }
     ));
+    // TODO check why we might have more than one request and also if we need to check the same situation for other types of requests
+    res.subscribe(
+      () =>{
+        this.spinnerService.remove(key);
+      },
+      () => {
+        this.spinnerService.remove(key);
+      },
+    );
+    return res;
 
     var products = ProductDummyServer.give(50);
     var search_results : SearchResultModel<ProductModel>[] = [];

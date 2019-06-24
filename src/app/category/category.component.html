@@ -53,8 +53,14 @@
 
       <div class="col-lg-4 col-md-6 col-12 mt-3 p0" *ngFor="let suggestion of search_results.slice(getStart(),  getEnd())">
         <div class="mx-3">
-          <mat-card class="p0"  >
-            <img [src]="suggestion.value.image_address[0]" class="img-fluid">
+          <mat-card class="p0" class="cursorP" (click)="routingService.goToProduct(suggestion.value)"  >
+            <div class="container-image">
+              <div class="img-s" >
+                <img [src]="suggestion.value.image_address[0]"
+                (error)="suggestion.value.image_address[0] = 'http://sainfoinc.com/wp-content/uploads/2018/02/image-not-available.jpg'"
+                class="fw fh">
+              </div>
+            </div>
             <p class="mt-3 fw txs">
               {{suggestion.value.name}}
             </p>

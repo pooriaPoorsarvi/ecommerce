@@ -67,7 +67,7 @@ export class ProductDummyServer{
                                     MainPageDataServerService.lorem_ipsum + i,
                                     221 + i,
                                     dummyMaker,
-                                    new CategoryModel("This is a sample category name" + i),
+                                    new CategoryModel("This is a sample category name" + i,1),
                                     100 + i,
                                     ["http://pluspng.com/img-png/money-png--1663.png" ],
                                     ["This is a sample main feature" + i,

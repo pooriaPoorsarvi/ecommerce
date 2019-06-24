@@ -1,3 +1,4 @@
+import { RoutingService } from './../../shared-services/routing.service';
 import { BootstrapSizeService } from './../../shared-services/bootstrap-size.service';
 import { ProductModel } from './../../dataModules/Product.model';
 import { interval, Subscription } from 'rxjs';
@@ -22,7 +23,8 @@ export class CarouselProductsComponent implements OnInit, OnDestroy, AfterViewIn
 
   sb : SizeStateBootstrap ;
 
-  constructor(public bootstrapSizeService: BootstrapSizeService) { }
+  constructor(public bootstrapSizeService: BootstrapSizeService,
+              public routingService : RoutingService) { }
 
 
 
